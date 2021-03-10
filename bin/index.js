@@ -10,7 +10,7 @@ const options = yargs
     .option('path', { alias: 'path', describe: 'Path to file', type: 'string', demandOption: false })
     .argv
 
-if (options._[0] === 'init') {
+if (options._[0] === 'init' || !options.action) {
     require('./init')
 } else {
     switch (options.action) {
