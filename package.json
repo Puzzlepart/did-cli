@@ -1,0 +1,21 @@
+{
+  "name": "did-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "bin": {
+    "did": "./bin/index.js"
+  },
+  "dependencies": {
+    "boxen": "4.0",
+    "chalk": "2.4",
+    "dotenv": "^8.2.0",
+    "inquirer": "^8.0.0",
+    "yargs": "^17.0.0-candidate.4"
+  }
+}
