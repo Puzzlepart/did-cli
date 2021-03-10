@@ -9,7 +9,7 @@ const log = console.log
 const package = require('../package.json')
 
 const run = async () => {
-    log(boxen(package.name, { padding: 1, borderStyle: 'double' }))
+    log(boxen(`${package.name} v${package.version}`, { padding: 1, borderStyle: 'double' }))
     const { connectionString, dbName } = await inquirer.prompt([
         {
             'type': 'input',

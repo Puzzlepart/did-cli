@@ -7,11 +7,11 @@ const log = console.log
 
 const import_csv = async (path) => {
     if (!path) {
-        log('did-cli', chalk.yellow.underline('You need to specify path to the CSV file using --path.'))
+        log('[did-cli]', chalk.yellow.underline('You need to specify path to the CSV file using --path.'))
         process.exit(0)
     }
     if (process.env.INIT !== '1') {
-        log('did-cli', chalk.yellow.underline('You need to run did init.'))
+        log('[did-cli]', chalk.yellow.underline('You need to run did init.'))
         process.exit(0)
     }
     try {
@@ -23,9 +23,9 @@ const import_csv = async (path) => {
         const documents = (json.splice(0, count)).map(require(`./map/${collectionName}`)(fieldMap))
         const { db } = await getClient()
         await db.collection(collectionName).insertMany(documents)
-        log('did-cli', chalk.green(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`))
+        log('[did-cli]', chalk.green(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`))
     } catch (error) {
-        log('did-cli', chalk.yellow.underline(`Failed to import from CSV: ${error.message}`))
+        log('[did-cli]', chalk.yellow.underline(`Failed to import from CSV: ${error.message}`))
     }
     process.exit(0)
 }
