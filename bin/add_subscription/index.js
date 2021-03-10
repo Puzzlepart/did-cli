@@ -55,6 +55,7 @@ const add_subscription = async () => {
             "surname": ownerSurname
         })
         log(chalk.green('Subscription succesfully created.'))
+        await client.close(true)
     } catch (error) {
         log(chalk.yellow.underline('Failed to create subscription.'))
     }

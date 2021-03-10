@@ -21,9 +21,10 @@ const import_csv = async (path) => {
         const fields = Object.keys(json[0]).filter(f => f.indexOf('@type') === -1)
         const fieldMap = await inquirer.prompt(require(`./prompts/${collectionName}`)(fields))
         const documents = (json.splice(0, count)).map(require(`./map/${collectionName}`)(fieldMap))
-        const { db } = await getClient()
+        const { db, client } = await getClient()
         await db.collection(collectionName).insertMany(documents)
         log('[did-cli]', chalk.green(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`))
+        await client.close(true)
     } catch (error) {
         log('[did-cli]', chalk.yellow.underline(`Failed to import from CSV: ${error.message}`))
     }
