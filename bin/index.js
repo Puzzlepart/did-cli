@@ -25,6 +25,8 @@ if (options._[0] === 'init' || !options.action) {
             break
         case 'import_csv': require('./import_csv')(options.path)
             break
-        default: log('did-cli', chalk.red.bold(`Unknown action ${options.action}.`))
+        default: {
+            log('did-cli', chalk.red.bold(`Unknown action ${options.action}.`))
+        }
     }
 }
