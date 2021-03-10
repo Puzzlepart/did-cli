@@ -4,8 +4,12 @@ const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
 const writeFile = promisify(fs.writeFile)
+const boxen = require('boxen')
+const log = console.log
+const package = require('../package.json')
 
 const run = async () => {
+    log(boxen(package.name, { padding: 1, borderStyle: 'double' }))
     const { connectionString, dbName } = await inquirer.prompt([
         {
             'type': 'input',
