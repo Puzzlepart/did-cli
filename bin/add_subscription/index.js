@@ -2,6 +2,7 @@ require('dotenv').config()
 const inquirer = require('inquirer')
 const _ = require('underscore')
 const chalk = require('chalk')
+const config = require('./_config.json')
 const { getClient } = require('../mongo/client')
 const log = console.log
 
