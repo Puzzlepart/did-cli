@@ -2,17 +2,7 @@
   "collections": [
     {
       "name": "users",
-      "indexes": ["displayName"],
-      "documents": [
-        {
-          "_id": "{{ownerId}}",
-          "displayName": "{{ownerGivenName}} {{ownerSurname}}",
-          "givenName": "{{ownerGivenName}}",
-          "preferredLanguage": "nb-NO",
-          "role": "Owner",
-          "surname": "{{ownerSurname}}"
-        }
-      ]
+      "indexes": ["displayName"]
     },
     {
       "name": "roles",

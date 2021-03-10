@@ -4,7 +4,8 @@
   "description": "",
   "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [],
   "license": "MIT",
@@ -17,6 +18,7 @@
     "dotenv": "^8.2.0",
     "inquirer": "^8.0.0",
     "mongodb": "^3.6.4",
+    "underscore": "^1.12.0",
     "yargs": "^17.0.0-candidate.4"
   },
   "devDependencies": {
@@ -28,6 +30,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-
   }
 }
