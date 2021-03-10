@@ -20,7 +20,7 @@ const run = async () => {
             'default': ''
         }
     ])
-    await writeFile(path.resolve(__dirname, '.env'), `MONGO_DB_CONNECTION_STRING=${connectionString}\nMONGO_DB_DB_NAME=${dbName}`)
+    await writeFile(path.resolve(__dirname, '.env'), `INIT=1\nMONGO_DB_CONNECTION_STRING=${connectionString}\nMONGO_DB_DB_NAME=${dbName}`)
 }
 
 run()
