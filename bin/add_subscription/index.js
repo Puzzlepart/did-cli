@@ -1,9 +1,15 @@
 require('dotenv').config()
 const inquirer = require('inquirer')
 const _ = require('underscore')
+const chalk = require('chalk')
 const { getClient } = require('../mongo/client')
+const log = console.log
 
 const run = async () => {
+    if (process.env.INIT !== '1') { 
+        log(chalk.yellow('You need to run did init.'))
+        process.exit(0)
+    }
     const {
         name,
         tenantId,
