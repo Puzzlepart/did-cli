@@ -6,7 +6,7 @@ const { getClient } = require('../mongo/client')
 const log = console.log
 
 const run = async () => {
-    if (process.env.INIT !== '1') { 
+    if (process.env.INIT !== '1') {
         log(chalk.yellow('You need to run did init.'))
         process.exit(0)
     }
@@ -17,7 +17,7 @@ const run = async () => {
         ownerId,
         ownerName
     } = await inquirer.prompt(require('./_prompts.json'))
-    const { db } = await getClient()
+    const { client, db } = await getClient()
     const dbName = _.last(tenantId.split('-'))
     const sub = {
         _id: tenantId,
