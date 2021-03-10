@@ -7,6 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
   },
+  "config": {
+    "actions": {
+      "add_subscription": "Register a new Did subscription. You will be prompted for all necessary information.",
+      "import_csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import."
+    }
+  },
   "keywords": [],
   "license": "MIT",
   "bin": {
