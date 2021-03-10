@@ -1,0 +1,17 @@
+[
+  {
+    "type": "list",
+    "name": "collectionName",
+    "message": "What do you want to import",
+    "choices": [
+      { "value": "projects", "name": "Projects" },
+      { "value": "time_entries", "name": "Time entries" }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "importCount",
+    "message": "How many items do you want to import?",
+    "default": "all"
+  }
+]

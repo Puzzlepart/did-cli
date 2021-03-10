@@ -6,7 +6,7 @@ const config = require('./_config.json')
 const { getClient } = require('../mongo/client')
 const log = console.log
 
-const run = async () => {
+const add_subscription = async () => {
     if (process.env.INIT !== '1') {
         log(chalk.yellow.underline('You need to run did init.'))
         process.exit(0)
@@ -61,4 +61,4 @@ const run = async () => {
     process.exit(0)
 }
 
-run()
+add_subscription()
