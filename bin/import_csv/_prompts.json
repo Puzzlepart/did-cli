@@ -5,7 +5,8 @@
     "message": "What do you want to import",
     "choices": [
       { "value": "projects", "name": "Projects" },
-      { "value": "time_entries", "name": "Time entries" }
+      { "value": "time_entries", "name": "Time entries" },
+      { "value": "confirmed_periods", "name": "Confirmed periods" }
     ]
   },
   {
