@@ -1,6 +1,5 @@
 require('dotenv').config()
 const inquirer = require('inquirer')
-const { replaceTokens } = require('../utils')
 const _ = require('underscore')
 const { getClient } = require('../mongo/client')
 
