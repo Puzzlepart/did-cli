@@ -4,7 +4,7 @@
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "new-action": "node ./tasks/new-action.js",
     "prettier": "prettier ./bin --write --loglevel silent",
     "postversion": "git push && git push --tags"
   },
