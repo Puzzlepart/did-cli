@@ -1,0 +1,10 @@
+require('dotenv').config()
+const log = console.log
+
+const {{key}} = async () => {
+  log('--------------------------------------------------------')
+  log('[did-cli] {{name}}')
+  log('--------------------------------------------------------')
+}
+
+module.exports = {{key}}
