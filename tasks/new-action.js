@@ -8,6 +8,8 @@ const writeFile = util.promisify(fs.writeFile)
 const mkdir = util.promisify(fs.mkdir)
 const package = require('../package.json')
 const actionsMap = require('../bin/actions.map.json')
+const child_process = require('child_process')
+const exec = util.promisify(child_process.exec)
 
 function replaceTokens(
     str,
@@ -36,8 +38,17 @@ async function new_action() {
             type: 'input',
             name: 'description',
             message: 'Action description'
+        },
+        {
+            type: 'confirm',
+            name: 'createBranch',
+            message: 'Check out new branch?',
+            default: true
         }
     ])
+    if (action.createBranch) {
+        await exec(`git checkout -b new-action/${action.key}`)
+    }
     const basePath = path.resolve(__dirname, '../bin/actions')
     const [readme, index] = await Promise.all([
         readFile(path.resolve(basePath, '.template/README.md')),
