@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
-const v2_1 = __importDefault(require("csvtojson/v2"));
+const csvtojson_1 = __importDefault(require("csvtojson"));
 const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_string_1 = __importDefault(require("underscore.string"));
 const client_1 = require("../../mongo/client");
@@ -42,7 +42,7 @@ function action({ path }) {
             log_1.log('--------------------------------------------------------');
             log_1.log('[did-cli] import csv');
             log_1.log('--------------------------------------------------------');
-            const json = yield v2_1.default().fromFile(path_);
+            const json = yield csvtojson_1.default().fromFile(path_);
             const { collectionName, importCount } = yield inquirer_1.default.prompt(require('./_prompts.json'));
             log_1.log('--------------------------------------------------------');
             log_1.log('Property mappings');

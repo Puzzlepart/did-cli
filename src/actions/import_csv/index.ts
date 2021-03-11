@@ -1,5 +1,5 @@
 require('dotenv').config()
-import csv from 'csvtojson/v2'
+import csv from 'csvtojson'
 import inquirer from 'inquirer'
 import _ from 'underscore.string'
 import { getClient } from '../../mongo/client'
