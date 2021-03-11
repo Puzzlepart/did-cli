@@ -37,5 +37,3 @@ if (actionsMap[action]) {
 } else {
   log('[did-cli]', red.bold(`Unknown action ${args._.join(' ')}.`))
 }
-
-export const ab = null
