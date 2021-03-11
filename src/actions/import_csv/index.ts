@@ -31,15 +31,15 @@ export async function action({ path }) {
     log('[did-cli] import csv')
     log('--------------------------------------------------------')
     const json = await csv().fromFile(path_)
-    const { collectionName, importCount } = await inquirer.prompt(initialPrompts)
+    const { collectionName, importCount } = await inquirer.prompt(
+      initialPrompts
+    )
     log('--------------------------------------------------------')
     log('Property mappings')
     log('--------------------------------------------------------')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
-    const fieldMap = await inquirer.prompt(
-      prompts[collectionName](fields)
-    )
+    const fieldMap = await inquirer.prompt(prompts[collectionName](fields))
     const documents = json
       .splice(0, count)
       .map(mapFunc[collectionName](fieldMap))
