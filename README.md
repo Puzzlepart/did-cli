@@ -25,6 +25,7 @@
 	* [subscription add](#subscription-add)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
+	* [subscription remove](#subscription-remove)
 </details>
 
 
@@ -119,4 +120,19 @@ did-cli customer add
 ```
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
+
+
+### subscription remove
+
+Removes a Did subscription. Deletes the database.
+
+```shell
+did subscription remove
+```
+
+or
+
+```shell
+did-cli subscription remove
+```
 

@@ -3,5 +3,6 @@
   "open": "./actions/open",
   "subscription.add": "./actions/add_subscription",
   "customer.add": "./actions/add_customer",
-  "import.csv": "./actions/import_csv"
+  "import.csv": "./actions/import_csv",
+  "subscription.remove": "./actions/remove_subscription"
 }

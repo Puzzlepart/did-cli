@@ -8,3 +8,5 @@
 [[ load:bin/actions/import_csv/README.md ]]
 
 [[ load:bin/actions/add_customer/README.md ]]
+
+[[ load:bin/actions/remove_subscription/README.md ]]
