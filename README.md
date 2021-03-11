@@ -21,6 +21,11 @@
 * [➤ Installation](#-installation)
 * [➤ Initialize the cli](#-initialize-the-cli)
 * [➤ Actions](#-actions)
+	* [open](#open)
+	* [subscription add](#subscription-add)
+	* [subscription remove](#subscription-remove)
+	* [import csv](#import-csv)
+	* [customer add](#customer-add)
 * [➤ Contributors](#-contributors)
 </details>
 
@@ -58,15 +63,82 @@ did init
 
 ## ➤ Actions
 
-[[ load:bin/actions/open/README.md ]]
+### open
 
-[[ load:bin/actions/add_subscription/README.md ]]
+Opens the local installation of [did]() in `vscode`.
 
-[[ load:bin/actions/remove_subscription/README.md ]]
+```shell
+did open
+```
 
-[[ load:bin/actions/import_csv/README.md ]]
+or
 
-[[ load:bin/actions/add_customer/README.md ]]
+```shell
+did-cli open
+```
+
+
+### subscription add
+
+```shell
+did subscription add
+```
+
+or
+
+```shell
+did-cli subscription add
+```
+
+![image-20210311092849679](assets/image-20210311092849679.png)
+
+
+### subscription remove
+
+Removes a Did subscription.
+
+```shell
+did subscription remove
+```
+
+or
+
+```shell
+did-cli subscription remove
+```
+
+![image-20210311145039854](assets/image-20210311145039854.png)
+
+
+### import csv
+
+```shell
+did import csv --path path_to_csv_file
+```
+
+or
+
+```shell
+did-cli import csv
+```
+
+![image-20210311092955701](assets/image-20210311092955701.png)
+
+
+### customer add
+
+```shell
+did customer add
+```
+
+or
+
+```shell
+did-cli customer add
+```
+
+![image-20210311093034792](assets/image-20210311093034792.png)
+
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#contributors)

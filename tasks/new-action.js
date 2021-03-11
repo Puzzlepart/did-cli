@@ -65,7 +65,7 @@ async function new_action() {
         ...actionsMap,
         [action.name.split(' ').join('.')]: `./actions/${action.key}`
     }
-    let actionsReadme_ = actionsReadme.toString() + `\n\n[[ load:bin/actions/${action.key}/README.md ]]`
+    let actionsReadme_ = actionsReadme.toString() + `\n\n[[ load:src/actions/${action.key}/README.md ]]`
     await mkdir(path.resolve(BASE_PATH, action.key))
     await Promise.all([
         writeFile(path.resolve(BASE_PATH, `${action.key}/README.md`), replaceTokens(readmeTmpl.toString(), action)),
