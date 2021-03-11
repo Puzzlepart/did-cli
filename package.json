@@ -16,6 +16,15 @@
       "customer add": "Adds a new customer to Did. You will be prompted for all necessary information."
     }
   },
+  "contributors": [
+    {
+      "name": "Ole Martin Pettersen",
+      "email": "olemp@puzzlepart.com",
+      "info": [
+        "🔥"
+      ]
+    }
+  ],
   "keywords": [],
   "license": "MIT",
   "bin": {
@@ -38,6 +47,7 @@
     "yargs": "^17.0.0-candidate.4"
   },
   "devDependencies": {
+    "@appnest/readme": "^1.2.7",
     "@commitlint/config-conventional": "^12.0.1",
     "commitlint": "^12.0.1",
     "husky": "^5.1.3",
