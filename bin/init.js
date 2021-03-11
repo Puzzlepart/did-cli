@@ -9,22 +9,30 @@ const log = console.log
 const package = require('../package.json')
 
 const run = async () => {
-    log(boxen(`${package.name} v${package.version}`, { padding: 1, borderStyle: 'double' }))
-    const { connectionString, dbName } = await inquirer.prompt([
-        {
-            'type': 'input',
-            'name': 'connectionString',
-            'message': 'Mongo DB connection string',
-            'default': 'mongodb://'
-        },
-        {
-            'type': 'input',
-            'name': 'dbName',
-            'message': 'Mongo DB database',
-            'default': 'main'
-        }
-    ])
-    await writeFile(path.resolve(__dirname, '.env'), `INIT=1\nMONGO_DB_CONNECTION_STRING=${connectionString}\nMONGO_DB_DB_NAME=${dbName}`)
+  log(
+    boxen(`${package.name} v${package.version}`, {
+      padding: 1,
+      borderStyle: 'double'
+    })
+  )
+  const { connectionString, dbName } = await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'connectionString',
+      message: 'Mongo DB connection string',
+      default: 'mongodb://'
+    },
+    {
+      type: 'input',
+      name: 'dbName',
+      message: 'Mongo DB database',
+      default: 'main'
+    }
+  ])
+  await writeFile(
+    path.resolve(__dirname, '.env'),
+    `INIT=1\nMONGO_DB_CONNECTION_STRING=${connectionString}\nMONGO_DB_DB_NAME=${dbName}`
+  )
 }
 
 run()

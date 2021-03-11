@@ -1,52 +1,54 @@
-const { findBestMatch } = require("string-similarity")
+const { findBestMatch } = require('string-similarity')
 
 const sortByBestMatch = (field, fields) => {
-    return findBestMatch(field, fields).ratings.sort((a, b) => b.rating - a.rating).map(a => a.target)
+  return findBestMatch(field, fields)
+    .ratings.sort((a, b) => b.rating - a.rating)
+    .map((a) => a.target)
 }
 
 module.exports = (fields) => {
-    return [
-        {
-            "name": "_id",
-            "message": "ID property",
-            "default": "id"
-        },
-        {
-            "name": "projectId",
-            "message": "Project id/tag property"
-        },
-        {
-            "name": "title",
-            "message": "Title property"
-        },
-        {
-            "name": "body",
-            "message": "Body property"
-        },
-        {
-            "name": "duration",
-            "message": "Duration property"
-        },
-        {
-            "name": "startDate",
-            "message": "Start date property"
-        },
-        {
-            "name": "endDate",
-            "message": "End date property"
-        },
-        {
-            "name": "periodId",
-            "message": "Period ID property"
-        },
-        {
-            "name": "userId",
-            "message": "User ID property"
-        }
-    ].map(p => ({
-        ...p,
-        type: "list",
-        default: p.name,
-        choices: sortByBestMatch(p.name, fields)
-    }))
+  return [
+    {
+      name: '_id',
+      message: 'ID property',
+      default: 'id'
+    },
+    {
+      name: 'projectId',
+      message: 'Project id/tag property'
+    },
+    {
+      name: 'title',
+      message: 'Title property'
+    },
+    {
+      name: 'body',
+      message: 'Body property'
+    },
+    {
+      name: 'duration',
+      message: 'Duration property'
+    },
+    {
+      name: 'startDate',
+      message: 'Start date property'
+    },
+    {
+      name: 'endDate',
+      message: 'End date property'
+    },
+    {
+      name: 'periodId',
+      message: 'Period ID property'
+    },
+    {
+      name: 'userId',
+      message: 'User ID property'
+    }
+  ].map((p) => ({
+    ...p,
+    type: 'list',
+    default: p.name,
+    choices: sortByBestMatch(p.name, fields)
+  }))
 }
