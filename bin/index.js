@@ -32,13 +32,13 @@ const action = _.join('.')
 
 switch (action) {
   case 'init':
-    require('./init')
+    require('./init')()
     break
   case 'subscription.add':
-    require('./actions/add_subscription')
+    require('./actions/add_subscription')()
     break
   case 'customer.add':
-    require('./actions/add_customer')
+    require('./actions/add_customer')()
     break
   case 'import.csv':
     require('./actions/import_csv')(path)

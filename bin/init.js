@@ -8,7 +8,7 @@ const boxen = require('boxen')
 const log = console.log
 const package = require('../package.json')
 
-const run = async () => {
+const init_ = async () => {
   log(
     boxen(`${package.name} v${package.version}`, {
       padding: 1,
@@ -35,4 +35,4 @@ const run = async () => {
   )
 }
 
-run()
+module.exports = init_

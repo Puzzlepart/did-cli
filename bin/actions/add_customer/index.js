@@ -14,7 +14,9 @@ const add_customer = async () => {
     log('--------------------------------------------------------')
     log('[did-cli] customer add')
     log('--------------------------------------------------------')
-    const { key, name, description, icon } = await inquirer.prompt(require('./_prompts.js'))
+    const { key, name, description, icon } = await inquirer.prompt(
+      require('./_prompts.js')
+    )
     const { client, db } = await getClient()
     await db.collection('customers').insertOne({
       _id: key,
@@ -35,4 +37,4 @@ const add_customer = async () => {
   process.exit(0)
 }
 
-add_customer()
+module.exports = add_customer

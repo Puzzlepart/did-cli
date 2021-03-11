@@ -15,12 +15,9 @@ const add_subscription = async () => {
     log('--------------------------------------------------------')
     log('[did-cli] subscription add')
     log('--------------------------------------------------------')
-    const {
-      name,
-      tenantId,
-      forecasting,
-      owner
-    } = await inquirer.prompt(require('./_prompts.json'))
+    const { name, tenantId, forecasting, owner } = await inquirer.prompt(
+      require('./_prompts.json')
+    )
     const { client, db } = await getClient()
     const dbName = _.last(tenantId.split('-'))
     const sub = {
@@ -49,12 +46,18 @@ const add_subscription = async () => {
         await client.db(dbName).collection(coll.name).insertMany(coll.documents)
       }
     }
-    await client.db(dbName).collection('users').insertOne({
-      ...owner,
-      displayName: `${owner.givenName} ${owner.surname}`,
-      role: 'Owner',
-    })
-    log('[did-cli]', chalk.green(`Subscription succesfully created with db ${dbName}.`))
+    await client
+      .db(dbName)
+      .collection('users')
+      .insertOne({
+        ...owner,
+        displayName: `${owner.givenName} ${owner.surname}`,
+        role: 'Owner'
+      })
+    log(
+      '[did-cli]',
+      chalk.green(`Subscription succesfully created with db ${dbName}.`)
+    )
     await client.close(true)
   } catch (error) {
     log('[did-cli]', chalk.yellow.underline('Failed to create subscription.'))
@@ -62,4 +65,4 @@ const add_subscription = async () => {
   process.exit(0)
 }
 
-add_subscription()
+module.exports = add_subscription
