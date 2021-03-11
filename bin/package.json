@@ -10,7 +10,8 @@
         "prettier": "prettier ./src --write --loglevel silent",
         "postversion": "git push && git push --tags",
         "clean": "rimraf ./dist",
-        "copy:package": "copyfiles package.json ./src"
+        "copy:package": "copyfiles package.json ./src",
+        "postinstall": "npm run tsc:build"
     },
     "config": {
         "actions": {
