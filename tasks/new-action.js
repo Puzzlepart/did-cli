@@ -69,7 +69,7 @@ async function new_action() {
     await mkdir(path.resolve(BASE_PATH, action.key))
     await Promise.all([
         writeFile(path.resolve(BASE_PATH, `${action.key}/README.md`), replaceTokens(readmeTmpl.toString(), action)),
-        writeFile(path.resolve(BASE_PATH, `${action.key}/index.js`), replaceTokens(indexTmpl.toString(), action)),
+        writeFile(path.resolve(BASE_PATH, `${action.key}/index.ts`), replaceTokens(indexTmpl.toString(), action)),
         writeFile(path.resolve(ROOT_PATH, `package.json`), JSON.stringify(package, null, 2)),
         writeFile(path.resolve(ROOT_PATH, `src/actions.map.json`), JSON.stringify(actionsMap_, null, 2)),
         writeFile(path.resolve(ROOT_PATH, 'readme/3-actions.md'), actionsReadme_)
