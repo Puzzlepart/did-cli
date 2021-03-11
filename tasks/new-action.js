@@ -7,6 +7,7 @@ const readFile = util.promisify(fs.readFile)
 const writeFile = util.promisify(fs.writeFile)
 const mkdir = util.promisify(fs.mkdir)
 const package = require('../package.json')
+const actionsMap = require('../bin/actions.map.json')
 
 function replaceTokens(
     str,
@@ -50,7 +51,12 @@ async function new_action() {
         ...package.config.actions,
         [action.name]: action.description
     }
+    let actionsMap_ = {
+        ...actionsMap,
+        [action.name.split(' ').join('.')]: `./actions/${action.key}`
+    }
     await writeFile(path.resolve(__dirname, `../package.json`), JSON.stringify(package, null, 2))
+    await writeFile(path.resolve(__dirname, `../bin/actions.map.json`), JSON.stringify(actionsMap_, null, 2))
     process.exit(0)
 }
 
