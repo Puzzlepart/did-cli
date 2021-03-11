@@ -1,5 +1,5 @@
 <!-- ⚠️ This README has been generated from the file(s) "readme.blueprint.md" ⚠️--><p align="center">
-  <img src="assets/logo.png" alt="Logo" width="120" height="120" />
+  <img src="assets/logo.png" alt="Logo" width="207" height="115" />
 </p> <p align="center">
   <b>Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.</b></br>
   <sub>It's basically a CLI for did.<sub>

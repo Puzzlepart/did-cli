@@ -6,8 +6,8 @@
   "text": "It's basically a CLI for did.",
   "logo": {
     "src": "assets/logo.png",
-    "width": 120,
-    "height": 120
+    "width": 207,
+    "height": 115
   },
   "placeholder": ["[[", "]]"],
   "documentationConfig": {
