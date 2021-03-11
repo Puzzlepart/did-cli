@@ -57,10 +57,10 @@ const add_subscription = async () => {
       role: 'Owner',
       surname: ownerSurname
     })
-    log(chalk.green('Subscription succesfully created.'))
+    log('[did-cli]', chalk.green('Subscription succesfully created.'))
     await client.close(true)
   } catch (error) {
-    log(chalk.yellow.underline('Failed to create subscription.'))
+    log('[did-cli]', chalk.yellow.underline('Failed to create subscription.'))
   }
   process.exit(0)
 }

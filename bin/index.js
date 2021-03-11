@@ -4,6 +4,12 @@ const yargs = require('yargs')
 const chalk = require('chalk')
 const package = require('../package.json')
 const log = console.log
+const inquirer = require('inquirer')
+inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'))
+inquirer.registerPrompt(
+  'file-tree-selection',
+  require('inquirer-file-tree-selection-prompt')
+)
 
 const prefix = `${chalk.cyan('did')}`
 const actions = package.config.actions || {}
@@ -30,6 +36,9 @@ switch (action) {
     break
   case 'subscription.add':
     require('./actions/add_subscription')
+    break
+  case 'customer.add':
+    require('./actions/add_customer')
     break
   case 'import.csv':
     require('./actions/import_csv')(path)
