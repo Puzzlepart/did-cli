@@ -10,7 +10,9 @@
 
 ```shell
 npm i -g "https://github.com/Puzzlepart/did-cli"
-``` #### Init
+``` 
+
+#### Init
 
 ```shell
 did init
