@@ -12,19 +12,17 @@ const remove_subscription = async () => {
   const { client, db } = await getClient()
   const collection = db.collection('subscriptions')
   const subscriptions = await collection.find({}).toArray()
-  const input = await inquirer.prompt(
-    require('./_prompts.js')(subscriptions)
-  )
+  const input = await inquirer.prompt(require('./_prompts.js')(subscriptions))
   if (input.confirm) {
-    const subscription = find(subscriptions, s => s._id === input.subscriptionId)
+    const subscription = find(
+      subscriptions,
+      (s) => s._id === input.subscriptionId
+    )
     await collection.deleteOne({ _id: subscription._id })
     if (input.dropDatabase) {
       await client.db(subscription.db).dropDatabase()
     }
-    log(
-      '[did-cli]',
-      chalk.green(`Subscription succesfully deleted.`)
-    )
+    log('[did-cli]', chalk.green(`Subscription succesfully deleted.`))
   }
   await client.close()
 }
