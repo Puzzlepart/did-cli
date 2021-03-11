@@ -16,7 +16,7 @@ npm i -g "https://github.com/Puzzlepart/did-cli"
 did init
 ```
 
-### Actions2
+### Actions
 
 #### subscription add
 

@@ -2,7 +2,7 @@
 
 [[ load:readme/1-installation.md ]] [[ load:readme/2-init.md ]]
 
-### Actions2
+### Actions
 
 #### subscription add
 
