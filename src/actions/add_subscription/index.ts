@@ -4,9 +4,9 @@ import _ from 'underscore'
 import { getClient } from '../../mongo/client'
 import { green, log, yellow } from '../../utils/log'
 import config from './_config.json'
-import prompts from './_prompts.json'
+import questions from './questions'
 
-export async function action() {
+export async function action(args) {
   if (process.env['INIT'] !== '1') {
     log(yellow.underline('You need to run did init.'))
     process.exit(0)
@@ -15,10 +15,9 @@ export async function action() {
     log('--------------------------------------------------------')
     log('[did-cli] subscription add')
     log('--------------------------------------------------------')
-    const { name, tenantId, forecasting, owner } = await inquirer.prompt(
-      prompts
-    )
+    const input = await inquirer.prompt(questions(args))
     const { client, db } = await getClient()
+    const { name, tenantId, forecasting, owner } = { ...args, ...input } as any
     const dbName = _.last(tenantId.split('-'))
     const sub = {
       _id: tenantId,
