@@ -6,12 +6,13 @@ const path = require('path')
 const readFile = util.promisify(fs.readFile)
 const writeFile = util.promisify(fs.writeFile)
 const mkdir = util.promisify(fs.mkdir)
+const package = require('../package.json')
 
 function replaceTokens(
     str,
     values,
     regex = /\{{(.+?)\}}/gm
-)  {
+) {
     return str.replace(regex, (_m, $1) => values[$1])
 }
 
@@ -37,12 +38,19 @@ async function new_action() {
         }
     ])
     const basePath = path.resolve(__dirname, '../bin/actions')
-    const readme = (await readFile(path.resolve(basePath, '.template/README.md'))).toString()
-    const index = (await readFile(path.resolve(basePath, '.template/index.txt'))).toString()
+    const [readme, index] = await Promise.all([
+        readFile(path.resolve(basePath, '.template/README.md')),
+        readFile(path.resolve(basePath, '.template/index.txt'))
+    ])
 
     await mkdir(path.resolve(basePath, action.key))
-    await writeFile(path.resolve(basePath, `${action.key}/README.md`), replaceTokens(readme, action))
-    await writeFile(path.resolve(basePath, `${action.key}/index.js`), replaceTokens(index, action))
+    await writeFile(path.resolve(basePath, `${action.key}/README.md`), replaceTokens(readme.toString(), action))
+    await writeFile(path.resolve(basePath, `${action.key}/index.js`), replaceTokens(index.toString(), action))
+    package.config.actions = {
+        ...package.config.actions,
+        [action.name]: action.description
+    }
+    await writeFile(path.resolve(__dirname, `../package.json`), JSON.stringify(package, null, 2))
     process.exit(0)
 }
 

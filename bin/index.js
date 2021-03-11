@@ -3,6 +3,7 @@ require('dotenv').config({ path: __dirname + '/' + '.env' })
 const yargs = require('yargs')
 const chalk = require('chalk')
 const package = require('../package.json')
+const actionsMap = require('./actions.map.json')
 const log = console.log
 const inquirer = require('inquirer')
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'))
@@ -31,23 +32,8 @@ const args = yargs
 
 const action = args._.join('.')
 
-switch (action) {
-  case 'init':
-    require('./init')()
-    break
-  case 'open':
-    require('./actions/open')()
-    break
-  case 'subscription.add':
-    require('./actions/add_subscription')(args)
-    break
-  case 'customer.add':
-    require('./actions/add_customer')(args)
-    break
-  case 'import.csv':
-    require('./actions/import_csv')(args.path)
-    break
-  default: {
-    log('[did-cli]', chalk.red.bold(`Unknown action ${_.join(' ')}.`))
-  }
+if (actionsMap[action]) {
+  require(actionsMap[action])(args)
+} else {
+  log('[did-cli]', chalk.red.bold(`Unknown action ${args._.join(' ')}.`))
 }
