@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ab = void 0;
 require('dotenv').config({ path: __dirname + '/' + '.env' });
 const yargs_1 = __importDefault(require("yargs"));
 const package_json_1 = __importDefault(require("./package.json"));
@@ -30,9 +29,9 @@ const args = yargs_1.default
 }).argv;
 const action = args._.join('.');
 if (actions_map_json_1.default[action]) {
-    require(actions_map_json_1.default[action])(args);
+    console.log(require(actions_map_json_1.default[action]));
+    require(actions_map_json_1.default[action]).action(args);
 }
 else {
     log_1.log('[did-cli]', log_1.red.bold(`Unknown action ${args._.join(' ')}.`));
 }
-exports.ab = null;

@@ -4,7 +4,7 @@ import _ from 'underscore'
 import { log, yellow, green } from '../../utils/log'
 import { getClient } from '../../mongo/client'
 
-export default async (args) => {
+export async function action(args) {
   if (process.env['INIT'] !== '1') {
     log(yellow.underline('You need to run did init.'))
     process.exit(0)

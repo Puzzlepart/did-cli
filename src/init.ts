@@ -10,7 +10,7 @@ import { jsonToEnv } from './utils'
 const log = console.log
 import packageJson from './package.json'
 
-export default async () => {
+export async function action() {
   log(
     boxen(`${packageJson.name} v${packageJson.version}`, {
       padding: 1,

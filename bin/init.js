@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.action = void 0;
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
 const fs_1 = __importDefault(require("fs"));
@@ -23,36 +24,39 @@ const boxen_1 = __importDefault(require("boxen"));
 const utils_1 = require("./utils");
 const log = console.log;
 const package_json_1 = __importDefault(require("./package.json"));
-exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
-    log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
-        padding: 1,
-        borderStyle: 'double'
-    }));
-    const env = yield inquirer_1.default.prompt([
-        {
-            type: 'input',
-            name: 'MONGO_DB_CONNECTION_STRING',
-            message: 'Mongo DB connection string',
-            default: 'mongodb://'
-        },
-        {
-            type: 'input',
-            name: 'MONGO_DB_DB_NAME',
-            message: 'Mongo DB database',
-            default: 'main'
-        },
-        {
-            type: 'confirm',
-            name: 'DID_INSTALLED_LOCALLY',
-            message: 'Do you have did installed locally?'
-        },
-        {
-            type: 'file-tree-selection',
-            name: 'DID_LOCAL_PATH',
-            message: '...where is it?',
-            when: ({ DID_INSTALLED_LOCALLY }) => DID_INSTALLED_LOCALLY,
-            dirOnly: true
-        }
-    ]);
-    yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign({}, env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
-});
+function action() {
+    return __awaiter(this, void 0, void 0, function* () {
+        log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
+            padding: 1,
+            borderStyle: 'double'
+        }));
+        const env = yield inquirer_1.default.prompt([
+            {
+                type: 'input',
+                name: 'MONGO_DB_CONNECTION_STRING',
+                message: 'Mongo DB connection string',
+                default: 'mongodb://'
+            },
+            {
+                type: 'input',
+                name: 'MONGO_DB_DB_NAME',
+                message: 'Mongo DB database',
+                default: 'main'
+            },
+            {
+                type: 'confirm',
+                name: 'DID_INSTALLED_LOCALLY',
+                message: 'Do you have did installed locally?'
+            },
+            {
+                type: 'file-tree-selection',
+                name: 'DID_LOCAL_PATH',
+                message: '...where is it?',
+                when: ({ DID_INSTALLED_LOCALLY }) => DID_INSTALLED_LOCALLY,
+                dirOnly: true
+            }
+        ]);
+        yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign({}, env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
+    });
+}
+exports.action = action;

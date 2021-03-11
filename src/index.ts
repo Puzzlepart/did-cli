@@ -33,7 +33,7 @@ const args = yargs
 const action = args._.join('.')
 
 if (actionsMap[action]) {
-  require(actionsMap[action])(args)
+  require(actionsMap[action]).action(args)
 } else {
   log('[did-cli]', red.bold(`Unknown action ${args._.join(' ')}.`))
 }

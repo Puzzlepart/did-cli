@@ -4,7 +4,7 @@ import { find } from 'underscore'
 import { log, green, yellow } from '../../utils/log'
 import { getClient } from '../../mongo/client'
 
-export default async () => {
+export async function action() {
   try {
     log('--------------------------------------------------------')
     log('[did-cli] subscription remove')
