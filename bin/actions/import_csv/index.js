@@ -6,7 +6,7 @@ const { getClient } = require('../../mongo/client')
 const csv = require('csvtojson/v2')
 const log = console.log
 
-const import_csv = async (path) => {
+const import_csv = async ({ path }) => {
   let path_ = path
   if (!path) {
     const prompt = await inquirer.prompt({

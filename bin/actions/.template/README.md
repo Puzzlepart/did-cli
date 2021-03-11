@@ -1,11 +1,13 @@
-### new_action
+### {{name}}
+
+{{description}}
 
 ```shell
-did new_action
+did {{name}}
 ```
 
 or
 
 ```shell
-did-cli new_action
+did-cli {{name}}
 ```
