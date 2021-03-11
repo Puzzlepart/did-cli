@@ -19,6 +19,7 @@ const underscore_1 = __importDefault(require("underscore"));
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
 const _config_json_1 = __importDefault(require("./_config.json"));
+const _prompts_json_1 = __importDefault(require("./_prompts.json"));
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env['INIT'] !== '1') {
@@ -29,7 +30,7 @@ function action() {
             log_1.log('--------------------------------------------------------');
             log_1.log('[did-cli] subscription add');
             log_1.log('--------------------------------------------------------');
-            const { name, tenantId, forecasting, owner } = yield inquirer_1.default.prompt(require('./_prompts.json'));
+            const { name, tenantId, forecasting, owner } = yield inquirer_1.default.prompt(_prompts_json_1.default);
             const { client, db } = yield client_1.getClient();
             const dbName = underscore_1.default.last(tenantId.split('-'));
             const sub = {
@@ -66,6 +67,7 @@ function action() {
             yield client.close(true);
         }
         catch (error) {
+            console.log(error);
             log_1.log('[did-cli]', log_1.yellow.underline('Failed to create subscription.'));
         }
         process.exit(0);

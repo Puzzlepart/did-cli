@@ -19,6 +19,7 @@ const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_string_1 = __importDefault(require("underscore.string"));
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
+const _prompts_json_1 = __importDefault(require("./_prompts.json"));
 function action({ path }) {
     return __awaiter(this, void 0, void 0, function* () {
         let path_ = path;
@@ -43,7 +44,7 @@ function action({ path }) {
             log_1.log('[did-cli] import csv');
             log_1.log('--------------------------------------------------------');
             const json = yield csvtojson_1.default().fromFile(path_);
-            const { collectionName, importCount } = yield inquirer_1.default.prompt(require('./_prompts.json'));
+            const { collectionName, importCount } = yield inquirer_1.default.prompt(_prompts_json_1.default);
             log_1.log('--------------------------------------------------------');
             log_1.log('Property mappings');
             log_1.log('--------------------------------------------------------');

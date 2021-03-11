@@ -3,6 +3,7 @@ import inquirer from 'inquirer'
 import _ from 'underscore'
 import { log, yellow, green } from '../../utils/log'
 import { getClient } from '../../mongo/client'
+import prompts from './_prompts'
 
 export async function action(args) {
   if (process.env['INIT'] !== '1') {
@@ -14,7 +15,7 @@ export async function action(args) {
     log('[did-cli] customer add')
     log('--------------------------------------------------------')
     const input: { [key: string]: string } = await inquirer.prompt(
-      require('./_prompts.js')(args)
+      prompts(args)
     )
     const { key, name, description, icon } = { ...args, ...input } as any
     const { client, db } = await getClient()

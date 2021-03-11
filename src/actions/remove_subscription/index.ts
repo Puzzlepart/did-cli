@@ -1,8 +1,9 @@
 require('dotenv').config()
 import inquirer from 'inquirer'
 import { find } from 'underscore'
-import { log, green, yellow } from '../../utils/log'
 import { getClient } from '../../mongo/client'
+import { green, log, yellow } from '../../utils/log'
+import prompts from './_prompts'
 
 export async function action() {
   try {
@@ -13,7 +14,7 @@ export async function action() {
     const collection = db.collection('subscriptions')
     const subscriptions = await collection.find({}).toArray()
     const input = await inquirer.prompt<any>(
-      require('./_prompts.js')(subscriptions)
+      prompts(subscriptions)
     )
     if (input.confirm) {
       const subscription = find(

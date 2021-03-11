@@ -1,0 +1,55 @@
+[
+    {
+        "type": "input",
+        "name": "name",
+        "message": "What's the name of the company?",
+        "default": "Contoso"
+    },
+    {
+        "type": "input",
+        "name": "tenantId",
+        "message": "What's the tenant id?",
+        "default": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "type": "confirm",
+        "name": "forecasting",
+        "message": "Should forecasting be enabled?",
+        "default": false
+    },
+    {
+        "type": "input",
+        "name": "owner._id",
+        "message": "Azure AD ID of the main owner?",
+        "default": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "type": "input",
+        "name": "owner.givenName",
+        "message": "Given name of the main owner?"
+    },
+    {
+        "type": "input",
+        "name": "owner.surname",
+        "message": "Surname of the main owner?"
+    },
+    {
+        "type": "list",
+        "name": "owner.preferredLanguage",
+        "message": "...and preferred language?",
+        "choices": [
+            {
+                "value": "en-GB",
+                "name": "English (United Kingdom)"
+            },
+            {
+                "value": "nb",
+                "name": "Norsk (bokmål)"
+            },
+            {
+                "value": "nn",
+                "name": "Norsk (nynorsk)"
+            }
+        ]
+    }
+]

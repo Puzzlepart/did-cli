@@ -4,6 +4,7 @@ import _ from 'underscore'
 import { getClient } from '../../mongo/client'
 import { green, log, yellow } from '../../utils/log'
 import config from './_config.json'
+import prompts from './_prompts.json'
 
 export async function action() {
   if (process.env['INIT'] !== '1') {
@@ -14,9 +15,7 @@ export async function action() {
     log('--------------------------------------------------------')
     log('[did-cli] subscription add')
     log('--------------------------------------------------------')
-    const { name, tenantId, forecasting, owner } = await inquirer.prompt(
-      require('./_prompts.json')
-    )
+    const { name, tenantId, forecasting, owner } = await inquirer.prompt(prompts)
     const { client, db } = await getClient()
     const dbName = _.last(tenantId.split('-'))
     const sub = {
@@ -59,6 +58,7 @@ export async function action() {
     )
     await client.close(true)
   } catch (error) {
+    console.log(error)
     log('[did-cli]', yellow.underline('Failed to create subscription.'))
   }
   process.exit(0)
