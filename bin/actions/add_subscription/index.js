@@ -16,8 +16,7 @@ const add_subscription = async () => {
       name,
       tenantId,
       forecasting,
-      ownerId,
-      ownerName
+      owner
     } = await inquirer.prompt(require('./_prompts.json'))
     const { client, db } = await getClient()
     const dbName = _.last(tenantId.split('-'))
@@ -47,17 +46,12 @@ const add_subscription = async () => {
         await client.db(dbName).collection(coll.name).insertMany(coll.documents)
       }
     }
-    const ownerSurname = _.last(ownerName.split(' '))
-    const ownerGivenName = ownerName.replace(` ${ownerSurname}`, '')
     await client.db(dbName).collection('users').insertOne({
-      _id: ownerId,
-      displayName: ownerName,
-      givenName: ownerGivenName,
-      preferredLanguage: 'nb-NO',
+      ...owner,
+      displayName: `${owner.givenName} ${owner.surname}`,
       role: 'Owner',
-      surname: ownerSurname
     })
-    log('[did-cli]', chalk.green('Subscription succesfully created.'))
+    log('[did-cli]', chalk.green(`Subscription succesfully created with db ${dbName}.`))
     await client.close(true)
   } catch (error) {
     log('[did-cli]', chalk.yellow.underline('Failed to create subscription.'))
