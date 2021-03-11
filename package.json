@@ -1,7 +1,7 @@
 {
   "name": "did-cli",
   "version": "0.0.25",
-  "description": "",
+  "description": "CLI for did. Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

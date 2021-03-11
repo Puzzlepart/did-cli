@@ -1,10 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">did-cli</h1> <p align="center">
-  <b></b></br>
-  <sub>CLI for [did](https://github.com/Puzzlepart/did). Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.<sub>
-</p>
-
-<br />
-
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">did-cli</h1>
 
 ### Installation
 

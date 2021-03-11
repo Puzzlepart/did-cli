@@ -1,4 +1,4 @@
-[[ template:title ]] [[ template:description ]]
+[[ template:title ]]
 
 [[ load:readme/1-installation.md ]] 
 
