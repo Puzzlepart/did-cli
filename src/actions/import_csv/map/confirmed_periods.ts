@@ -4,8 +4,8 @@ export default (fieldMap) => (item) => {
       ...obj,
       [key]: item[fieldMap[key]]
     }
-  }, {})
-  const { periodId, startDate, endDate, duration, userId } = mappedProperties
+  }, {}) as any
+  const { periodId, hours, createdAt, userId } = mappedProperties
   if (periodId.split('_').length !== 3)
     throw new Error(
       'periodId has wrong format! Needs to be of format week_month_year.'
@@ -15,9 +15,9 @@ export default (fieldMap) => (item) => {
     .map((str) => parseInt(str, 10))
   return {
     ...mappedProperties,
-    startDate: new Date(startDate),
-    endDate: new Date(endDate),
-    duration: parseFloat(duration),
+    duration: parseFloat(hours),
+    createdAt: new Date(createdAt),
+    updatedAt: new Date(createdAt),
     week,
     month,
     year,
