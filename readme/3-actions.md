@@ -1,5 +1,5 @@
 
-### Actions
+## Actions
 
 [[ load:bin/actions/add_subscription/README.md ]]
 

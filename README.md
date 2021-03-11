@@ -10,20 +10,35 @@
 
 [![version](https://img.shields.io/badge/version-0.0.26-green.svg)](https://semver.org)
 
-### Installation
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#installation)
+
+## ➤ Installation
+The `cli` is not published to [npm](https://www.npmjs.com/) as it's a private repository.
+
+You install the `cli` through github:
 
 ```shell
 npm i -g "https://github.com/Puzzlepart/did-cli"
 ``` 
 
-#### Init
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#initialize-the-cli)
+
+## ➤ Initialize the cli
+To start using the `cli`, you need to set it up.
+
+Run
 
 ```shell
 did init
 ```
 
 
-### Actions
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#actions)
+
+## ➤ Actions
 
 #### subscription add
 
