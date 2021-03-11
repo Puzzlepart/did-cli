@@ -1,4 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><p align="center">
+<!-- ⚠️ This README has been generated from the file(s) "readme.blueprint.md" ⚠️--><p align="center">
   <img src="assets/logo.png" alt="Logo" width="120" height="120" />
 </p> <p align="center">
   <b>Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.</b></br>
@@ -33,6 +33,10 @@ Run
 ```shell
 did init
 ```
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 {
   "package": "package.json",
-  "blueprint": "blueprint.md",
-  "input": "blueprint.md",
+  "blueprint": "readme.blueprint.md",
+  "input": "readme.blueprint.md",
   "output": "README.md",
   "text": "It's basically a CLI for did.",
   "logo": {
