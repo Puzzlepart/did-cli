@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const { getClient } = require('../../mongo/client')
 const log = console.log
 
-const add_customer = async () => {
+const add_customer = async (args) => {
   if (process.env.INIT !== '1') {
     log(chalk.yellow.underline('You need to run did init.'))
     process.exit(0)
@@ -14,9 +14,8 @@ const add_customer = async () => {
     log('--------------------------------------------------------')
     log('[did-cli] customer add')
     log('--------------------------------------------------------')
-    const { key, name, description, icon } = await inquirer.prompt(
-      require('./_prompts.js')
-    )
+    const input = await inquirer.prompt(require('./_prompts.js')(args))
+    const { key, name, description, icon } = { ...args, ...input }
     const { client, db } = await getClient()
     await db.collection('customers').insertOne({
       _id: key,

@@ -1,22 +1,26 @@
 const got = require('got')
 
-module.exports = [
+module.exports = (args) => [
   {
     type: 'input',
     name: 'name',
     message: "What's the name of the customer?",
-    default: 'Contoso'
+    default: args.name,
+    when: () => !args.name
   },
   {
     type: 'input',
     name: 'key',
     message: "What's the shortname for the customer?",
-    default: 'CONT'
+    default: args.key,
+    when: () => !args.key
   },
   {
     type: 'input',
     name: 'description',
-    message: 'Describe the customer for me?'
+    message: 'Describe the customer for me?',
+    default: args.description,
+    when: () => !args.description
   },
   {
     type: 'autocomplete',
@@ -38,6 +42,8 @@ module.exports = [
             f.name.toLowerCase().indexOf((input || '').toLowerCase()) !== -1
         )
         .map((f) => f.name)
-    }
+    },
+    default: args.icon,
+    when: () => !args.icon
   }
 ]

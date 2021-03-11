@@ -20,7 +20,7 @@ const usage = Object.keys(actions)
   })
   .join('\n')
 
-const { _, path } = yargs
+const args = yargs
   .usage(`Usage: ${prefix} <action_name>\n\nAvailable actions:\n\n${usage}`)
   .option('path', {
     alias: 'path',
@@ -28,20 +28,21 @@ const { _, path } = yargs
     type: 'string',
     demandOption: false
   }).argv
-const action = _.join('.')
+
+const action = args._.join('.')
 
 switch (action) {
   case 'init':
     require('./init')()
     break
   case 'subscription.add':
-    require('./actions/add_subscription')()
+    require('./actions/add_subscription')(args)
     break
   case 'customer.add':
-    require('./actions/add_customer')()
+    require('./actions/add_customer')(args)
     break
   case 'import.csv':
-    require('./actions/import_csv')(path)
+    require('./actions/import_csv')(args.path)
     break
   default: {
     log('[did-cli]', chalk.red.bold(`Unknown action ${_.join(' ')}.`))
