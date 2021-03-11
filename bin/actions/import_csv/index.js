@@ -25,10 +25,16 @@ const import_csv = async (path) => {
     process.exit(0)
   }
   try {
+    log('--------------------------------------------------------')
+    log('[did-cli] import csv')
+    log('--------------------------------------------------------')
     const json = await csv().fromFile(path_)
     const { collectionName, importCount } = await inquirer.prompt(
       require('./_prompts.json')
     )
+    log('--------------------------------------------------------')
+    log('Property mappings')
+    log('--------------------------------------------------------')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
     const fieldMap = await inquirer.prompt(

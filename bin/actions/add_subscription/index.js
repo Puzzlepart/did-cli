@@ -12,6 +12,9 @@ const add_subscription = async () => {
     process.exit(0)
   }
   try {
+    log('--------------------------------------------------------')
+    log('[did-cli] subscription add')
+    log('--------------------------------------------------------')
     const {
       name,
       tenantId,
