@@ -13,9 +13,7 @@ export async function action() {
     const { client, db } = await getClient()
     const collection = db.collection('subscriptions')
     const subscriptions = await collection.find({}).toArray()
-    const input = await inquirer.prompt<any>(
-      prompts(subscriptions)
-    )
+    const input = await inquirer.prompt<any>(prompts(subscriptions))
     if (input.confirm) {
       const subscription = find(
         subscriptions,

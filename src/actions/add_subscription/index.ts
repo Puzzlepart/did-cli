@@ -15,7 +15,9 @@ export async function action() {
     log('--------------------------------------------------------')
     log('[did-cli] subscription add')
     log('--------------------------------------------------------')
-    const { name, tenantId, forecasting, owner } = await inquirer.prompt(prompts)
+    const { name, tenantId, forecasting, owner } = await inquirer.prompt(
+      prompts
+    )
     const { client, db } = await getClient()
     const dbName = _.last(tenantId.split('-'))
     const sub = {
