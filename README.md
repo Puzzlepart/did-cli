@@ -1,4 +1,4 @@
-# did-cli [![version](https://img.shields.io/badge/version-0.0.22-green.svg)](https://semver.org)
+# did-cli [![version](https://img.shields.io/badge/version-0.0.24-green.svg)](https://semver.org)
 
 CLI for [did](https://github.com/Puzzlepart/did).
 
