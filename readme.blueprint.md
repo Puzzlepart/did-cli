@@ -14,4 +14,6 @@
 
 [[load:readme/3-actions.md]]
 
+[[load:readme/4-bin-folder.md]]
+
 [[ template:contributors ]]

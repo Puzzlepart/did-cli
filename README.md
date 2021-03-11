@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.35-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.36-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -26,6 +26,7 @@
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
+* [➤ Why is the `bin` folder commited?](#-why-is-the-bin-folder-commited)
 * [➤ Contributors](#-contributors)
 </details>
 
@@ -139,6 +140,13 @@ did-cli customer add
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
 
+
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#why-is-the-bin-folder-commited)
+
+## ➤ Why is the `bin` folder commited?
+This is because we are installing the `cli` through GitHub.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#contributors)
