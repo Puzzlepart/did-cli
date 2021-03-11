@@ -1,9 +1,9 @@
 require('dotenv').config()
-const { exec } = require('child_process')
-const chalk = require('chalk')
+import { exec } from 'child_process'
+import chalk from 'chalk'
 const log = console.log
 
-const open = async () => {
+export default async () => {
   if (!process.env.DID_LOCAL_PATH) {
     log(
       '[did-cli]',
@@ -15,5 +15,3 @@ const open = async () => {
     //
   })
 }
-
-module.exports = open

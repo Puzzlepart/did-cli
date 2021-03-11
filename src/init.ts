@@ -8,7 +8,7 @@ const writeFile = promisify(fs.writeFile)
 import boxen from 'boxen'
 import { jsonToEnv } from './utils'
 const log = console.log
-import packageJson from '../package.json'
+import packageJson from './package.json'
 
 const init_ = async () => {
   log(

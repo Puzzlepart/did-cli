@@ -2,7 +2,7 @@
 require('dotenv').config({ path: __dirname + '/' + '.env' })
 import yargs from 'yargs'
 import chalk from 'chalk'
-import packageJson from '../package.json'
+import packageJson from './package.json'
 import actionsMap from './actions.map.json'
 const log = console.log
 import inquirer from 'inquirer'
@@ -37,3 +37,5 @@ if (actionsMap[action]) {
 } else {
   log('[did-cli]', chalk.red.bold(`Unknown action ${args._.join(' ')}.`))
 }
+
+export const ab = null
