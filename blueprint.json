@@ -1,36 +1,34 @@
 {
-	"package": "package.json",
-	"blueprint": "blueprint.md",
-	"input": "blueprint.md",
-	"output": "README.md",
-	"logo": {
-		"src": "assets/logo.png",
-		"width": 120,
-		"height": 120
-	},
-	"placeholder": [
-		"[[",
-		"]]"
-	],
-	"documentationConfig": {
-		"markdown": {
-			"titleLevel": 2
-		}
-	},
-	"ids": {
-		"github": "puzzlepart/did-cli"
-	},
-	"badges": [
-		{
-			"alt": "Maintained",
-			"img": "https://img.shields.io/badge/Maintained%3F-yes-green.svg",
-			"url": "https://github.com/andreasbm/readme/graphs/commit-activity"
-		}
-	],
-	"templates": [
-		{
-			"name": "install",
-			"template": ""
-		}
-	]
+  "package": "package.json",
+  "blueprint": "blueprint.md",
+  "input": "blueprint.md",
+  "output": "README.md",
+  "text": "CLI for [did](https://github.com/Puzzlepart/did).",
+  "logo": {
+    "src": "assets/logo.png",
+    "width": 120,
+    "height": 120
+  },
+  "placeholder": ["[[", "]]"],
+  "documentationConfig": {
+    "markdown": {
+      "titleLevel": 2
+    }
+  },
+  "ids": {
+    "github": "puzzlepart/did-cli"
+  },
+  "badges": [
+    {
+      "alt": "Maintained",
+      "img": "https://img.shields.io/badge/Maintained%3F-yes-green.svg",
+      "url": "https://github.com/andreasbm/readme/graphs/commit-activity"
+    }
+  ],
+  "templates": [
+    {
+      "name": "install",
+      "template": ""
+    }
+  ]
 }

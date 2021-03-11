@@ -1,6 +1,12 @@
 <!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><p align="center">
   <img src="assets/logo.png" alt="Logo" width="120" height="120" />
+</p> <p align="center">
+  <b>Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.</b></br>
+  <sub>CLI for [did](https://github.com/Puzzlepart/did).<sub>
 </p>
+
+<br />
+
 
 [![version](https://img.shields.io/badge/version-0.0.26-green.svg)](https://semver.org)
 
