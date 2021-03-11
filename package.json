@@ -4,14 +4,15 @@
   "description": "",
   "main": "bin/index.js",
   "scripts": {
+    "run": "node bin/index.js subscription add",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier ./bin --write --loglevel silent",
     "postversion": "git push && git push --tags"
   },
   "config": {
     "actions": {
-      "add_subscription": "Register a new Did subscription. You will be prompted for all necessary information.",
-      "import_csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import."
+      "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
+      "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import."
     }
   },
   "keywords": [],
