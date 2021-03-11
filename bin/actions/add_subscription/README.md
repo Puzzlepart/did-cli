@@ -1,4 +1,4 @@
-#### subscription add
+### subscription add
 
 ```shell
 did subscription add

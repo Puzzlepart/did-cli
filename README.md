@@ -44,7 +44,7 @@ did init
 
 ## ➤ Actions
 
-#### open
+### open
 
 Opens the local installation of [did]() in `vscode`.
 
@@ -59,7 +59,7 @@ did-cli open
 ```
 
 
-#### subscription add
+### subscription add
 
 ```shell
 did subscription add
@@ -74,7 +74,7 @@ did-cli subscription add
 ![image-20210311092849679](assets/image-20210311092849679.png)
 
 
-#### import csv
+### import csv
 
 ```shell
 did import csv --path path_to_csv_file
@@ -89,7 +89,7 @@ did-cli import csv
 ![image-20210311092955701](assets/image-20210311092955701.png)
 
 
-#### customer add
+### customer add
 
 ```shell
 did customer add

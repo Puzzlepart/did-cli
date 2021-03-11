@@ -1,4 +1,4 @@
-#### open
+### open
 
 Opens the local installation of [did]() in `vscode`.
 
