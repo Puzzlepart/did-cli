@@ -37,6 +37,7 @@ function action() {
                 _id: tenantId,
                 name,
                 db: dbName,
+                owner,
                 settings: {
                     forecast: {
                         enabled: forecasting
@@ -59,10 +60,6 @@ function action() {
                     yield client.db(dbName).collection(coll.name).insertMany(coll.documents);
                 }
             }
-            yield client
-                .db(dbName)
-                .collection('users')
-                .insertOne(Object.assign(Object.assign({}, owner), { displayName: `${owner.givenName} ${owner.surname}`, role: 'Owner' }));
             log_1.log('[did-cli]', log_1.green(`Subscription succesfully created with db ${dbName}.`));
             yield client.close(true);
         }
