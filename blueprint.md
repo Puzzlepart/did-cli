@@ -1,4 +1,4 @@
-[[ template:title ]] 
+[[ template:logo ]] [[ template:title ]]
 
 [![version](https://img.shields.io/badge/version-[[ pkg.version ]]-green.svg)](https://semver.org)
 

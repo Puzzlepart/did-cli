@@ -3,6 +3,11 @@
 	"blueprint": "blueprint.md",
 	"input": "blueprint.md",
 	"output": "README.md",
+	"logo": {
+		"src": "assets/logo.png",
+		"width": 120,
+		"height": 120
+	},
 	"placeholder": [
 		"[[",
 		"]]"
