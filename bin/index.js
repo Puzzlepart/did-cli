@@ -35,6 +35,9 @@ switch (action) {
   case 'init':
     require('./init')()
     break
+  case 'open':
+    require('./actions/open')()
+    break
   case 'subscription.add':
     require('./actions/add_subscription')(args)
     break

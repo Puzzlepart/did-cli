@@ -10,6 +10,7 @@
   },
   "config": {
     "actions": {
+      "open": "Opens the local installation of did in vscode.",
       "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
       "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
       "customer add": "Adds a new customer to Did. You will be prompted for all necessary information."

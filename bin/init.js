@@ -2,9 +2,11 @@ require('dotenv').config()
 const inquirer = require('inquirer')
 const fs = require('fs')
 const path = require('path')
+const { omit } = require('underscore')
 const { promisify } = require('util')
 const writeFile = promisify(fs.writeFile)
 const boxen = require('boxen')
+const { jsonToEnv } = require('./utils')
 const log = console.log
 const package = require('../package.json')
 
@@ -15,35 +17,43 @@ const init_ = async () => {
       borderStyle: 'double'
     })
   )
-  const { connectionString, dbName } = await inquirer.prompt([
+  const env = await inquirer.prompt([
     {
       type: 'input',
-      name: 'connectionString',
+      name: 'MONGO_DB_CONNECTION_STRING',
       message: 'Mongo DB connection string',
       default: 'mongodb://'
     },
     {
       type: 'input',
-      name: 'dbName',
+      name: 'MONGO_DB_DB_NAME',
       message: 'Mongo DB database',
       default: 'main'
     },
     {
       type: 'confirm',
-      name: 'installedLocally',
+      name: 'DID_INSTALLED_LOCALLY',
       message: 'Do you have did installed locally?'
     },
     {
       type: 'file-tree-selection',
-      type: 'file',
-      name: 'installedPath',
+      name: 'DID_LOCAL_PATH',
       message: '...where is it?',
+      when: ({ DID_INSTALLED_LOCALLY }) => DID_INSTALLED_LOCALLY,
       dirOnly: true
     }
   ])
   await writeFile(
     path.resolve(__dirname, '.env'),
-    `INIT=1\nMONGO_DB_CONNECTION_STRING=${connectionString}\nMONGO_DB_DB_NAME=${dbName}`
+    jsonToEnv(
+      omit(
+        {
+          ...env,
+          INIT: '1'
+        },
+        'DID_INSTALLED_LOCALLY'
+      )
+    )
   )
 }
 
