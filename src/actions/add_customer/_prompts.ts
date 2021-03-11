@@ -1,6 +1,6 @@
 import got from 'got'
 
-module.exports = (args: any) => [
+export default (args: any) => [
   {
     type: 'input',
     name: 'name',

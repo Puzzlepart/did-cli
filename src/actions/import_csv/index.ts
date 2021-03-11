@@ -1,14 +1,11 @@
 require('dotenv').config()
+import csv from 'csvtojson/v2'
 import inquirer from 'inquirer'
-import chalk from 'chalk'
 import _ from 'underscore.string'
 import { getClient } from '../../mongo/client'
-import csv from 'csvtojson/v2'
-const yellow = chalk['yellow']
-const green = chalk['green']
-const log = console.log
+import { green, log, yellow } from '../../utils/log'
 
-const import_csv = async ({ path }) => {
+export default async ({ path }) => {
   let path_ = path
   if (!path) {
     const prompt = await inquirer.prompt({
@@ -62,5 +59,3 @@ const import_csv = async ({ path }) => {
   }
   process.exit(0)
 }
-
-module.exports = import_csv

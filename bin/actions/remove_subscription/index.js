@@ -15,14 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_1 = require("underscore");
-const chalk_1 = __importDefault(require("chalk"));
-const log = console.log;
+const log_1 = require("../../utils/log");
 const client_1 = require("../../mongo/client");
-const remove_subscription = () => __awaiter(void 0, void 0, void 0, function* () {
+exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        log('--------------------------------------------------------');
-        log('[did-cli] subscription remove');
-        log('--------------------------------------------------------');
+        log_1.log('--------------------------------------------------------');
+        log_1.log('[did-cli] subscription remove');
+        log_1.log('--------------------------------------------------------');
         const { client, db } = yield client_1.getClient();
         const collection = db.collection('subscriptions');
         const subscriptions = yield collection.find({}).toArray();
@@ -33,13 +32,12 @@ const remove_subscription = () => __awaiter(void 0, void 0, void 0, function* ()
             if (input.dropDatabase) {
                 yield client.db(subscription.db).dropDatabase();
             }
-            log('[did-cli]', chalk_1.default.green(`Subscription succesfully deleted.`));
+            log_1.log('[did-cli]', log_1.green(`Subscription succesfully deleted.`));
         }
         yield client.close();
     }
     catch (error) {
-        log('[did-cli]', chalk_1.default.yellow.underline('Failed to delete subscription.'));
+        log_1.log('[did-cli]', log_1.yellow.underline('Failed to delete subscription.'));
     }
     process.exit(0);
 });
-module.exports = remove_subscription;

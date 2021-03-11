@@ -1,10 +1,8 @@
 require('dotenv').config()
-const log = console.log
+import { log } from '../../utils/log'
 
-const {{key}} = async () => {
+export default async () => {
   log('--------------------------------------------------------')
   log('[did-cli] {{name}}')
   log('--------------------------------------------------------')
 }
-
-module.exports = {{key}}

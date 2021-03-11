@@ -1,4 +1,4 @@
-module.exports = (fieldMap) => (item) => {
+export default (fieldMap) => (item) => {
   return {
     createdAt: new Date(),
     updatedAt: new Date(),

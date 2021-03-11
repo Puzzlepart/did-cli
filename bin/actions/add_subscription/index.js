@@ -15,21 +15,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_1 = __importDefault(require("underscore"));
-const chalk_1 = __importDefault(require("chalk"));
-const _config_json_1 = __importDefault(require("./_config.json"));
 const client_1 = require("../../mongo/client");
-const yellow = chalk_1.default['yellow'];
-const green = chalk_1.default['green'];
-const log = console.log;
-const add_subscription = () => __awaiter(void 0, void 0, void 0, function* () {
+const log_1 = require("../../utils/log");
+const _config_json_1 = __importDefault(require("./_config.json"));
+exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env['INIT'] !== '1') {
-        log(yellow.underline('You need to run did init.'));
+        log_1.log(log_1.yellow.underline('You need to run did init.'));
         process.exit(0);
     }
     try {
-        log('--------------------------------------------------------');
-        log('[did-cli] subscription add');
-        log('--------------------------------------------------------');
+        log_1.log('--------------------------------------------------------');
+        log_1.log('[did-cli] subscription add');
+        log_1.log('--------------------------------------------------------');
         const { name, tenantId, forecasting, owner } = yield inquirer_1.default.prompt(require('./_prompts.json'));
         const { client, db } = yield client_1.getClient();
         const dbName = underscore_1.default.last(tenantId.split('-'));
@@ -63,12 +60,11 @@ const add_subscription = () => __awaiter(void 0, void 0, void 0, function* () {
             .db(dbName)
             .collection('users')
             .insertOne(Object.assign(Object.assign({}, owner), { displayName: `${owner.givenName} ${owner.surname}`, role: 'Owner' }));
-        log('[did-cli]', green(`Subscription succesfully created with db ${dbName}.`));
+        log_1.log('[did-cli]', log_1.green(`Subscription succesfully created with db ${dbName}.`));
         yield client.close(true);
     }
     catch (error) {
-        log('[did-cli]', yellow.underline('Failed to create subscription.'));
+        log_1.log('[did-cli]', log_1.yellow.underline('Failed to create subscription.'));
     }
     process.exit(0);
 });
-module.exports = add_subscription;

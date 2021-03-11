@@ -1,4 +1,4 @@
-module.exports = (fieldMap) => (item) => {
+export default (fieldMap) => (item) => {
   const mappedProperties = Object.keys(fieldMap).reduce((obj, key) => {
     return {
       ...obj,

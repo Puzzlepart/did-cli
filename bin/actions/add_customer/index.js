@@ -14,18 +14,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
-const chalk_1 = __importDefault(require("chalk"));
+const log_1 = require("../../utils/log");
 const client_1 = require("../../mongo/client");
-const log = console.log;
-const add_customer = (args) => __awaiter(void 0, void 0, void 0, function* () {
+exports.default = (args) => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env['INIT'] !== '1') {
-        log(chalk_1.default.yellow.underline('You need to run did init.'));
+        log_1.log(log_1.yellow.underline('You need to run did init.'));
         process.exit(0);
     }
     try {
-        log('--------------------------------------------------------');
-        log('[did-cli] customer add');
-        log('--------------------------------------------------------');
+        log_1.log('--------------------------------------------------------');
+        log_1.log('[did-cli] customer add');
+        log_1.log('--------------------------------------------------------');
         const input = yield inquirer_1.default.prompt(require('./_prompts.js')(args));
         const { key, name, description, icon } = Object.assign(Object.assign({}, args), input);
         const { client, db } = yield client_1.getClient();
@@ -39,13 +38,12 @@ const add_customer = (args) => __awaiter(void 0, void 0, void 0, function* () {
             webLink: null,
             externalSystemURL: null
         });
-        log('[did-cli]', chalk_1.default.green('Customer succesfully created.'));
+        log_1.log('[did-cli]', log_1.green('Customer succesfully created.'));
         yield client.close(true);
     }
     catch (error) {
         console.log(error);
-        log('[did-cli]', chalk_1.default.yellow.underline('Failed to create customer.'));
+        log_1.log('[did-cli]', log_1.yellow.underline('Failed to create customer.'));
     }
     process.exit(0);
 });
-module.exports = add_customer;

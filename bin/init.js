@@ -23,7 +23,7 @@ const boxen_1 = __importDefault(require("boxen"));
 const utils_1 = require("./utils");
 const log = console.log;
 const package_json_1 = __importDefault(require("./package.json"));
-const init_ = () => __awaiter(void 0, void 0, void 0, function* () {
+exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
         padding: 1,
         borderStyle: 'double'
@@ -56,4 +56,3 @@ const init_ = () => __awaiter(void 0, void 0, void 0, function* () {
     ]);
     yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign({}, env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
 });
-module.exports = init_;

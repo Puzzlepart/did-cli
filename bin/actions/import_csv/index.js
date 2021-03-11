@@ -13,15 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
+const v2_1 = __importDefault(require("csvtojson/v2"));
 const inquirer_1 = __importDefault(require("inquirer"));
-const chalk_1 = __importDefault(require("chalk"));
 const underscore_string_1 = __importDefault(require("underscore.string"));
 const client_1 = require("../../mongo/client");
-const v2_1 = __importDefault(require("csvtojson/v2"));
-const yellow = chalk_1.default['yellow'];
-const green = chalk_1.default['green'];
-const log = console.log;
-const import_csv = ({ path }) => __awaiter(void 0, void 0, void 0, function* () {
+const log_1 = require("../../utils/log");
+exports.default = ({ path }) => __awaiter(void 0, void 0, void 0, function* () {
     let path_ = path;
     if (!path) {
         const prompt = yield inquirer_1.default.prompt({
@@ -32,22 +29,22 @@ const import_csv = ({ path }) => __awaiter(void 0, void 0, void 0, function* () 
         path_ = prompt.path;
     }
     if (!underscore_string_1.default.endsWith(path_, '.csv')) {
-        log('[did-cli]', yellow.underline('The file needs to be a CSV file.'));
+        log_1.log('[did-cli]', log_1.yellow.underline('The file needs to be a CSV file.'));
         process.exit(0);
     }
     if (process.env['INIT'] !== '1') {
-        log('[did-cli]', yellow.underline('You need to run did init.'));
+        log_1.log('[did-cli]', log_1.yellow.underline('You need to run did init.'));
         process.exit(0);
     }
     try {
-        log('--------------------------------------------------------');
-        log('[did-cli] import csv');
-        log('--------------------------------------------------------');
+        log_1.log('--------------------------------------------------------');
+        log_1.log('[did-cli] import csv');
+        log_1.log('--------------------------------------------------------');
         const json = yield v2_1.default().fromFile(path_);
         const { collectionName, importCount } = yield inquirer_1.default.prompt(require('./_prompts.json'));
-        log('--------------------------------------------------------');
-        log('Property mappings');
-        log('--------------------------------------------------------');
+        log_1.log('--------------------------------------------------------');
+        log_1.log('Property mappings');
+        log_1.log('--------------------------------------------------------');
         const count = importCount === 'all' ? json.length : parseInt(importCount);
         const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
         const fieldMap = yield inquirer_1.default.prompt(require(`./prompts/${collectionName}`)(fields));
@@ -56,12 +53,11 @@ const import_csv = ({ path }) => __awaiter(void 0, void 0, void 0, function* () 
             .map(require(`./map/${collectionName}`)(fieldMap));
         const { db, client } = yield client_1.getClient();
         yield db.collection(collectionName).insertMany(documents);
-        log('[did-cli]', green(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`));
+        log_1.log('[did-cli]', log_1.green(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`));
         yield client.close(true);
     }
     catch (error) {
-        log('[did-cli]', yellow.underline(`Failed to import from CSV: ${error.message}`));
+        log_1.log('[did-cli]', log_1.yellow.underline(`Failed to import from CSV: ${error.message}`));
     }
     process.exit(0);
 });
-module.exports = import_csv;

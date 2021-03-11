@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 require('dotenv').config({ path: __dirname + '/' + '.env' })
 import yargs from 'yargs'
-import chalk from 'chalk'
 import packageJson from './package.json'
 import actionsMap from './actions.map.json'
-const log = console.log
 import inquirer from 'inquirer'
+import { log, cyan, yellow, red } from './utils/log'
+
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'))
 inquirer.registerPrompt(
   'file-tree-selection',
   require('inquirer-file-tree-selection-prompt')
 )
 
-const prefix = `${chalk.cyan('did')}`
+const prefix = `${cyan('did')}`
 const actions = packageJson.config.actions || {}
 
 const usage = Object.keys(actions)
   .map((k) => {
-    return `${prefix} ${chalk.yellow(k)}\n\t${actions[k]}`
+    return `${prefix} ${yellow(k)}\n\t${actions[k]}`
   })
   .join('\n')
 
@@ -35,7 +35,7 @@ const action = args._.join('.')
 if (actionsMap[action]) {
   require(actionsMap[action])(args)
 } else {
-  log('[did-cli]', chalk.red.bold(`Unknown action ${args._.join(' ')}.`))
+  log('[did-cli]', red.bold(`Unknown action ${args._.join(' ')}.`))
 }
 
 export const ab = null

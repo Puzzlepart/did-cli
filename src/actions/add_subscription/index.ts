@@ -1,14 +1,11 @@
 require('dotenv').config()
 import inquirer from 'inquirer'
 import _ from 'underscore'
-import chalk from 'chalk'
-import config from './_config.json'
 import { getClient } from '../../mongo/client'
-const yellow = chalk['yellow']
-const green = chalk['green']
-const log = console.log
+import { green, log, yellow } from '../../utils/log'
+import config from './_config.json'
 
-const add_subscription = async () => {
+export default async () => {
   if (process.env['INIT'] !== '1') {
     log(yellow.underline('You need to run did init.'))
     process.exit(0)
@@ -66,5 +63,3 @@ const add_subscription = async () => {
   }
   process.exit(0)
 }
-
-module.exports = add_subscription

@@ -8,17 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const child_process_1 = require("child_process");
-const chalk_1 = __importDefault(require("chalk"));
-const log = console.log;
+const log_1 = require("../../utils/log");
 exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!process.env.DID_LOCAL_PATH) {
-        log('[did-cli]', chalk_1.default.yellow.underline("You don't have did installed locally."));
+        log_1.log('[did-cli]', log_1.yellow.underline("You don't have did installed locally."));
         process.exit(0);
     }
     child_process_1.exec(`code ${process.env.DID_LOCAL_PATH}`, () => {

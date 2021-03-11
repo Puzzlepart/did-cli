@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const got_1 = __importDefault(require("got"));
-module.exports = (args) => [
+exports.default = (args) => [
     {
         type: 'input',
         name: 'name',

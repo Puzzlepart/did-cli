@@ -1,11 +1,10 @@
 require('dotenv').config()
 import inquirer from 'inquirer'
 import { find } from 'underscore'
-import chalk from 'chalk'
-const log = console.log
+import { log, green, yellow } from '../../utils/log'
 import { getClient } from '../../mongo/client'
 
-const remove_subscription = async () => {
+export default async () => {
   try {
     log('--------------------------------------------------------')
     log('[did-cli] subscription remove')
@@ -25,13 +24,11 @@ const remove_subscription = async () => {
       if (input.dropDatabase) {
         await client.db(subscription.db).dropDatabase()
       }
-      log('[did-cli]', chalk.green(`Subscription succesfully deleted.`))
+      log('[did-cli]', green(`Subscription succesfully deleted.`))
     }
     await client.close()
   } catch (error) {
-    log('[did-cli]', chalk.yellow.underline('Failed to delete subscription.'))
+    log('[did-cli]', yellow.underline('Failed to delete subscription.'))
   }
   process.exit(0)
 }
-
-module.exports = remove_subscription
