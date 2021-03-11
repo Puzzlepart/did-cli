@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.31-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.32-green.svg)](https://semver.org)
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#installation)
