@@ -1,6 +1,21 @@
-# did-cli [![version](https://img.shields.io/badge/version-0.0.21-green.svg)](https://semver.org)
+# did-cli [![version](https://img.shields.io/badge/version-0.0.22-green.svg)](https://semver.org)
 
 CLI for [did](https://github.com/Puzzlepart/did).
+
+### Installation
+
+```shell
+npm i -g "https://github.com/Puzzlepart/did-cli"
+```
+
+
+#### Init
+
+```shell
+did init
+```
+
+
 
 ### Actions
 
