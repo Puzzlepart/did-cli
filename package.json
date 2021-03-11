@@ -18,7 +18,8 @@
   "keywords": [],
   "license": "MIT",
   "bin": {
-    "did": "bin/index.js"
+    "did": "bin/index.js",
+    "did-cli": "bin/index.js"
   },
   "dependencies": {
     "boxen": "^4.0.0",
