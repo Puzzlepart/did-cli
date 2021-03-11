@@ -27,6 +27,18 @@ const init_ = async () => {
       name: 'dbName',
       message: 'Mongo DB database',
       default: 'main'
+    },
+    {
+      type: 'confirm',
+      name: 'installedLocally',
+      message: 'Do you have did installed locally?'
+    },
+    {
+      type: 'file-tree-selection',
+      type: 'file',
+      name: 'installedPath',
+      message: '...where is it?',
+      dirOnly: true
     }
   ])
   await writeFile(
