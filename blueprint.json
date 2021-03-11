@@ -3,7 +3,7 @@
 	"blueprint": "blueprint.md",
 	"input": "blueprint.md",
 	"output": "README.md",
-	"text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
+	"text": "CLI for [did](https://github.com/Puzzlepart/did).",
 	"placeholder": [
 		"[[",
 		"]]"
@@ -26,7 +26,7 @@
 	"templates": [
 		{
 			"name": "install",
-			"template": "Run `npm install [[ ids.npm ]]' to install this library!"
+			"template": ""
 		}
 	]
 }

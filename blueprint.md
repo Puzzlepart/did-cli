@@ -1,21 +1,7 @@
-[[ template:title ]] [[ template:badges ]] [[ template:description ]]
+[[ template:title ]] [[ template:description ]]
 
-CLI for [did](https://github.com/Puzzlepart/did).
-
-### Installation
-
-```shell
-npm i -g "https://github.com/Puzzlepart/did-cli"
-```
-
-
-#### Init
-
-```shell
-did init
-```
-
-
+[[ load:readme/1-installation.md ]]
+[[ load:readme/2-init.md ]]
 
 ### Actions
 
