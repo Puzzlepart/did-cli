@@ -4,13 +4,13 @@
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "scripts": {
-    "build": "tsc -p .",
-    "watch": "npm run-script build && tsc --watch -p .",
+    "tsc:build": "npm run copy:package && tsc -p .",
+    "tsc:watch": "npm run copy:package && tsc --watch -p .",
     "new-action": "node ./tasks/new-action.js",
     "prettier": "prettier ./src --write --loglevel silent",
     "postversion": "git push && git push --tags",
     "clean": "rimraf ./dist",
-    "prebuild": "copyfiles package.json ./src"
+    "copy:package": "copyfiles package.json ./src"
   },
   "config": {
     "actions": {

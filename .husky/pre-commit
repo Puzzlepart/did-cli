@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run prettier
-npm run build
+npm run tsc:build
 npx @appnest/readme generate
