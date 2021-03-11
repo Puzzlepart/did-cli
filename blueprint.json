@@ -3,7 +3,7 @@
   "blueprint": "blueprint.md",
   "input": "blueprint.md",
   "output": "README.md",
-  "text": "CLI for [did](https://github.com/Puzzlepart/did).",
+  "text": "It's basically a CLI for did.",
   "logo": {
     "src": "assets/logo.png",
     "width": 120,

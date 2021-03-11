@@ -2,7 +2,7 @@
   <img src="assets/logo.png" alt="Logo" width="120" height="120" />
 </p> <p align="center">
   <b>Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.</b></br>
-  <sub>CLI for [did](https://github.com/Puzzlepart/did).<sub>
+  <sub>It's basically a CLI for did.<sub>
 </p>
 
 <br />
