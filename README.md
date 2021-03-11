@@ -26,6 +26,7 @@
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
+* [➤ Contributors](#-contributors)
 </details>
 
 
@@ -138,3 +139,14 @@ did-cli customer add
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
 
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#contributors)
+
+## ➤ Contributors
+	
+
+| [Ole Martin Pettersen](undefined)                |
+|:--------------------------------------------------:|
+| [olemp@puzzlepart.com](mailto:olemp@puzzlepart.com) |
+| 🔥                                               |
