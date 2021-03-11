@@ -14,7 +14,9 @@ const add_customer = async (args) => {
     log('--------------------------------------------------------')
     log('[did-cli] customer add')
     log('--------------------------------------------------------')
-    const input: { [key: string]: string } = await inquirer.prompt(require('./_prompts.js')(args))
+    const input: { [key: string]: string } = await inquirer.prompt(
+      require('./_prompts.js')(args)
+    )
     const { key, name, description, icon } = { ...args, ...input } as any
     const { client, db } = await getClient()
     await db.collection('customers').insertOne({

@@ -1,81 +1,81 @@
 {
-  "collections": [
-    {
-      "name": "users",
-      "indexes": ["displayName"]
-    },
-    {
-      "name": "roles",
-      "documents": [
+    "collections": [
         {
-          "name": "Owner",
-          "description": "Owners has the same permissions as Admin, in addition to manage subscription.",
-          "icon": "CrownSolid",
-          "permissions": [
-            "e18a7c45",
-            "289a64ab",
-            "2653c3aa",
-            "a031c42f",
-            "ef4032fb",
-            "c5439319",
-            "09909241",
-            "8b39db3d",
-            "15e40e99",
-            "cd52a735",
-            "f5a82c37",
-            "67ba6efc"
-          ],
-          "readOnly": true
+            "name": "users",
+            "indexes": ["displayName"]
         },
         {
-          "name": "Admin",
-          "description": "Administrators can manage projects, customers, labels, users, roles and permissons.",
-          "icon": "Admin",
-          "permissions": [
-            "e18a7c45",
-            "289a64ab",
-            "2653c3aa",
-            "a031c42f",
-            "ef4032fb",
-            "c5439319",
-            "09909241",
-            "8b39db3d",
-            "15e40e99",
-            "cd52a735",
-            "f5a82c37"
-          ],
-          "readOnly": true
+            "name": "roles",
+            "documents": [
+                {
+                    "name": "Owner",
+                    "description": "Owners has the same permissions as Admin, in addition to manage subscription.",
+                    "icon": "CrownSolid",
+                    "permissions": [
+                        "e18a7c45",
+                        "289a64ab",
+                        "2653c3aa",
+                        "a031c42f",
+                        "ef4032fb",
+                        "c5439319",
+                        "09909241",
+                        "8b39db3d",
+                        "15e40e99",
+                        "cd52a735",
+                        "f5a82c37",
+                        "67ba6efc"
+                    ],
+                    "readOnly": true
+                },
+                {
+                    "name": "Admin",
+                    "description": "Administrators can manage projects, customers, labels, users, roles and permissons.",
+                    "icon": "Admin",
+                    "permissions": [
+                        "e18a7c45",
+                        "289a64ab",
+                        "2653c3aa",
+                        "a031c42f",
+                        "ef4032fb",
+                        "c5439319",
+                        "09909241",
+                        "8b39db3d",
+                        "15e40e99",
+                        "cd52a735",
+                        "f5a82c37"
+                    ],
+                    "readOnly": true
+                },
+                {
+                    "name": "User",
+                    "description": "A User can access Timesheet, Projects and Customers.",
+                    "icon": "UserGauge",
+                    "permissions": [
+                        "e18a7c45",
+                        "289a64ab",
+                        "ef4032fb",
+                        "09909241",
+                        "f5a82c37"
+                    ],
+                    "readOnly": true
+                }
+            ]
         },
         {
-          "name": "User",
-          "description": "A User can access Timesheet, Projects and Customers.",
-          "icon": "UserGauge",
-          "permissions": [
-            "e18a7c45",
-            "289a64ab",
-            "ef4032fb",
-            "09909241",
-            "f5a82c37"
-          ],
-          "readOnly": true
+            "name": "customers",
+            "indexes": ["name"]
+        },
+        {
+            "name": "projects",
+            "indexes": ["name", "customerKey"]
+        },
+        {
+            "name": "time_entries",
+            "indexes": ["week", "month", "year", "userId", "periodId"]
+        },
+        {
+            "name": "forecasted_time_entries",
+            "indexes": ["week", "month", "year", "userId", "periodId"]
         }
-      ]
-    },
-    {
-      "name": "customers",
-      "indexes": ["name"]
-    },
-    {
-      "name": "projects",
-      "indexes": ["name", "customerKey"]
-    },
-    {
-      "name": "time_entries",
-      "indexes": ["week", "month", "year", "userId", "periodId"]
-    },
-    {
-      "name": "forecasted_time_entries",
-      "indexes": ["week", "month", "year", "userId", "periodId"]
-    }
-  ]
+    ]
 }

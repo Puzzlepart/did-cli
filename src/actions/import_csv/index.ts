@@ -22,7 +22,7 @@ const import_csv = async ({ path }) => {
     log('[did-cli]', yellow.underline('The file needs to be a CSV file.'))
     process.exit(0)
   }
-  if (process.env["INIT"] !== '1') {
+  if (process.env['INIT'] !== '1') {
     log('[did-cli]', yellow.underline('You need to run did init.'))
     process.exit(0)
   }

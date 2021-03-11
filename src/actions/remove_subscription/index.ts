@@ -13,7 +13,9 @@ const remove_subscription = async () => {
     const { client, db } = await getClient()
     const collection = db.collection('subscriptions')
     const subscriptions = await collection.find({}).toArray()
-    const input = await inquirer.prompt<any>(require('./_prompts.js')(subscriptions))
+    const input = await inquirer.prompt<any>(
+      require('./_prompts.js')(subscriptions)
+    )
     if (input.confirm) {
       const subscription = find(
         subscriptions,

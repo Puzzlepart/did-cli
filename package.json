@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "watch": "tsc --watch -p .",
     "new-action": "node ./tasks/new-action.js",
-    "prettier": "prettier ./bin --write --loglevel silent",
+    "prettier": "prettier ./src --write --loglevel silent",
     "postversion": "git push && git push --tags",
     "clean": "rimraf ./dist"
   },
