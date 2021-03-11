@@ -29,7 +29,6 @@ const args = yargs_1.default
 }).argv;
 const action = args._.join('.');
 if (actions_map_json_1.default[action]) {
-    console.log(require(actions_map_json_1.default[action]));
     require(actions_map_json_1.default[action]).action(args);
 }
 else {
