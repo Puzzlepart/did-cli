@@ -23,8 +23,10 @@
 * [➤ Actions](#-actions)
 	* [open](#open)
 	* [subscription add](#subscription-add)
+	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
+* [➤ Contributors](#-contributors)
 </details>
 
 
@@ -91,6 +93,23 @@ did-cli subscription add
 ![image-20210311092849679](assets/image-20210311092849679.png)
 
 
+### subscription remove
+
+Removes a Did subscription.
+
+```shell
+did subscription remove
+```
+
+or
+
+```shell
+did-cli subscription remove
+```
+
+![image-20210311145039854](assets/image-20210311145039854.png)
+
+
 ### import csv
 
 ```shell
@@ -120,3 +139,14 @@ did-cli customer add
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
 
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#contributors)
+
+## ➤ Contributors
+	
+
+| [Ole Martin Pettersen](undefined)                |
+|:--------------------------------------------------:|
+| [olemp@puzzlepart.com](mailto:olemp@puzzlepart.com) |
+| 🔥                                               |

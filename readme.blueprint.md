@@ -13,3 +13,5 @@
 [[load:readme/2-init.md]]
 
 [[load:readme/3-actions.md]]
+
+[[ template:contributors ]]
