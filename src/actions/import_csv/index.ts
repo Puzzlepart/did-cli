@@ -5,7 +5,7 @@ import _ from 'underscore.string'
 import { getClient } from '../../mongo/client'
 import { green, log, yellow } from '../../utils/log'
 
-export default async ({ path }) => {
+export async function action({ path }) {
   let path_ = path
   if (!path) {
     const prompt = await inquirer.prompt({

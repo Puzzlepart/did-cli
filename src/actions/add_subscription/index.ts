@@ -5,7 +5,7 @@ import { getClient } from '../../mongo/client'
 import { green, log, yellow } from '../../utils/log'
 import config from './_config.json'
 
-export default async () => {
+export async function action() {
   if (process.env['INIT'] !== '1') {
     log(yellow.underline('You need to run did init.'))
     process.exit(0)

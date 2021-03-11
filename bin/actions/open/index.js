@@ -9,15 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.action = void 0;
 require('dotenv').config();
 const child_process_1 = require("child_process");
 const log_1 = require("../../utils/log");
-exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
-    if (!process.env.DID_LOCAL_PATH) {
-        log_1.log('[did-cli]', log_1.yellow.underline("You don't have did installed locally."));
-        process.exit(0);
-    }
-    child_process_1.exec(`code ${process.env.DID_LOCAL_PATH}`, () => {
-        //
+function action() {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!process.env.DID_LOCAL_PATH) {
+            log_1.log('[did-cli]', log_1.yellow.underline("You don't have did installed locally."));
+            process.exit(0);
+        }
+        child_process_1.exec(`code ${process.env.DID_LOCAL_PATH}`, () => {
+            //
+        });
     });
-});
+}
+exports.action = action;
