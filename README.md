@@ -32,7 +32,8 @@ did-cli subscription add
 ```
 
 
-![image-20210311091149464](assets/image-20210311091149464.png)
+
+![image-20210311092849679](assets/image-20210311092849679.png)
 
 #### import csv
 
@@ -47,9 +48,7 @@ did-cli import csv
 ```
 
 
-![image-20210311091318806](assets/image-20210311091318806.png)
-
-![image-20210311091342055](assets/image-20210311091342055.png)
+![image-20210311092955701](assets/image-20210311092955701.png)
 
 #### customer add
 
@@ -63,6 +62,4 @@ or
 did-cli customer add
 ```
 
-
-
-![image-20210311091028019](assets/image-20210311091028019.png)
+![image-20210311093034792](assets/image-20210311093034792.png)
