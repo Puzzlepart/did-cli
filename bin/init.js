@@ -15,13 +15,13 @@ const run = async () => {
             'type': 'input',
             'name': 'connectionString',
             'message': 'Mongo DB connection string',
-            'default': ''
+            'default': 'mongodb://'
         },
         {
             'type': 'input',
             'name': 'dbName',
             'message': 'Mongo DB database',
-            'default': ''
+            'default': 'main'
         }
     ])
     await writeFile(path.resolve(__dirname, '.env'), `INIT=1\nMONGO_DB_CONNECTION_STRING=${connectionString}\nMONGO_DB_DB_NAME=${dbName}`)

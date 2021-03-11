@@ -7,61 +7,46 @@ const sortByBestMatch = (field, fields) => {
 module.exports = (fields) => {
     return [
         {
-            "type": "list",
             "name": "_id",
             "message": "ID property",
             "default": "id"
         },
         {
-            "type": "list",
             "name": "projectId",
-            "message": "Project id/tag property",
-            "default": "projectId"
+            "message": "Project id/tag property"
         },
         {
-            "type": "list",
             "name": "title",
-            "message": "Title property",
-            "default": "title"
+            "message": "Title property"
         },
         {
-            "type": "list",
             "name": "body",
-            "message": "Body property",
-            "default": "body"
+            "message": "Body property"
         },
         {
-            "type": "list",
             "name": "duration",
-            "message": "Duration property",
-            "default": "duration"
+            "message": "Duration property"
         },
         {
-            "type": "list",
             "name": "startDate",
-            "message": "Start date property",
-            "default": "startDate"
+            "message": "Start date property"
         },
         {
-            "type": "list",
             "name": "endDate",
-            "message": "End date property",
-            "default": "endDate"
+            "message": "End date property"
         },
         {
-            "type": "list",
             "name": "periodId",
-            "message": "Period ID property",
-            "default": "periodId"
+            "message": "Period ID property"
         },
         {
-            "type": "list",
             "name": "userId",
-            "message": "User ID property",
-            "default": "userId"
+            "message": "User ID property"
         }
     ].map(p => ({
         ...p,
+        type: "list",
+        default: p.name,
         choices: sortByBestMatch(p.name, fields)
     }))
 }

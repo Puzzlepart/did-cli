@@ -6,9 +6,10 @@ const package = require('../package.json')
 const log = console.log
 
 const prefix = `${chalk.cyan('did')}${chalk.green(' --action')}`
+const actions = package.config.actions||{}
 
-const usage = Object.keys(package.config.actions).map(action => {
-    return `${prefix} ${chalk.yellow(action)}\n\t${package.config.actions[action]}`
+const usage = Object.keys(actions).map(k => {
+    return `${prefix} ${chalk.yellow(k)}\n\t${actions[k]}`
 }).join('\n')
 
 const options = yargs
@@ -21,9 +22,9 @@ if (options._[0] === 'init' || !options.action) {
     require('./init')
 } else {
     switch (options.action) {
-        case 'add_subscription': require('./add_subscription')
+        case 'add_subscription': require('./actions/add_subscription')
             break
-        case 'import_csv': require('./import_csv')(options.path)
+        case 'import_csv': require('./actions/import_csv')(options.path)
             break
         default: {
             log('[did-cli]', chalk.red.bold(`Unknown action ${options.action}.`))

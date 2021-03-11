@@ -7,31 +7,25 @@ const sortByBestMatch = (field, fields) => {
 module.exports = (fields) => {
     return [
         {
-            "type": "list",
             "name": "periodId",
-            "message": "Period ID property",
-            "default": "periodId"
+            "message": "Period ID property"
         },
         {
-            "type": "list",
             "name": "userId",
-            "message": "User ID property",
-            "default": "userId"
+            "message": "User ID property"
         },
         {
-            "type": "list",
             "name": "createdAt",
-            "message": "Created property",
-            "default": "createdAt"
+            "message": "Created property"
         },
         {
-            "type": "list",
             "name": "hours",
-            "message": "Hours property",
-            "default": "hours"
+            "message": "Hours property"
         }
     ].map(p => ({
         ...p,
+        type: "list",
+        default: p.name,
         choices: sortByBestMatch(p.name, fields)
     }))
 }

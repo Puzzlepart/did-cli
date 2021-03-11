@@ -3,7 +3,7 @@ const inquirer = require('inquirer')
 const _ = require('underscore')
 const chalk = require('chalk')
 const config = require('./_config.json')
-const { getClient } = require('../mongo/client')
+const { getClient } = require('../../mongo/client')
 const log = console.log
 
 const add_subscription = async () => {
@@ -47,12 +47,12 @@ const add_subscription = async () => {
         const ownerSurname = _.last(ownerName.split(' '))
         const ownerGivenName = ownerName.replace(` ${ownerSurname}`, '')
         await client.db(dbName).collection('users').insertOne({
-            "_id": ownerId,
-            "displayName": ownerName,
-            "givenName": ownerGivenName,
-            "preferredLanguage": "nb-NO",
-            "role": "Owner",
-            "surname": ownerSurname
+            _id: ownerId,
+            displayName: ownerName,
+            givenName: ownerGivenName,
+            preferredLanguage: "nb-NO",
+            role: "Owner",
+            surname: ownerSurname
         })
         log(chalk.green('Subscription succesfully created.'))
         await client.close(true)
