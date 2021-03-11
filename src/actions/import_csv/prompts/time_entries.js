@@ -6,7 +6,7 @@ const sortByBestMatch = (field, fields) => {
     .map((a) => a.target)
 }
 
-module.exports = (fields) => {
+export default (fields) => {
   return [
     {
       name: '_id',

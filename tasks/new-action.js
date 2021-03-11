@@ -11,6 +11,9 @@ const actionsMap = require('../bin/actions.map.json')
 const child_process = require('child_process')
 const exec = util.promisify(child_process.exec)
 
+const BASE_PATH = path.resolve(__dirname, '../src/actions')
+const ROOT_PATH = path.resolve(__dirname, '../')
+
 function replaceTokens(
     str,
     values,
@@ -49,11 +52,10 @@ async function new_action() {
     if (action.createBranch) {
         await exec(`git checkout -b new-action/${action.key}`)
     }
-    const basePath = path.resolve(__dirname, '../bin/actions')
     const [readmeTmpl, indexTmpl, actionsReadme] = await Promise.all([
-        readFile(path.resolve(basePath, '.template/README.md')),
-        readFile(path.resolve(basePath, '.template/index.txt')),
-        readFile(path.resolve(__dirname, '../readme/3-actions.md'))
+        readFile(path.resolve(BASE_PATH, '.template/README.md')),
+        readFile(path.resolve(BASE_PATH, '.template/index.txt')),
+        readFile(path.resolve(ROOT_PATH, 'readme/3-actions.md'))
     ])
     package.config.actions = {
         ...package.config.actions,
@@ -64,13 +66,13 @@ async function new_action() {
         [action.name.split(' ').join('.')]: `./actions/${action.key}`
     }
     let actionsReadme_ = actionsReadme.toString() + `\n\n[[ load:bin/actions/${action.key}/README.md ]]`
-    await mkdir(path.resolve(basePath, action.key))
+    await mkdir(path.resolve(BASE_PATH, action.key))
     await Promise.all([
-        writeFile(path.resolve(basePath, `${action.key}/README.md`), replaceTokens(readmeTmpl.toString(), action)),
-        writeFile(path.resolve(basePath, `${action.key}/index.js`), replaceTokens(indexTmpl.toString(), action)),
-        writeFile(path.resolve(__dirname, `../package.json`), JSON.stringify(package, null, 2)),
-        writeFile(path.resolve(__dirname, `../bin/actions.map.json`), JSON.stringify(actionsMap_, null, 2)),
-        writeFile(path.resolve(__dirname, '../readme/3-actions.md'), actionsReadme_)
+        writeFile(path.resolve(BASE_PATH, `${action.key}/README.md`), replaceTokens(readmeTmpl.toString(), action)),
+        writeFile(path.resolve(BASE_PATH, `${action.key}/index.ts`), replaceTokens(indexTmpl.toString(), action)),
+        writeFile(path.resolve(ROOT_PATH, `package.json`), JSON.stringify(package, null, 2)),
+        writeFile(path.resolve(ROOT_PATH, `src/actions.map.json`), JSON.stringify(actionsMap_, null, 2)),
+        writeFile(path.resolve(ROOT_PATH, 'readme/3-actions.md'), actionsReadme_)
     ])
     process.exit(0)
 }

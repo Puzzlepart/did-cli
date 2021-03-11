@@ -1,11 +1,11 @@
-module.exports = (fieldMap) => (item) => {
+export default (fieldMap) => (item) => {
   const mappedProperties = Object.keys(fieldMap).reduce((obj, key) => {
     return {
       ...obj,
       [key]: item[fieldMap[key]]
     }
   }, {})
-  const { periodId, hours, createdAt, userId } = mappedProperties
+  const { periodId, startDate, endDate, duration, userId } = mappedProperties
   if (periodId.split('_').length !== 3)
     throw new Error(
       'periodId has wrong format! Needs to be of format week_month_year.'
@@ -15,9 +15,9 @@ module.exports = (fieldMap) => (item) => {
     .map((str) => parseInt(str, 10))
   return {
     ...mappedProperties,
-    duration: parseFloat(hours),
-    createdAt: new Date(createdAt),
-    updatedAt: new Date(createdAt),
+    startDate: new Date(startDate),
+    endDate: new Date(endDate),
+    duration: parseFloat(duration),
     week,
     month,
     year,

@@ -6,23 +6,31 @@ const sortByBestMatch = (field, fields) => {
     .map((a) => a.target)
 }
 
-module.exports = (fields) => {
+export default (fields) => {
   return [
     {
-      name: 'periodId',
-      message: 'Period ID property'
+      name: '_id',
+      message: 'ID property'
     },
     {
-      name: 'userId',
-      message: 'User ID property'
+      name: 'customerKey',
+      message: 'Customer key property'
     },
     {
-      name: 'createdAt',
-      message: 'Created property'
+      name: 'key',
+      message: 'Key property'
     },
     {
-      name: 'hours',
-      message: 'Hours property'
+      name: 'name',
+      message: 'Name property'
+    },
+    {
+      name: 'description',
+      message: 'Description property'
+    },
+    {
+      name: 'webLink',
+      message: 'Web link property'
     }
   ].map((p) => ({
     ...p,

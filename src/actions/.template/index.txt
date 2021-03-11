@@ -1,0 +1,17 @@
+require('dotenv').config()
+import { log } from '../../utils/log'
+
+/**
+ * {{name}}
+ * 
+ * @description {{description}}
+ * 
+ * @remarks A CLI action file must return a function named action
+ * 
+ * @param args - Args
+ */
+export async function action() {
+  log('--------------------------------------------------------')
+  log('[did-cli] {{name}}')
+  log('--------------------------------------------------------')
+}
