@@ -26,6 +26,7 @@
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
+	* [spfx install](#spfx-install)
 * [➤ Contributors](#-contributors)
 </details>
 
@@ -138,6 +139,21 @@ did-cli customer add
 ```
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
+
+
+### spfx install
+
+Install SPFx solution.
+
+```shell
+did spfx install
+```
+
+or
+
+```shell
+did-cli spfx install
+```
 
 
 
