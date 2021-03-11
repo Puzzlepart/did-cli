@@ -24,6 +24,7 @@ export async function action() {
       _id: tenantId,
       name,
       db: dbName,
+      owner,
       settings: {
         forecast: {
           enabled: forecasting
@@ -46,14 +47,6 @@ export async function action() {
         await client.db(dbName).collection(coll.name).insertMany(coll.documents)
       }
     }
-    await client
-      .db(dbName)
-      .collection('users')
-      .insertOne({
-        ...owner,
-        displayName: `${owner.givenName} ${owner.surname}`,
-        role: 'Owner'
-      })
     log(
       '[did-cli]',
       green(`Subscription succesfully created with db ${dbName}.`)
