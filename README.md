@@ -10,6 +10,23 @@
 
 [![version](https://img.shields.io/badge/version-0.0.32-green.svg)](https://semver.org)
 
+<details>
+<summary>📖 Table of Contents</summary>
+<br />
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
+
+## ➤ Table of Contents
+
+* [➤ Installation](#-installation)
+* [➤ Initialize the cli](#-initialize-the-cli)
+* [➤ Actions](#-actions)
+	* [open](#open)
+	* [subscription add](#subscription-add)
+	* [import csv](#import-csv)
+	* [customer add](#customer-add)
+</details>
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#installation)
 
@@ -20,7 +37,7 @@ You install the `cli` through github:
 
 ```shell
 npm i -g "https://github.com/Puzzlepart/did-cli"
-``` 
+```
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#initialize-the-cli)
@@ -102,3 +119,4 @@ did-cli customer add
 ```
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
+
