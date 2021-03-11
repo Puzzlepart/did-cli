@@ -6,10 +6,10 @@ const log = console.log
 const { getClient } = require('../../mongo/client')
 
 const remove_subscription = async () => {
-  log('--------------------------------------------------------')
-  log('[did-cli] subscription remove')
-  log('--------------------------------------------------------')
   try {
+    log('--------------------------------------------------------')
+    log('[did-cli] subscription remove')
+    log('--------------------------------------------------------')
     const { client, db } = await getClient()
     const collection = db.collection('subscriptions')
     const subscriptions = await collection.find({}).toArray()
