@@ -50,14 +50,11 @@ async function new_action() {
         await exec(`git checkout -b new-action/${action.key}`)
     }
     const basePath = path.resolve(__dirname, '../bin/actions')
-    const [readme, index] = await Promise.all([
+    const [readmeTmpl, indexTmpl, actionsReadme] = await Promise.all([
         readFile(path.resolve(basePath, '.template/README.md')),
-        readFile(path.resolve(basePath, '.template/index.txt'))
+        readFile(path.resolve(basePath, '.template/index.txt')),
+        readFile(path.resolve(__dirname, '../readme/3-actions.md'))
     ])
-
-    await mkdir(path.resolve(basePath, action.key))
-    await writeFile(path.resolve(basePath, `${action.key}/README.md`), replaceTokens(readme.toString(), action))
-    await writeFile(path.resolve(basePath, `${action.key}/index.js`), replaceTokens(index.toString(), action))
     package.config.actions = {
         ...package.config.actions,
         [action.name]: action.description
@@ -66,8 +63,15 @@ async function new_action() {
         ...actionsMap,
         [action.name.split(' ').join('.')]: `./actions/${action.key}`
     }
-    await writeFile(path.resolve(__dirname, `../package.json`), JSON.stringify(package, null, 2))
-    await writeFile(path.resolve(__dirname, `../bin/actions.map.json`), JSON.stringify(actionsMap_, null, 2))
+    let actionsReadme_ = actionsReadme.toString() + `\n\n[[ load:bin/actions/${action.key}/README.md ]]`
+    await mkdir(path.resolve(basePath, action.key))
+    await Promise.all([
+        writeFile(path.resolve(basePath, `${action.key}/README.md`), replaceTokens(readmeTmpl.toString(), action)),
+        writeFile(path.resolve(basePath, `${action.key}/index.js`), replaceTokens(indexTmpl.toString(), action)),
+        writeFile(path.resolve(__dirname, `../package.json`), JSON.stringify(package, null, 2)),
+        writeFile(path.resolve(__dirname, `../bin/actions.map.json`), JSON.stringify(actionsMap_, null, 2)),
+        writeFile(path.resolve(__dirname, '../readme/3-actions.md'), actionsReadme_)
+    ])
     process.exit(0)
 }
 
