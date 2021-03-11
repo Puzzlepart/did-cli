@@ -1,4 +1,6 @@
-[[ template:title ]] [![version](https://img.shields.io/badge/version-[[ pkg.version ]]-green.svg)](https://semver.org)
+[[ template:title ]] 
+
+[![version](https://img.shields.io/badge/version-[[ pkg.version ]]-green.svg)](https://semver.org)
 
 [[ load:readme/1-installation.md ]] 
 

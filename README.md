@@ -1,4 +1,6 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">did-cli</h1> [![version](https://img.shields.io/badge/version-0.0.26-green.svg)](https://semver.org)
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">did-cli</h1> 
+
+[![version](https://img.shields.io/badge/version-0.0.26-green.svg)](https://semver.org)
 
 ### Installation
 
