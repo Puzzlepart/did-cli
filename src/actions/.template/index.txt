@@ -12,6 +12,6 @@ import { log } from '../../utils/log'
  */
 export async function action() {
   log('--------------------------------------------------------')
-  log('[did-cli] {{name}}')
+  log('                   [did-cli] {{name}}                   ')
   log('--------------------------------------------------------')
 }

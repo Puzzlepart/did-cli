@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 require('dotenv').config({ path: __dirname + '/' + '.env' })
-import yargs from 'yargs'
-import packageJson from './package.json'
-import actionsMap from './actions.map.json'
 import inquirer from 'inquirer'
-import { log, cyan, yellow, red } from './utils/log'
+import { omit } from 'underscore'
+import yargs from 'yargs'
+import actionsMap from './actions.map.json'
+import packageJson from './package.json'
+import { cyan, log, red, yellow } from './utils/log'
 
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'))
 inquirer.registerPrompt(
@@ -33,7 +34,7 @@ const args = yargs
 const action = args._.join('.')
 
 if (actionsMap[action]) {
-  require(actionsMap[action]).action(args)
+  require(actionsMap[action]).action(omit(args, '$0', '_'))
 } else {
   log('[did-cli]', red.bold(`Unknown action ${args._.join(' ')}.`))
 }

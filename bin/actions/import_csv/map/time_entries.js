@@ -13,14 +13,10 @@ exports.default = (fieldMap) => (item) => {
         throw errors_1.PeriodIdWrongFormatError;
     }
     if (periodId) {
-        [week, month, year] = periodId
-            .split('_')
-            .map((str_) => parseInt(str_, 10));
+        [week, month, year] = periodId.split('_');
     }
     else {
         periodId = [week, month, year].join('_');
     }
-    return Object.assign(Object.assign({}, mappedProperties), { startDate: new Date(startDate), endDate: new Date(endDate), duration: parseFloat(duration), week,
-        month,
-        year, periodId: generatePeriodId(periodId, userId) });
+    return Object.assign(Object.assign({}, mappedProperties), { startDate: new Date(startDate), endDate: new Date(endDate), duration: parseFloat(duration), week: parseInt(week), month: parseInt(month), year: parseInt(year), periodId: generatePeriodId(periodId, userId) });
 };

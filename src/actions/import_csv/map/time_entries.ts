@@ -1,6 +1,6 @@
 import { PeriodIdWrongFormatError } from "../errors"
 
-function generatePeriodId(periodId, userId) {
+function generatePeriodId(periodId: string, userId: string) {
   return `${periodId}${userId}`.replace(/[^\dA-Za-z]/g, '')
 }
 
@@ -25,9 +25,7 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
     throw PeriodIdWrongFormatError
   }
   if (periodId) {
-    [week, month, year] = periodId
-      .split('_')
-      .map((str_: string) => parseInt(str_, 10))
+    [week, month, year] = periodId.split('_')
   } else {
     periodId = [week, month, year].join('_')
   }
@@ -36,9 +34,9 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
     startDate: new Date(startDate),
     endDate: new Date(endDate),
     duration: parseFloat(duration),
-    week,
-    month,
-    year,
+    week: parseInt(week),
+    month: parseInt(month),
+    year: parseInt(year),
     periodId: generatePeriodId(periodId, userId)
   }
 }
