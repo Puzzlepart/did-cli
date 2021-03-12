@@ -68,5 +68,5 @@ exports.default = (fields) => {
             name: 'userId',
             message: 'User ID property'
         }
-    ].map((p) => (Object.assign(Object.assign({}, p), { type: p.type || 'list', default: p.name, choices: [...p.choices || [], sortByBestMatch(p.name, fields)] })));
+    ].map((p) => (Object.assign(Object.assign({}, p), { type: p.type || 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)] })));
 };

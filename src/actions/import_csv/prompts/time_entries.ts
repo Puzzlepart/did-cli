@@ -72,6 +72,6 @@ export default (fields) => {
     ...p,
     type: p.type || 'list',
     default: p.name,
-    choices: [...p.choices || [], sortByBestMatch(p.name, fields)]
+    choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)]
   }))
 }
