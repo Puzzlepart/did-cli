@@ -10,6 +10,7 @@
     "prettier": "prettier ./src --write --loglevel silent",
     "postversion": "git push && git push --tags && npm run build:ts",
     "clean": "rimraf ./dist",
+    "reinstall": "rimraf ./node_modules && npm install",
     "copy:package": "copyfiles package.json ./src"
   },
   "config": {

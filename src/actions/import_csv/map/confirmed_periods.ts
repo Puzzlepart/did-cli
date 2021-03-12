@@ -1,3 +1,5 @@
+import { PeriodIdWrongFormatError } from "../errors"
+
 export default (fieldMap: Record<string, string>) => (item: Record<string, any>) => {
   const mappedProperties: Record<string, any> = Object.keys(fieldMap).reduce((obj, key) => {
     return {
@@ -5,16 +7,15 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
       [key]: item[fieldMap[key]]
     }
   }, {}) as any
-  const {
+  let {
     periodId,
     hours,
     createdAt,
     userId
   } = mappedProperties
-  if (periodId.split('_').length !== 3)
-    throw new Error(
-      'periodId has wrong format! Needs to be of format week_month_year.'
-    )
+  if (periodId && periodId.split('_').length !== 3) {
+    throw PeriodIdWrongFormatError
+  }
   const [week, month, year] = periodId
     .split('_')
     .map((str_: string) => parseInt(str_, 10))

@@ -1,3 +1,9 @@
+import { PeriodIdWrongFormatError } from "../errors"
+
+function generatePeriodId(periodId, userId) {
+  return `${periodId}${userId}`.replace(/[^\dA-Za-z]/g, '')
+}
+
 export default (fieldMap: Record<string, string>) => (item: Record<string, any>) => {
   const mappedProperties: Record<string, any> = Object.keys(fieldMap).reduce((obj, key) => {
     return {
@@ -5,14 +11,26 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
       [key]: item[fieldMap[key]]
     }
   }, {}) as any
-  const { periodId, startDate, endDate, duration, userId } = mappedProperties
-  if (periodId.split('_').length !== 3)
-    throw new Error(
-      'periodId has wrong format! Needs to be of format week_month_year.'
-    )
-  const [week, month, year] = periodId
-    .split('_')
-    .map((str_: string) => parseInt(str_, 10))
+  let {
+    periodId,
+    week,
+    month,
+    year,
+    startDate,
+    endDate,
+    duration,
+    userId,
+  } = mappedProperties
+  if (periodId && periodId.split('_').length !== 3) {
+    throw PeriodIdWrongFormatError
+  }
+  if (periodId) {
+    [week, month, year] = periodId
+      .split('_')
+      .map((str_: string) => parseInt(str_, 10))
+  } else {
+    periodId = [week, month, year].join('_')
+  }
   return {
     ...mappedProperties,
     startDate: new Date(startDate),
@@ -21,6 +39,6 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
     week,
     month,
     year,
-    periodId: `${periodId}${userId}`.replace(/[^\dA-Za-z]/g, '')
+    periodId: generatePeriodId(periodId, userId)
   }
 }
