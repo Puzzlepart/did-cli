@@ -35,7 +35,7 @@ export async function action({ path }) {
       initialPrompts
     )
     log('--------------------------------------------------------')
-    log('Property mappings')
+    log('                   Property mappings                    ')
     log('--------------------------------------------------------')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)

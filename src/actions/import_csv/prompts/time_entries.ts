@@ -40,6 +40,7 @@ export default (fields) => {
     {
       name: 'periodId',
       message: 'Period ID property',
+      choices: [null],
       default: null
     },
     {
@@ -68,6 +69,6 @@ export default (fields) => {
     ...p,
     type: p.type || 'list',
     default: p.name,
-    choices: sortByBestMatch(p.name, fields)
+    choices: [...p.choices || [], sortByBestMatch(p.name, fields)]
   }))
 }
