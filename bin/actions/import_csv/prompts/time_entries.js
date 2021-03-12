@@ -40,7 +40,10 @@ exports.default = (fields) => {
         {
             name: 'periodId',
             message: 'Period ID property',
-            choices: [null],
+            choices: [{
+                    value: null,
+                    name: ''
+                }],
             default: null
         },
         {
