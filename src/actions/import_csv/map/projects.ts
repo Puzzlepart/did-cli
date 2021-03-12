@@ -1,4 +1,4 @@
-export default (fieldMap) => (item) => {
+export default (fieldMap: Record<string, string>) => (item: Record<string, any>) => {
   return {
     createdAt: new Date(),
     updatedAt: new Date(),

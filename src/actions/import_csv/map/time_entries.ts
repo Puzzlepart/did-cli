@@ -1,4 +1,4 @@
-export default (fieldMap) => (item) => {
+export default (fieldMap: Record<string, string>) => (item: Record<string, any>) => {
   const mappedProperties = Object.keys(fieldMap).reduce((obj, key) => {
     return {
       ...obj,
@@ -12,7 +12,7 @@ export default (fieldMap) => (item) => {
     )
   const [week, month, year] = periodId
     .split('_')
-    .map((str) => parseInt(str, 10))
+    .map((str_: string) => parseInt(str_, 10))
   return {
     ...mappedProperties,
     startDate: new Date(startDate),
