@@ -67,7 +67,7 @@ function action({ path }) {
             const json = yield csvtojson_1.default().fromFile(path_);
             const { collectionName, importCount } = yield inquirer_1.default.prompt(_prompts_json_1.default);
             log_1.log('--------------------------------------------------------');
-            log_1.log('Property mappings');
+            log_1.log('                   Property mappings                    ');
             log_1.log('--------------------------------------------------------');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
