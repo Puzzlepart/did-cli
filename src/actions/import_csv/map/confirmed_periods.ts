@@ -1,6 +1,11 @@
+import { omit } from "underscore"
 import { PeriodIdWrongFormatError } from "../errors"
 
-export default (fieldMap: Record<string, string>) => (item: Record<string, any>) => {
+function generatePeriodId(periodId: string, userId: string) {
+  return `${periodId}${userId}`.replace(/[^\dA-Za-z]/g, '')
+}
+
+export default (fieldMap: Record<string, string>, { time_entries = [] }: { time_entries: any[] }) => (item: Record<string, any>) => {
   const mappedProperties: Record<string, any> = Object.keys(fieldMap).reduce((obj, key) => {
     return {
       ...obj,
@@ -19,6 +24,11 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
   const [week, month, year] = periodId
     .split('_')
     .map((str_: string) => parseInt(str_, 10))
+
+  const _id = generatePeriodId(periodId, userId)
+  const events = time_entries.filter(entry => entry.periodId === _id).map(event => {
+    return omit(event, 'week', 'month', 'year', 'userId', 'periodId')
+  })
   return {
     ...mappedProperties,
     duration: parseFloat(hours),
@@ -27,6 +37,7 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
     week,
     month,
     year,
-    periodId: `${periodId}${userId}`.replace(/[^\dA-Za-z]/g, '')
+    _id,
+    events
   }
 }

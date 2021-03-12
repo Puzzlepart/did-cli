@@ -30,6 +30,7 @@ export async function action(args: Record<string, string>) {
   try {
     printSeparator('import csv', true, cyan)
     const json = await csv().fromFile(path)
+    printSeparator(`${json.length} items found in CSV file`)
     const { collectionName, importCount } = await inquirer.prompt(
       initialPrompts
     )
@@ -38,13 +39,21 @@ export async function action(args: Record<string, string>) {
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
     let fieldMap = await inquirer.prompt<Record<string, string>>(prompts[collectionName](fields, args))
     fieldMap = { ...omit(args, 'path'), ...fieldMap }
+    const { db, client } = await getClient()
+    let data: Record<string, any> = {}
+    switch (collectionName) {
+      case 'confirmed_periods': {
+        printSeparator(`Retrieving time entries from collection [time_entries]`)
+        data.time_entries = await db.collection('time_entries').find({}).toArray()
+        printSeparator(`${data.time_entries.length} time entries retrieved from [time_entries]`)
+      }
+    }
     const documents = json
       .splice(0, count)
-      .map(mapFunc[collectionName](fieldMap))
-    const { db, client } = await getClient()
-    printSeparator(`Importing ${documents.length} items`)
+      .map(mapFunc[collectionName](fieldMap, data))
+    printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`)
     await db.collection(collectionName).insertMany(documents)
-    printSeparator(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`, true, green)
+    printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, green)
     await client.close(true)
   } catch (error) {
     printSeparator(`Failed to import from CSV: ${error.message}`, true, yellow)

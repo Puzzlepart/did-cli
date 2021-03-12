@@ -64,19 +64,28 @@ function action(args) {
         try {
             log_1.printSeparator('import csv', true, log_1.cyan);
             const json = yield csvtojson_1.default().fromFile(path);
+            log_1.printSeparator(`${json.length} items found in CSV file`);
             const { collectionName, importCount } = yield inquirer_1.default.prompt(_prompts_json_1.default);
             log_1.printSeparator('Property mappings');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
             let fieldMap = yield inquirer_1.default.prompt(prompts[collectionName](fields, args));
             fieldMap = Object.assign(Object.assign({}, underscore_1.omit(args, 'path')), fieldMap);
+            const { db, client } = yield client_1.getClient();
+            let data = {};
+            switch (collectionName) {
+                case 'confirmed_periods': {
+                    log_1.printSeparator(`Retrieving time entries from collection [time_entries]`);
+                    data.time_entries = yield db.collection('time_entries').find({}).toArray();
+                    log_1.printSeparator(`${data.time_entries.length} time entries retrieved from [time_entries]`);
+                }
+            }
             const documents = json
                 .splice(0, count)
-                .map(mapFunc[collectionName](fieldMap));
-            const { db, client } = yield client_1.getClient();
-            log_1.printSeparator(`Importing ${documents.length} items`);
+                .map(mapFunc[collectionName](fieldMap, data));
+            log_1.printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`);
             yield db.collection(collectionName).insertMany(documents);
-            log_1.printSeparator(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`, true, log_1.green);
+            log_1.printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, log_1.green);
             yield client.close(true);
         }
         catch (error) {

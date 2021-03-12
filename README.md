@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.51-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.52-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -123,7 +123,8 @@ or
 did-cli import csv
 ```
 
-![image-20210311092955701](assets/image-20210311092955701.png)
+![image-20210312171806334](assets/image-20210312171806334.png)
+
 
 
 ### customer add
