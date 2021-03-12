@@ -1,5 +1,5 @@
 export default (fieldMap: Record<string, string>) => (item: Record<string, any>) => {
-  const mappedProperties = Object.keys(fieldMap).reduce((obj, key) => {
+  const mappedProperties: Record<string, any> = Object.keys(fieldMap).reduce((obj, key) => {
     return {
       ...obj,
       [key]: item[fieldMap[key]]
