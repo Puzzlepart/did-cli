@@ -42,25 +42,21 @@ exports.default = (fields) => {
             message: 'Period ID property',
             choices: [{
                     value: null,
-                    name: ''
-                }],
-            default: null
+                    name: 'Skip'
+                }]
         },
         {
-            type: 'input',
             name: 'week',
             message: 'Week number property',
             when: ({ periodId }) => !periodId
         },
         {
-            type: 'input',
             name: 'month',
             message: 'Month number property',
             when: ({ periodId }) => !periodId
         },
         {
-            type: 'input',
-            name: 'week',
+            name: 'year',
             message: 'Year property',
             when: ({ periodId }) => !periodId
         },
@@ -68,5 +64,5 @@ exports.default = (fields) => {
             name: 'userId',
             message: 'User ID property'
         }
-    ].map((p) => (Object.assign(Object.assign({}, p), { type: p.type || 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)] })));
+    ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)] })));
 };

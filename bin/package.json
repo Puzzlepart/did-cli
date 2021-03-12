@@ -1,6 +1,6 @@
 {
     "name": "did-cli",
-    "version": "0.0.45",
+    "version": "0.0.46",
     "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
     "main": "bin/index.js",
     "scripts": {
@@ -8,7 +8,7 @@
         "watch:ts": "npm run copy:package && tsc --watch -p .",
         "new-action": "node ./tasks/new-action.js",
         "prettier": "prettier ./src --write --loglevel silent",
-        "postversion": "git push && git push --tags && npm run build:ts",
+        "postversion": "npm run build:ts && git push && git push --tags",
         "clean": "rimraf ./dist",
         "reinstall": "rimraf ./node_modules && npm install",
         "copy:package": "copyfiles package.json ./src"

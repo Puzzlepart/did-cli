@@ -42,25 +42,21 @@ export default (fields) => {
       message: 'Period ID property',
       choices: [{
         value: null,
-        name: ''
-      }],
-      default: null
+        name: 'Skip'
+      }]
     },
     {
-      type: 'input',
       name: 'week',
       message: 'Week number property',
       when: ({ periodId }) => !periodId
     },
     {
-      type: 'input',
       name: 'month',
       message: 'Month number property',
       when: ({ periodId }) => !periodId
     },
     {
-      type: 'input',
-      name: 'week',
+      name: 'year',
       message: 'Year property',
       when: ({ periodId }) => !periodId
     },
@@ -70,7 +66,7 @@ export default (fields) => {
     }
   ].map((p) => ({
     ...p,
-    type: p.type || 'list',
+    type: 'list',
     default: p.name,
     choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)]
   }))
