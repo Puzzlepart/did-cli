@@ -6,7 +6,7 @@ const sortByBestMatch = (field, fields) => {
         .ratings.sort((a, b) => b.rating - a.rating)
         .map((a) => a.target);
 };
-exports.default = (fields) => {
+exports.default = (fields, args) => {
     return [
         {
             name: '_id',
@@ -64,5 +64,5 @@ exports.default = (fields) => {
             name: 'userId',
             message: 'User ID property'
         }
-    ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)] })));
+    ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)], when: !args[p.name] })));
 };

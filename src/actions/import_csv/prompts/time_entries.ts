@@ -6,7 +6,7 @@ const sortByBestMatch = (field, fields) => {
     .map((a) => a.target)
 }
 
-export default (fields) => {
+export default (fields, args) => {
   return [
     {
       name: '_id',
@@ -68,6 +68,7 @@ export default (fields) => {
     ...p,
     type: 'list',
     default: p.name,
-    choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)]
+    choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)],
+    when: !args[p.name]
   }))
 }

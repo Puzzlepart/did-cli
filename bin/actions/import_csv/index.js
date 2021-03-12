@@ -41,18 +41,18 @@ const log_1 = require("../../utils/log");
 const mapFunc = __importStar(require("./map"));
 const prompts = __importStar(require("./prompts"));
 const _prompts_json_1 = __importDefault(require("./_prompts.json"));
-function action({ path }) {
+function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
-        let path_ = path;
+        let path = args.path;
         if (!path) {
             const prompt = yield inquirer_1.default.prompt({
                 type: 'file-tree-selection',
                 name: 'path',
                 message: 'Select a CSV file'
             });
-            path_ = prompt.path;
+            path = prompt.path;
         }
-        if (!underscore_string_1.default.endsWith(path_, '.csv')) {
+        if (!underscore_string_1.default.endsWith(path, '.csv')) {
             log_1.log('[did-cli]', log_1.yellow.underline('The file needs to be a CSV file.'));
             process.exit(0);
         }
@@ -64,14 +64,15 @@ function action({ path }) {
             log_1.log('--------------------------------------------------------');
             log_1.log('[did-cli] import csv');
             log_1.log('--------------------------------------------------------');
-            const json = yield csvtojson_1.default().fromFile(path_);
+            const json = yield csvtojson_1.default().fromFile(path);
             const { collectionName, importCount } = yield inquirer_1.default.prompt(_prompts_json_1.default);
             log_1.log('--------------------------------------------------------');
             log_1.log('                   Property mappings                    ');
             log_1.log('--------------------------------------------------------');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
-            const fieldMap = yield inquirer_1.default.prompt(prompts[collectionName](fields));
+            let fieldMap = yield inquirer_1.default.prompt(prompts[collectionName](fields, args));
+            fieldMap = Object.assign(Object.assign({}, args), fieldMap);
             const documents = json
                 .splice(0, count)
                 .map(mapFunc[collectionName](fieldMap));

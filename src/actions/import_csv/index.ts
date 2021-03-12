@@ -8,17 +8,17 @@ import * as mapFunc from './map'
 import * as prompts from './prompts'
 import initialPrompts from './_prompts.json'
 
-export async function action({ path }) {
-  let path_ = path
+export async function action(args: Record<string, string>) {
+  let path = args.path
   if (!path) {
     const prompt = await inquirer.prompt({
       type: 'file-tree-selection' as any,
       name: 'path',
       message: 'Select a CSV file'
     })
-    path_ = prompt.path
+    path = prompt.path
   }
-  if (!_.endsWith(path_, '.csv')) {
+  if (!_.endsWith(path, '.csv')) {
     log('[did-cli]', yellow.underline('The file needs to be a CSV file.'))
     process.exit(0)
   }
@@ -30,7 +30,7 @@ export async function action({ path }) {
     log('--------------------------------------------------------')
     log('[did-cli] import csv')
     log('--------------------------------------------------------')
-    const json = await csv().fromFile(path_)
+    const json = await csv().fromFile(path)
     const { collectionName, importCount } = await inquirer.prompt(
       initialPrompts
     )
@@ -39,7 +39,8 @@ export async function action({ path }) {
     log('--------------------------------------------------------')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
-    const fieldMap = await inquirer.prompt(prompts[collectionName](fields))
+    let fieldMap = await inquirer.prompt<Record<string, string>>(prompts[collectionName](fields, args))
+    fieldMap = { ...args, ...fieldMap }
     const documents = json
       .splice(0, count)
       .map(mapFunc[collectionName](fieldMap))
