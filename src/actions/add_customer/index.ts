@@ -1,8 +1,7 @@
 require('dotenv').config()
 import inquirer from 'inquirer'
-import _ from 'underscore'
-import { log, yellow, green } from '../../utils/log'
 import { getClient } from '../../mongo/client'
+import { cyan, green, log, printSeparator, yellow } from '../../utils/log'
 import prompts from './_prompts'
 
 export async function action(args) {
@@ -11,9 +10,7 @@ export async function action(args) {
     process.exit(0)
   }
   try {
-    log('--------------------------------------------------------')
-    log('[did-cli] customer add')
-    log('--------------------------------------------------------')
+    printSeparator('customer add', true, cyan)
     const input: { [key: string]: string } = await inquirer.prompt(
       prompts(args)
     )
@@ -29,11 +26,10 @@ export async function action(args) {
       webLink: null,
       externalSystemURL: null
     })
-    log('[did-cli]', green('Customer succesfully created.'))
+    printSeparator('Customer succesfully created', true, green)
     await client.close(true)
   } catch (error) {
-    console.log(error)
-    log('[did-cli]', yellow.underline('Failed to create customer.'))
+    printSeparator(`Failed to create customer: ${error.message}`, true, yellow)
   }
   process.exit(0)
 }

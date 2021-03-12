@@ -18,8 +18,8 @@ const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_1 = __importDefault(require("underscore"));
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
-const _config_json_1 = __importDefault(require("./_config.json"));
 const questions_1 = __importDefault(require("./questions"));
+const _config_json_1 = __importDefault(require("./_config.json"));
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env['INIT'] !== '1') {
@@ -27,9 +27,7 @@ function action(args) {
             process.exit(0);
         }
         try {
-            log_1.log('--------------------------------------------------------');
-            log_1.log('[did-cli] subscription add');
-            log_1.log('--------------------------------------------------------');
+            log_1.printSeparator('subscription add', true, log_1.cyan);
             const input = yield inquirer_1.default.prompt(questions_1.default(args));
             const { client, db } = yield client_1.getClient();
             const { name, tenantId, forecasting, owner } = Object.assign(Object.assign({}, args), input);
@@ -61,12 +59,11 @@ function action(args) {
                     yield client.db(dbName).collection(coll.name).insertMany(coll.documents);
                 }
             }
-            log_1.log('[did-cli]', log_1.green(`Subscription succesfully created with db ${dbName}.`));
+            log_1.printSeparator(`Subscription succesfully created with db ${dbName}.`, true, log_1.green);
             yield client.close(true);
         }
         catch (error) {
-            console.log(error);
-            log_1.log('[did-cli]', log_1.yellow.underline('Failed to create subscription.'));
+            log_1.printSeparator(`Failed to create subscription.: ${error.message}`, true, log_1.yellow);
         }
         process.exit(0);
     });

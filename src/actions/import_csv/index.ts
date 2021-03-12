@@ -4,7 +4,7 @@ import inquirer from 'inquirer'
 import { omit } from 'underscore'
 import _ from 'underscore.string'
 import { getClient } from '../../mongo/client'
-import { green, log, yellow, cyan } from '../../utils/log'
+import { green, log, yellow, cyan, printSeparator } from '../../utils/log'
 import * as mapFunc from './map'
 import * as prompts from './prompts'
 import initialPrompts from './_prompts.json'
@@ -28,16 +28,12 @@ export async function action(args: Record<string, string>) {
     process.exit(0)
   }
   try {
-    log('----------------------------------------------------------------------------------------------')
-    log(cyan('   [did-cli] import csv                                                                 '))
-    log('----------------------------------------------------------------------------------------------')
+    printSeparator('import csv', true, cyan)
     const json = await csv().fromFile(path)
     const { collectionName, importCount } = await inquirer.prompt(
       initialPrompts
     )
-    log('----------------------------------------------------------------------------------------------')
-    log('   Property mappings                                                                          ')
-    log('----------------------------------------------------------------------------------------------')
+    printSeparator('Property mappings')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
     let fieldMap = await inquirer.prompt<Record<string, string>>(prompts[collectionName](fields, args))
@@ -46,18 +42,12 @@ export async function action(args: Record<string, string>) {
       .splice(0, count)
       .map(mapFunc[collectionName](fieldMap))
     const { db, client } = await getClient()
-    log('----------------------------------------------------------------------------------------------')
-    log(`   Importing ${documents.length} items                                                        `)
-    log('----------------------------------------------------------------------------------------------')
+    printSeparator(`Importing ${documents.length} items`)
     await db.collection(collectionName).insertMany(documents)
-    log('----------------------------------------------------------------------------------------------')
-    log(green(`   [did-cli] Succesfully imported ${documents.length} documents to collection ${collectionName}.        `))
-    log('----------------------------------------------------------------------------------------------')
+    printSeparator(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`, true, green)
     await client.close(true)
   } catch (error) {
-    log('----------------------------------------------------------------------------------------------')
-    log(yellow(`   [did-cli] Failed to import from CSV: ${error.message}                              `))
-    log('----------------------------------------------------------------------------------------------')
+    printSeparator(`Failed to import from CSV: ${error.message}`, true, yellow)
   } finally {
     process.exit(0)
   }

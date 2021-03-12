@@ -22,9 +22,7 @@ const _prompts_1 = __importDefault(require("./_prompts"));
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            log_1.log('--------------------------------------------------------');
-            log_1.log('[did-cli] subscription remove');
-            log_1.log('--------------------------------------------------------');
+            log_1.printSeparator('subscription remove', true, log_1.cyan);
             const { client, db } = yield client_1.getClient();
             const collection = db.collection('subscriptions');
             const subscriptions = yield collection.find({}).toArray();
@@ -35,12 +33,12 @@ function action() {
                 if (input.dropDatabase) {
                     yield client.db(subscription.db).dropDatabase();
                 }
-                log_1.log('[did-cli]', log_1.green(`Subscription succesfully deleted.`));
+                log_1.printSeparator('Subscription succesfully deleted.', true, log_1.green);
             }
             yield client.close();
         }
         catch (error) {
-            log_1.log('[did-cli]', log_1.yellow.underline('Failed to delete subscription.'));
+            log_1.printSeparator(`Failed to delete subscription: ${error.message}`, true, log_1.yellow);
         }
         process.exit(0);
     });

@@ -62,14 +62,10 @@ function action(args) {
             process.exit(0);
         }
         try {
-            log_1.log('----------------------------------------------------------------------------------------------');
-            log_1.log(log_1.cyan('   [did-cli] import csv                                                                 '));
-            log_1.log('----------------------------------------------------------------------------------------------');
+            log_1.printSeparator('import csv', true, log_1.cyan);
             const json = yield csvtojson_1.default().fromFile(path);
             const { collectionName, importCount } = yield inquirer_1.default.prompt(_prompts_json_1.default);
-            log_1.log('----------------------------------------------------------------------------------------------');
-            log_1.log('   Property mappings                                                                          ');
-            log_1.log('----------------------------------------------------------------------------------------------');
+            log_1.printSeparator('Property mappings');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
             let fieldMap = yield inquirer_1.default.prompt(prompts[collectionName](fields, args));
@@ -78,19 +74,13 @@ function action(args) {
                 .splice(0, count)
                 .map(mapFunc[collectionName](fieldMap));
             const { db, client } = yield client_1.getClient();
-            log_1.log('----------------------------------------------------------------------------------------------');
-            log_1.log(`   Importing ${documents.length} items                                                        `);
-            log_1.log('----------------------------------------------------------------------------------------------');
+            log_1.printSeparator(`Importing ${documents.length} items`);
             yield db.collection(collectionName).insertMany(documents);
-            log_1.log('----------------------------------------------------------------------------------------------');
-            log_1.log(log_1.green(`   [did-cli] Succesfully imported ${documents.length} documents to collection ${collectionName}.        `));
-            log_1.log('----------------------------------------------------------------------------------------------');
+            log_1.printSeparator(`Succesfully imported ${documents.length} documents to collection ${collectionName}.`, true, log_1.green);
             yield client.close(true);
         }
         catch (error) {
-            log_1.log('----------------------------------------------------------------------------------------------');
-            log_1.log(log_1.yellow(`   [did-cli] Failed to import from CSV: ${error.message}                              `));
-            log_1.log('----------------------------------------------------------------------------------------------');
+            log_1.printSeparator(`Failed to import from CSV: ${error.message}`, true, log_1.yellow);
         }
         finally {
             process.exit(0);

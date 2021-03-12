@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
-const log_1 = require("../../utils/log");
 const client_1 = require("../../mongo/client");
+const log_1 = require("../../utils/log");
 const _prompts_1 = __importDefault(require("./_prompts"));
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -25,9 +25,7 @@ function action(args) {
             process.exit(0);
         }
         try {
-            log_1.log('--------------------------------------------------------');
-            log_1.log('[did-cli] customer add');
-            log_1.log('--------------------------------------------------------');
+            log_1.printSeparator('customer add', true, log_1.cyan);
             const input = yield inquirer_1.default.prompt(_prompts_1.default(args));
             const { key, name, description, icon } = Object.assign(Object.assign({}, args), input);
             const { client, db } = yield client_1.getClient();
@@ -41,12 +39,11 @@ function action(args) {
                 webLink: null,
                 externalSystemURL: null
             });
-            log_1.log('[did-cli]', log_1.green('Customer succesfully created.'));
+            log_1.printSeparator('Customer succesfully created', true, log_1.green);
             yield client.close(true);
         }
         catch (error) {
-            console.log(error);
-            log_1.log('[did-cli]', log_1.yellow.underline('Failed to create customer.'));
+            log_1.printSeparator(`Failed to create customer: ${error.message}`, true, log_1.yellow);
         }
         process.exit(0);
     });

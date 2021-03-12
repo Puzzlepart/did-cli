@@ -2,14 +2,12 @@ require('dotenv').config()
 import inquirer from 'inquirer'
 import { find } from 'underscore'
 import { getClient } from '../../mongo/client'
-import { green, log, yellow } from '../../utils/log'
+import { cyan, green, printSeparator, yellow } from '../../utils/log'
 import prompts from './_prompts'
 
 export async function action() {
   try {
-    log('--------------------------------------------------------')
-    log('[did-cli] subscription remove')
-    log('--------------------------------------------------------')
+    printSeparator('subscription remove', true, cyan)
     const { client, db } = await getClient()
     const collection = db.collection('subscriptions')
     const subscriptions = await collection.find({}).toArray()
@@ -23,11 +21,11 @@ export async function action() {
       if (input.dropDatabase) {
         await client.db(subscription.db).dropDatabase()
       }
-      log('[did-cli]', green(`Subscription succesfully deleted.`))
+      printSeparator('Subscription succesfully deleted.', true, green)
     }
     await client.close()
   } catch (error) {
-    log('[did-cli]', yellow.underline('Failed to delete subscription.'))
+    printSeparator(`Failed to delete subscription: ${error.message}`, true, yellow)
   }
   process.exit(0)
 }

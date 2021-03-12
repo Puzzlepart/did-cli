@@ -2,9 +2,9 @@ require('dotenv').config()
 import inquirer from 'inquirer'
 import _ from 'underscore'
 import { getClient } from '../../mongo/client'
-import { green, log, yellow } from '../../utils/log'
-import config from './_config.json'
+import { cyan, green, log, printSeparator, yellow } from '../../utils/log'
 import questions from './questions'
+import config from './_config.json'
 
 export async function action(args) {
   if (process.env['INIT'] !== '1') {
@@ -12,9 +12,7 @@ export async function action(args) {
     process.exit(0)
   }
   try {
-    log('--------------------------------------------------------')
-    log('[did-cli] subscription add')
-    log('--------------------------------------------------------')
+    printSeparator('subscription add', true, cyan)
     const input = await inquirer.prompt(questions(args))
     const { client, db } = await getClient()
     const { name, tenantId, forecasting, owner } = { ...args, ...input } as any
@@ -46,14 +44,10 @@ export async function action(args) {
         await client.db(dbName).collection(coll.name).insertMany(coll.documents)
       }
     }
-    log(
-      '[did-cli]',
-      green(`Subscription succesfully created with db ${dbName}.`)
-    )
+    printSeparator(`Subscription succesfully created with db ${dbName}.`, true, green)
     await client.close(true)
   } catch (error) {
-    console.log(error)
-    log('[did-cli]', yellow.underline('Failed to create subscription.'))
+    printSeparator(`Failed to create subscription.: ${error.message}`, true, yellow)
   }
   process.exit(0)
 }

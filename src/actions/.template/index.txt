@@ -1,5 +1,5 @@
 require('dotenv').config()
-import { log } from '../../utils/log'
+import { printSeparator, cyan } from '../../utils/log'
 
 /**
  * {{name}}
@@ -11,7 +11,5 @@ import { log } from '../../utils/log'
  * @param args - Args
  */
 export async function action() {
-  log('--------------------------------------------------------')
-  log('                   [did-cli] {{name}}                   ')
-  log('--------------------------------------------------------')
+  printSeparator('{{name}}', true, cyan)
 }
