@@ -11,7 +11,7 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
     ...mappedProperties,
     _id,
     tag: _id,
-    createdAt: createdAt || new Date(),
-    updatedAt: createdAt || new Date(),
+    createdAt: new Date(createdAt) || new Date(),
+    updatedAt: new Date(createdAt) || new Date(),
   }
 }

@@ -5,9 +5,10 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
       [key]: item[fieldMap[key]]
     }
   }, {})
+  const { createdAt } = mappedProperties
   return {
     ...mappedProperties,
-    createdAt: mappedProperties.createdAt || new Date(),
-    updatedAt: mappedProperties.createdAt || new Date(),
+    createdAt: new Date(createdAt) || new Date(),
+    updatedAt: new Date(createdAt) || new Date(),
   }
 }

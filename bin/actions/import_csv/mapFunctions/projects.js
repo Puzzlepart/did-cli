@@ -6,5 +6,5 @@ exports.default = (fieldMap) => (item) => {
     }, {});
     const { customerKey, key, createdAt } = mappedProperties;
     const _id = [customerKey, key].join(' ');
-    return Object.assign(Object.assign({}, mappedProperties), { _id, tag: _id, createdAt: createdAt || new Date(), updatedAt: createdAt || new Date() });
+    return Object.assign(Object.assign({}, mappedProperties), { _id, tag: _id, createdAt: new Date(createdAt) || new Date(), updatedAt: new Date(createdAt) || new Date() });
 };
