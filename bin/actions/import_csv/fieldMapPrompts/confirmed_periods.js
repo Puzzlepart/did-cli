@@ -18,7 +18,7 @@ exports.default = (fields) => {
         },
         {
             name: 'createdAt',
-            message: 'Created property'
+            message: 'Created at property'
         },
         {
             name: 'hours',
