@@ -33,6 +33,7 @@ export async function action() {
       choices: async ({ MONGO_DB_CONNECTION_STRING }) => {
         const { client } = await getClient(MONGO_DB_CONNECTION_STRING)
         const { databases } = await client.db().executeDbAdminCommand({ listDatabases: 1 })
+        await client.close(true)
         return databases.map(db => db.name)
       }
     },

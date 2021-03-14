@@ -46,6 +46,7 @@ function action() {
                 choices: ({ MONGO_DB_CONNECTION_STRING }) => __awaiter(this, void 0, void 0, function* () {
                     const { client } = yield client_1.getClient(MONGO_DB_CONNECTION_STRING);
                     const { databases } = yield client.db().executeDbAdminCommand({ listDatabases: 1 });
+                    yield client.close(true);
                     return databases.map(db => db.name);
                 })
             },
