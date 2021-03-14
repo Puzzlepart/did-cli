@@ -39,7 +39,7 @@ const underscore_1 = require("underscore");
 const underscore_string_1 = __importDefault(require("underscore.string"));
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
-const mapFunc = __importStar(require("./map"));
+const mapFunctions = __importStar(require("./mapFunctions"));
 const fieldMapPrompts = __importStar(require("./fieldMapPrompts"));
 const _prompts_json_1 = __importDefault(require("./_prompts.json"));
 function action(args) {
@@ -82,7 +82,7 @@ function action(args) {
             }
             const documents = json
                 .splice(0, count)
-                .map(mapFunc[collectionName](fieldMap, data));
+                .map(mapFunctions[collectionName](fieldMap, data));
             log_1.printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`);
             yield db.collection(collectionName).insertMany(documents);
             log_1.printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, log_1.green);

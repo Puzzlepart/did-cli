@@ -5,7 +5,7 @@ import { omit } from 'underscore'
 import _ from 'underscore.string'
 import { getClient } from '../../mongo/client'
 import { green, log, yellow, cyan, printSeparator } from '../../utils/log'
-import * as mapFunc from './map'
+import * as mapFunctions from './mapFunctions'
 import * as fieldMapPrompts from './fieldMapPrompts'
 import initialPrompts from './_prompts.json'
 
@@ -50,7 +50,7 @@ export async function action(args: Record<string, string>) {
     }
     const documents = json
       .splice(0, count)
-      .map(mapFunc[collectionName](fieldMap, data))
+      .map(mapFunctions[collectionName](fieldMap, data))
     printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`)
     await db.collection(collectionName).insertMany(documents)
     printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, green)
