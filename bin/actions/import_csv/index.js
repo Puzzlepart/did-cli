@@ -69,7 +69,6 @@ function action(args) {
             log_1.printSeparator('Property mappings');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
-            console.log(fieldMapPrompts);
             let fieldMap = yield inquirer_1.default.prompt(fieldMapPrompts[collectionName](fields, args));
             fieldMap = Object.assign(Object.assign({}, underscore_1.omit(args, 'path')), fieldMap);
             const { db, client } = yield client_1.getClient();

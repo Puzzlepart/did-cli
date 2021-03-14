@@ -37,7 +37,6 @@ export async function action(args: Record<string, string>) {
     printSeparator('Property mappings')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
-    console.log(fieldMapPrompts)
     let fieldMap = await inquirer.prompt<Record<string, string>>(fieldMapPrompts[collectionName](fields, args))
     fieldMap = { ...omit(args, 'path'), ...fieldMap }
     const { db, client } = await getClient()
