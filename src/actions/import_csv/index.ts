@@ -6,7 +6,7 @@ import _ from 'underscore.string'
 import { getClient } from '../../mongo/client'
 import { green, log, yellow, cyan, printSeparator } from '../../utils/log'
 import * as mapFunc from './map'
-import * as prompts from './prompts'
+import * as fieldMapPrompts from './fieldMapPrompts'
 import initialPrompts from './_prompts.json'
 
 export async function action(args: Record<string, string>) {
@@ -37,7 +37,8 @@ export async function action(args: Record<string, string>) {
     printSeparator('Property mappings')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
     const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1)
-    let fieldMap = await inquirer.prompt<Record<string, string>>(prompts[collectionName](fields, args))
+    console.log(fieldMapPrompts)
+    let fieldMap = await inquirer.prompt<Record<string, string>>(fieldMapPrompts[collectionName](fields, args))
     fieldMap = { ...omit(args, 'path'), ...fieldMap }
     const { db, client } = await getClient()
     let data: Record<string, any> = {}

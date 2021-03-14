@@ -24,9 +24,19 @@ export async function action(args) {
       owner,
       settings: {
         forecast: {
-          enabled: forecasting
+          enabled: forecasting,
+          notifications: 4
+        },
+        adsync: {
+          enabled: true,
+          properties: [
+            "displayName",
+            "preferredLanguage",
+            "mobilePhone",
+            "surname"
+          ]
         }
-      }
+      },
     }
     await db.collection('subscriptions').insertOne(sub)
     for (let i = 0; i < config.collections.length; i++) {

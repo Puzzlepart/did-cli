@@ -40,7 +40,7 @@ const underscore_string_1 = __importDefault(require("underscore.string"));
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
 const mapFunc = __importStar(require("./map"));
-const prompts = __importStar(require("./prompts"));
+const fieldMapPrompts = __importStar(require("./fieldMapPrompts"));
 const _prompts_json_1 = __importDefault(require("./_prompts.json"));
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -69,7 +69,8 @@ function action(args) {
             log_1.printSeparator('Property mappings');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
-            let fieldMap = yield inquirer_1.default.prompt(prompts[collectionName](fields, args));
+            console.log(fieldMapPrompts);
+            let fieldMap = yield inquirer_1.default.prompt(fieldMapPrompts[collectionName](fields, args));
             fieldMap = Object.assign(Object.assign({}, underscore_1.omit(args, 'path')), fieldMap);
             const { db, client } = yield client_1.getClient();
             let data = {};
