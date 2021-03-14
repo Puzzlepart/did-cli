@@ -24,6 +24,7 @@ const boxen_1 = __importDefault(require("boxen"));
 const utils_1 = require("./utils");
 const log = console.log;
 const package_json_1 = __importDefault(require("./package.json"));
+const client_1 = require("./mongo/client");
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
         log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
@@ -38,10 +39,15 @@ function action() {
                 default: 'mongodb://'
             },
             {
-                type: 'input',
+                type: 'list',
                 name: 'MONGO_DB_DB_NAME',
                 message: 'Mongo DB database',
-                default: 'main'
+                default: 'main',
+                choices: ({ MONGO_DB_CONNECTION_STRING }) => __awaiter(this, void 0, void 0, function* () {
+                    const { client } = yield client_1.getClient(MONGO_DB_CONNECTION_STRING);
+                    const { databases } = yield client.db().executeDbAdminCommand({ listDatabases: 1 });
+                    return databases.map(db => db.name);
+                })
             },
             {
                 type: 'confirm',
@@ -57,6 +63,7 @@ function action() {
             }
         ]);
         yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign({}, env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
+        process.exit(0);
     });
 }
 exports.action = action;

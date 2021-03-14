@@ -1,9 +1,9 @@
 require('dotenv').config()
 import { MongoClient } from 'mongodb'
 
-export const getClient = async () => {
+export const getClient = async (connectionString = process.env['MONGO_DB_CONNECTION_STRING'] as string) => {
   const client = await MongoClient.connect(
-    process.env['MONGO_DB_CONNECTION_STRING'] as string,
+    connectionString,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true

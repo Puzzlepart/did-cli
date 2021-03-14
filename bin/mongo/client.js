@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getClient = void 0;
 require('dotenv').config();
 const mongodb_1 = require("mongodb");
-const getClient = () => __awaiter(void 0, void 0, void 0, function* () {
-    const client = yield mongodb_1.MongoClient.connect(process.env['MONGO_DB_CONNECTION_STRING'], {
+const getClient = (connectionString = process.env['MONGO_DB_CONNECTION_STRING']) => __awaiter(void 0, void 0, void 0, function* () {
+    const client = yield mongodb_1.MongoClient.connect(connectionString, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });

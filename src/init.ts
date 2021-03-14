@@ -9,6 +9,7 @@ import boxen from 'boxen'
 import { jsonToEnv } from './utils'
 const log = console.log
 import packageJson from './package.json'
+import { getClient } from './mongo/client'
 
 export async function action() {
   log(
@@ -25,10 +26,15 @@ export async function action() {
       default: 'mongodb://'
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'MONGO_DB_DB_NAME',
       message: 'Mongo DB database',
-      default: 'main'
+      default: 'main',
+      choices: async ({ MONGO_DB_CONNECTION_STRING }) => {
+        const { client } = await getClient(MONGO_DB_CONNECTION_STRING)
+        const { databases } = await client.db().executeDbAdminCommand({ listDatabases: 1 })
+        return databases.map(db => db.name)
+      }
     },
     {
       type: 'confirm',
@@ -55,4 +61,5 @@ export async function action() {
       )
     )
   )
+  process.exit(0)
 }
