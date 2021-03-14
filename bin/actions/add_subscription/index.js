@@ -19,7 +19,7 @@ const underscore_1 = __importDefault(require("underscore"));
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
 const questions_1 = __importDefault(require("./questions"));
-const _config_json_1 = __importDefault(require("./_config.json"));
+const subscription_setup_config_json_1 = __importDefault(require("./subscription_setup_config.json"));
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env['INIT'] !== '1') {
@@ -55,8 +55,8 @@ function action(args) {
                 },
             };
             yield db.collection('subscriptions').insertOne(sub);
-            for (let i = 0; i < _config_json_1.default.collections.length; i++) {
-                const coll = _config_json_1.default.collections[i];
+            for (let i = 0; i < subscription_setup_config_json_1.default.collections.length; i++) {
+                const coll = subscription_setup_config_json_1.default.collections[i];
                 yield client.db(dbName).createCollection(coll.name);
                 if (coll.indexes) {
                     for (let j = 0; j < coll.indexes.length; j++) {

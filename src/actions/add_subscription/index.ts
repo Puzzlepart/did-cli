@@ -4,7 +4,7 @@ import _ from 'underscore'
 import { getClient } from '../../mongo/client'
 import { cyan, green, log, printSeparator, yellow } from '../../utils/log'
 import questions from './questions'
-import config from './_config.json'
+import subscription_setup_config from './subscription_setup_config.json'
 
 export async function action(args) {
   if (process.env['INIT'] !== '1') {
@@ -40,8 +40,8 @@ export async function action(args) {
       },
     }
     await db.collection('subscriptions').insertOne(sub)
-    for (let i = 0; i < config.collections.length; i++) {
-      const coll = config.collections[i] as any
+    for (let i = 0; i < subscription_setup_config.collections.length; i++) {
+      const coll = subscription_setup_config.collections[i] as any
       await client.db(dbName).createCollection(coll.name)
       if (coll.indexes) {
         for (let j = 0; j < coll.indexes.length; j++) {

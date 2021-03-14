@@ -5,6 +5,10 @@
       "indexes": ["displayName"]
     },
     {
+      "name": "labels",
+      "indexes": []
+    },
+    {
       "name": "roles",
       "documents": [
         {
@@ -76,6 +80,14 @@
     {
       "name": "forecasted_time_entries",
       "indexes": ["week", "month", "year", "userId", "periodId"]
+    },
+    {
+      "name": "confirmed_periods",
+      "indexes": ["week", "month", "year", "userId"]
+    },
+    {
+      "name": "forecasted_periods",
+      "indexes": ["week", "month", "year", "userId"]
     }
   ]
 }
