@@ -13,10 +13,6 @@ exports.default = (fields) => {
             message: 'ID property'
         },
         {
-            name: 'customerKey',
-            message: 'Customer key property'
-        },
-        {
             name: 'key',
             message: 'Key property'
         },
@@ -35,6 +31,10 @@ exports.default = (fields) => {
         {
             name: 'webLink',
             message: 'Web link property'
+        },
+        {
+            name: 'inactive',
+            message: 'Inactive property'
         }
     ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: sortByBestMatch(p.name, fields) })));
 };
