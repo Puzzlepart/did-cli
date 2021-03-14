@@ -9,10 +9,6 @@ const sortByBestMatch = (field, fields) => {
 export default (fields) => {
   return [
     {
-      name: '_id',
-      message: 'ID property'
-    },
-    {
       name: 'createdAt',
       message: 'Created at property'
     },
