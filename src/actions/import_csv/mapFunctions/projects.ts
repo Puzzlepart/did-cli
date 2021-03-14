@@ -5,12 +5,13 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
       [key]: item[fieldMap[key]]
     }
   }, {})
-  const { customerKey, key, createdAt } = mappedProperties
+  const { customerKey, key, createdAt, inactive } = mappedProperties
   const _id = [customerKey, key].join(' ')
   return {
     ...mappedProperties,
     _id,
     tag: _id,
+    inactive: inactive === true,
     createdAt: new Date(createdAt) || new Date(),
     updatedAt: new Date(createdAt) || new Date(),
   }
