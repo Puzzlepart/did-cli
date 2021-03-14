@@ -10,7 +10,7 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
       ...obj,
       [key]: item[fieldMap[key]]
     }
-  }, {}) as any
+  }, {}) 
   let {
     periodId,
     week,

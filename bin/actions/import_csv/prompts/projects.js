@@ -13,6 +13,10 @@ exports.default = (fields) => {
             message: 'ID property'
         },
         {
+            name: 'createdAt',
+            message: 'Created property'
+        },
+        {
             name: 'customerKey',
             message: 'Customer key property'
         },
