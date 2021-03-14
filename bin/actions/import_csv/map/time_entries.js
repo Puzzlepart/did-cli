@@ -8,7 +8,7 @@ exports.default = (fieldMap) => (item) => {
     const mappedProperties = Object.keys(fieldMap).reduce((obj, key) => {
         return Object.assign(Object.assign({}, obj), { [key]: item[fieldMap[key]] });
     }, {});
-    let { periodId, week, month, year, startDate, endDate, duration, userId, } = mappedProperties;
+    let { periodId, week, month, year, startDateTime, endDateTime, duration, userId, } = mappedProperties;
     if (periodId && periodId.split('_').length !== 3) {
         throw errors_1.PeriodIdWrongFormatError;
     }
@@ -18,5 +18,5 @@ exports.default = (fieldMap) => (item) => {
     else {
         periodId = [week, month, year].join('_');
     }
-    return Object.assign(Object.assign({}, mappedProperties), { startDate: new Date(startDate), endDate: new Date(endDate), duration: parseFloat(duration), week: parseInt(week), month: parseInt(month), year: parseInt(year), periodId: generatePeriodId(periodId, userId) });
+    return Object.assign(Object.assign({}, mappedProperties), { startDateTime: new Date(startDateTime), endDateTime: new Date(endDateTime), duration: parseFloat(duration), week: parseInt(week), month: parseInt(month), year: parseInt(year), periodId: generatePeriodId(periodId, userId) });
 };

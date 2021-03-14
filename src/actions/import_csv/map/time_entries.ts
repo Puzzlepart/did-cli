@@ -16,8 +16,8 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
     week,
     month,
     year,
-    startDate,
-    endDate,
+    startDateTime,
+    endDateTime,
     duration,
     userId,
   } = mappedProperties
@@ -31,8 +31,8 @@ export default (fieldMap: Record<string, string>) => (item: Record<string, any>)
   }
   return {
     ...mappedProperties,
-    startDate: new Date(startDate),
-    endDate: new Date(endDate),
+    startDateTime: new Date(startDateTime),
+    endDateTime: new Date(endDateTime),
     duration: parseFloat(duration),
     week: parseInt(week),
     month: parseInt(month),

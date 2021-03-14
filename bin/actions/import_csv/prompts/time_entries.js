@@ -30,12 +30,12 @@ exports.default = (fields, args) => {
             message: 'Duration property'
         },
         {
-            name: 'startDate',
-            message: 'Start date property'
+            name: 'startDateTime',
+            message: 'Start date time property'
         },
         {
-            name: 'endDate',
-            message: 'End date property'
+            name: 'endDateTime',
+            message: 'End date time property'
         },
         {
             name: 'periodId',
