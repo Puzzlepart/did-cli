@@ -19,6 +19,13 @@ exports.cyan = cyan;
 const red = chalk_1.default['red'];
 exports.red = red;
 const white = chalk_1.default['white'];
+/**
+ * Print separator using console.log
+ *
+ * @param text - Text
+ * @param includePrefix - Include prefix
+ * @param color - Color
+ */
 function printSeparator(text, includePrefix = false, color = white) {
     const prefix = includePrefix ? `[${package_json_1.default.name}]` : '';
     log('----------------------------------------------------------------------------------------------');

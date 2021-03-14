@@ -48,7 +48,8 @@ function action(args) {
                             "displayName",
                             "preferredLanguage",
                             "mobilePhone",
-                            "surname"
+                            "surname",
+                            "givenName"
                         ]
                     }
                 },

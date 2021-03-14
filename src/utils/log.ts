@@ -9,6 +9,13 @@ const cyan = chalk['cyan']
 const red = chalk['red']
 const white = chalk['white']
 
+/**
+ * Print separator using console.log
+ * 
+ * @param text - Text
+ * @param includePrefix - Include prefix
+ * @param color - Color
+ */
 function printSeparator(text: string, includePrefix = false, color = white) {
     const prefix = includePrefix ? `[${packageJson.name}]` : ''
     log('----------------------------------------------------------------------------------------------')
