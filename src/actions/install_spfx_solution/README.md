@@ -11,3 +11,5 @@ or
 ```shell
 did-cli spfx install
 ```
+
+![image-20210315153658957](assets/image-20210315153658957.png)
