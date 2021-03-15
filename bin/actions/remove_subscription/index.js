@@ -18,7 +18,7 @@ const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_1 = require("underscore");
 const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
-const _prompts_1 = __importDefault(require("./_prompts"));
+const questions_1 = __importDefault(require("./questions"));
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -26,7 +26,7 @@ function action() {
             const { client, db } = yield client_1.getClient();
             const collection = db.collection('subscriptions');
             const subscriptions = yield collection.find({}).toArray();
-            const input = yield inquirer_1.default.prompt(_prompts_1.default(subscriptions));
+            const input = yield inquirer_1.default.prompt(questions_1.default(subscriptions));
             if (input.confirm) {
                 const subscription = underscore_1.find(subscriptions, (s) => s._id === input.subscriptionId);
                 yield collection.deleteOne({ _id: subscription._id });

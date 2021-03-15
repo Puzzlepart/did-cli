@@ -41,7 +41,7 @@ const client_1 = require("../../mongo/client");
 const log_1 = require("../../utils/log");
 const mapFunctions = __importStar(require("./mapFunctions"));
 const fieldMapPrompts = __importStar(require("./fieldMapPrompts"));
-const _prompts_json_1 = __importDefault(require("./_prompts.json"));
+const questions_json_1 = __importDefault(require("./questions.json"));
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         let path = args.path;
@@ -65,7 +65,7 @@ function action(args) {
             log_1.printSeparator('import csv', true, log_1.cyan);
             const json = yield csvtojson_1.default().fromFile(path);
             log_1.printSeparator(`${json.length} items found in CSV file`);
-            const { collectionName, importCount } = yield inquirer_1.default.prompt(_prompts_json_1.default);
+            const { collectionName, importCount } = yield inquirer_1.default.prompt(questions_json_1.default);
             log_1.printSeparator('Property mappings');
             const count = importCount === 'all' ? json.length : parseInt(importCount);
             const fields = Object.keys(json[0]).filter((f) => f.indexOf('@type') === -1);
