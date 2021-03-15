@@ -18,13 +18,12 @@ exports.default = (args, customers) => [
         type: 'autocomplete',
         name: 'customerKey',
         message: 'Select customer',
-        when: () => !args.customerKey,
         source: (_a, input) => __awaiter(void 0, void 0, void 0, function* () {
             return customers
                 .filter((c) => c.name.toLowerCase().indexOf((input || '').toLowerCase()) !== -1)
-                .map((c) => ({
-                value: c.key,
-                name: c.name
+                .map(({ key: value, name }) => ({
+                value,
+                name
             }));
         }),
     },
