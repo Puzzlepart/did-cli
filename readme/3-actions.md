@@ -15,3 +15,5 @@
 
 
 [[ load:src/actions/upgrade/README.md ]]
+
+[[ load:src/actions/add_project/README.md ]]
