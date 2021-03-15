@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.76-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.78-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -179,7 +179,7 @@ did spfx install --clientId {clientId} --clientSecret {clientSecret} --siteUrl {
 
 ### Upgrade
 
-Upgrade did-cli to the latest version from GitHub main branch.
+Upgrade did-cli to the latest version from GitHub `main` branch.
 
 ```shell
 did upgrade

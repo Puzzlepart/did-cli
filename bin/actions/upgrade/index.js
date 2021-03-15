@@ -33,7 +33,7 @@ function action({ branch }) {
         log_1.printSeparator(`Upgrading did-cli from ${url}`);
         child_process_1.exec(`npm i -g "${url}"`, (error) => {
             if (error) {
-                log_1.printSeparator(`Failed to upgrade did-cli: ${error.message}`, true, log_1.yellow);
+                log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
                 process.exit(0);
             }
             child_process_1.exec(`did-cli --version`, (_error, version) => {

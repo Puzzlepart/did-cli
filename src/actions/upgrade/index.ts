@@ -19,7 +19,7 @@ export async function action({ branch }) {
 
   exec(`npm i -g "${url}"`, (error) => {
     if (error) {
-      printSeparator(`Failed to upgrade did-cli: ${error.message}`, true, yellow)
+      printSeparator(`Failed to upgrade ${cyan('did-cli')}: ${error.message}`, true, yellow)
       process.exit(0)
     }
     exec(`did-cli --version`, (_error, version) => {
