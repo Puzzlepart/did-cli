@@ -5,16 +5,15 @@ export default (args: any, customers: any[]) => [
     type: 'autocomplete',
     name: 'customerKey',
     message: 'Select customer',
-    when: () => !args.customerKey,
     source: async (_a: any, input: string) => {
       return customers
         .filter(
           (c) =>
             c.name.toLowerCase().indexOf((input || '').toLowerCase()) !== -1
         )
-        .map((c) => ({
-          value: c.key,
-          name: c.name
+        .map(({ key: value, name }) => ({
+          value,
+          name
         }))
     },
   },
