@@ -37,7 +37,7 @@ function action({ branch, reset }) {
             if (!reset)
                 yield utils_1.execAsync(`did-cli init ${envArgs}`);
             const { stdout } = yield utils_1.execAsync(`did-cli --version`);
-            log_1.printSeparator(`Successfully upgraded did-cli to version ${stdout.trim()}`, true, log_1.green);
+            log_1.printSeparator(`Successfully upgraded ${log_1.cyan('did-cli')} to version ${stdout.trim()}`, true, log_1.green);
         }
         catch (error) {
             log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
