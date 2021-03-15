@@ -1,6 +1,6 @@
 ### Upgrade
 
-Upgrade did-cli to the latest version from GitHub main branch.
+Upgrade did-cli to the latest version from GitHub `main` branch.
 
 ```shell
 did upgrade
