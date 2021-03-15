@@ -1,6 +1,10 @@
 ### spfx install
 
-Install SPFx solution.
+Install SPFx solution. Installs the SPFx solution to the specified tenant.
+
+Requires an old fashioned SharePoint app registration.
+
+See: [How to register a legacy SharePoint application](./sp-app-registration.md)
 
 ```shell
 did spfx install
