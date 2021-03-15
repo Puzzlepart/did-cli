@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.75-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.76-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -28,6 +28,8 @@
 	* [customer add](#customer-add)
 	* [spfx install](#spfx-install)
 		* [With command line arguments](#with-command-line-arguments)
+	* [Upgrade](#upgrade)
+		* [Upgrade from `dev` branch](#upgrade-from-dev-branch)
 * [➤ Why is the `bin` folder commited?](#-why-is-the-bin-folder-commited)
 * [➤ Contributors](#-contributors)
 </details>
@@ -174,6 +176,26 @@ did spfx install --clientId {clientId} --clientSecret {clientSecret} --siteUrl {
 
 
 
+
+### Upgrade
+
+Upgrade did-cli to the latest version from GitHub main branch.
+
+```shell
+did upgrade
+```
+
+or
+
+```shell
+did-cli upgrade
+```
+
+#### Upgrade from `dev` branch
+
+```shell
+did upgrade --branch dev
+```
 
 
 

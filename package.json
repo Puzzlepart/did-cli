@@ -1,8 +1,11 @@
 {
   "name": "did-cli",
-  "version": "0.0.75",
+  "version": "0.0.76",
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
+  "repository": {
+    "url": "https://github.com/Puzzlepart/did-cli"
+  },
   "scripts": {
     "build:ts": "npm run copy:package && tsc -p .",
     "watch:ts": "npm run copy:package && tsc --watch -p .",
@@ -20,7 +23,8 @@
       "subscription remove": "Removes a Did subscription. Deletes the database.",
       "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
       "customer add": "Adds a new customer to Did. You will be prompted for all necessary information.",
-      "spfx install": "Install SPFx solution."
+      "spfx install": "Install SPFx solution.",
+      "upgrade": "Upgrade did-cli to the latest version from GitHub main branch."
     }
   },
   "contributors": [
@@ -47,6 +51,7 @@
     "boxen": "4.0.0",
     "chalk": "2.4.2",
     "csvtojson": "2.0.10",
+    "did-cli": "github:Puzzlepart/did-cli",
     "dotenv": "8.2.0",
     "got": "11.8.2",
     "inquirer": "7.0.0",

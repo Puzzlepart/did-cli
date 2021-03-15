@@ -5,5 +5,6 @@
   "customer.add": "./actions/add_customer",
   "import.csv": "./actions/import_csv",
   "subscription.remove": "./actions/remove_subscription",
-  "spfx.install": "./actions/install_spfx_solution"
+  "spfx.install": "./actions/install_spfx_solution",
+  "upgrade": "./actions/upgrade"
 }
