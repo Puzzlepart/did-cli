@@ -26,6 +26,10 @@ function action() {
             const { client, db } = yield client_1.getClient();
             const collection = db.collection('subscriptions');
             const subscriptions = yield collection.find({}).toArray();
+            if (underscore_1.isEmpty(subscriptions)) {
+                log_1.printSeparator(`No subscriptions found. Are you connected to the correct database?`, true, log_1.yellow);
+                process.exit(0);
+            }
             const input = yield inquirer_1.default.prompt(questions_1.default(subscriptions));
             if (input.confirm) {
                 const subscription = underscore_1.find(subscriptions, (s) => s._id === input.subscriptionId);
@@ -40,7 +44,9 @@ function action() {
         catch (error) {
             log_1.printSeparator(`Failed to delete subscription: ${error.message}`, true, log_1.yellow);
         }
-        process.exit(0);
+        finally {
+            process.exit(0);
+        }
     });
 }
 exports.action = action;
