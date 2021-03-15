@@ -1,12 +1,17 @@
 {
   "name": "did-cli",
-  "version": "0.0.33",
+  "version": "0.0.71",
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "scripts": {
+    "build:ts": "npm run copy:package && tsc -p .",
+    "watch:ts": "npm run copy:package && tsc --watch -p .",
     "new-action": "node ./tasks/new-action.js",
-    "prettier": "prettier ./bin --write --loglevel silent",
-    "postversion": "git push && git push --tags"
+    "prettier": "prettier ./src --write --loglevel silent",
+    "postversion": "npm run build:ts && git add --all && git commit --amend --no-verify && git push && git push --tags",
+    "clean": "rimraf ./dist",
+    "reinstall": "rimraf ./node_modules && npm install",
+    "copy:package": "copyfiles package.json ./src"
   },
   "config": {
     "actions": {
@@ -34,8 +39,7 @@
     "did-cli": "bin/index.js"
   },
   "dependencies": {
-    "@pnp/nodejs": "^2.2.0",
-    "@pnp/sp": "^2.2.0",
+    "@types/yargs": "^16.0.0",
     "boxen": "4.0.0",
     "chalk": "2.4.2",
     "csvtojson": "2.0.10",
@@ -53,9 +57,15 @@
   "devDependencies": {
     "@appnest/readme": "1.2.7",
     "@commitlint/config-conventional": "12.0.1",
+    "@types/chalk": "^2.2.0",
+    "@types/inquirer": "^7.3.1",
+    "@types/mongodb": "^3.6.9",
+    "@types/underscore.string": "^0.0.38",
     "commitlint": "12.0.1",
+    "copyfiles": "2.4.1",
     "husky": "5.1.3",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "typescript": "4.2.3"
   },
   "commitlint": {
     "extends": [

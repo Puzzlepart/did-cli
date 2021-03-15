@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.33-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.71-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -26,7 +26,7 @@
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
-	* [spfx install](#spfx-install)
+* [➤ Why is the `bin` folder commited?](#-why-is-the-bin-folder-commited)
 * [➤ Contributors](#-contributors)
 </details>
 
@@ -123,7 +123,8 @@ or
 did-cli import csv
 ```
 
-![image-20210311092955701](assets/image-20210311092955701.png)
+![image-20210312171806334](assets/image-20210312171806334.png)
+
 
 
 ### customer add
@@ -141,20 +142,12 @@ did-cli customer add
 ![image-20210311093034792](assets/image-20210311093034792.png)
 
 
-### spfx install
 
-Install SPFx solution.
 
-```shell
-did spfx install
-```
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#why-is-the-bin-folder-commited)
 
-or
-
-```shell
-did-cli spfx install
-```
-
+## ➤ Why is the `bin` folder commited?
+This is because we are installing the `cli` through GitHub.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#contributors)

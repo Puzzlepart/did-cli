@@ -10,4 +10,5 @@ or
 did-cli import csv
 ```
 
-![image-20210311092955701](assets/image-20210311092955701.png)
+![image-20210312171806334](assets/image-20210312171806334.png)
+

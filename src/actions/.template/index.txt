@@ -1,0 +1,15 @@
+require('dotenv').config()
+import { printSeparator, cyan } from '../../utils/log'
+
+/**
+ * {{name}}
+ * 
+ * @description {{description}}
+ * 
+ * @remarks A CLI action file must return a function named action
+ * 
+ * @param args - Args
+ */
+export async function action() {
+  printSeparator('{{name}}', true, cyan)
+}

@@ -1,0 +1,85 @@
+{
+    "name": "did-cli",
+    "version": "0.0.71",
+    "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
+    "main": "bin/index.js",
+    "scripts": {
+        "build:ts": "npm run copy:package && tsc -p .",
+        "watch:ts": "npm run copy:package && tsc --watch -p .",
+        "new-action": "node ./tasks/new-action.js",
+        "prettier": "prettier ./src --write --loglevel silent",
+        "postversion": "npm run build:ts && git add --all && git commit --amend --no-verify && git push && git push --tags",
+        "clean": "rimraf ./dist",
+        "reinstall": "rimraf ./node_modules && npm install",
+        "copy:package": "copyfiles package.json ./src"
+    },
+    "config": {
+        "actions": {
+            "open": "Opens the local installation of did in vscode.",
+            "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
+            "subscription remove": "Removes a Did subscription. Deletes the database.",
+            "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
+            "customer add": "Adds a new customer to Did. You will be prompted for all necessary information."
+        }
+    },
+    "contributors": [
+        {
+            "name": "Ole Martin Pettersen",
+            "email": "olemp@puzzlepart.com",
+            "info": [
+                "🔥"
+            ]
+        }
+    ],
+    "keywords": [],
+    "license": "MIT",
+    "bin": {
+        "did": "bin/index.js",
+        "did-cli": "bin/index.js"
+    },
+    "dependencies": {
+        "@types/yargs": "^16.0.0",
+        "boxen": "4.0.0",
+        "chalk": "2.4.2",
+        "csvtojson": "2.0.10",
+        "dotenv": "8.2.0",
+        "got": "11.8.2",
+        "inquirer": "7.0.0",
+        "inquirer-autocomplete-prompt": "1.3.0",
+        "inquirer-file-tree-selection-prompt": "1.0.7",
+        "mongodb": "3.6.4",
+        "string-similarity": "4.0.4",
+        "underscore": "1.12.0",
+        "underscore.string": "3.3.5",
+        "yargs": "17.0.0-candidate.4"
+    },
+    "devDependencies": {
+        "@appnest/readme": "1.2.7",
+        "@commitlint/config-conventional": "12.0.1",
+        "@types/chalk": "^2.2.0",
+        "@types/inquirer": "^7.3.1",
+        "@types/mongodb": "^3.6.9",
+        "@types/underscore.string": "^0.0.38",
+        "commitlint": "12.0.1",
+        "copyfiles": "2.4.1",
+        "husky": "5.1.3",
+        "prettier": "2.2.1",
+        "typescript": "4.2.3"
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "prettier": {
+        "tabWidth": 2,
+        "singleQuote": true,
+        "semi": false,
+        "arrowParens": "always",
+        "printWidth": 80,
+        "trailingComma": "none",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": true,
+        "jsxSingleQuote": true
+    }
+}

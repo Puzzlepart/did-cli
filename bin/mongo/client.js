@@ -1,18 +1,25 @@
-require('dotenv').config()
-const { MongoClient } = require('mongodb')
-
-const getClient = async () => {
-  const client = await MongoClient.connect(
-    process.env.MONGO_DB_CONNECTION_STRING,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
-  )
-  return {
-    client,
-    db: client.db(process.env.MONGO_DB_DB_NAME)
-  }
-}
-
-module.exports = { getClient }
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getClient = void 0;
+require('dotenv').config();
+const mongodb_1 = require("mongodb");
+const getClient = (connectionString = process.env['MONGO_DB_CONNECTION_STRING']) => __awaiter(void 0, void 0, void 0, function* () {
+    const client = yield mongodb_1.MongoClient.connect(connectionString, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+    return {
+        client,
+        db: client.db(process.env['MONGO_DB_DB_NAME'])
+    };
+});
+exports.getClient = getClient;
