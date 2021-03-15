@@ -8,9 +8,8 @@ import { promisify } from 'util'
 import { getClient } from './mongo/client'
 import packageJson from './package.json'
 import { jsonToEnv } from './utils'
-import { green, printSeparator, yellow } from './utils/log'
+import { green, log, printSeparator, yellow } from './utils/log'
 const writeFile = promisify(fs.writeFile)
-const log = console.log
 
 export async function action(args) {
   log(
