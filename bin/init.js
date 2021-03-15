@@ -15,16 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
 const boxen_1 = __importDefault(require("boxen"));
-const fs_1 = __importDefault(require("fs"));
 const inquirer_1 = __importDefault(require("inquirer"));
 const path_1 = __importDefault(require("path"));
 const underscore_1 = require("underscore");
-const util_1 = require("util");
 const client_1 = require("./mongo/client");
 const package_json_1 = __importDefault(require("./package.json"));
 const utils_1 = require("./utils");
 const log_1 = require("./utils/log");
-const writeFile = util_1.promisify(fs_1.default.writeFile);
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         log_1.log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
@@ -72,7 +69,7 @@ function action(args) {
                 dirOnly: true,
             }
         ]);
-        yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
+        yield utils_1.writeFileAsync(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
         log_1.printSeparator('did-cli sucessfully initialized.', true, log_1.green);
         process.exit(0);
     });

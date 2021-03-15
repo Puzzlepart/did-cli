@@ -1,15 +1,12 @@
 require('dotenv').config()
 import boxen from 'boxen'
-import fs from 'fs'
 import inquirer from 'inquirer'
 import path from 'path'
 import { omit } from 'underscore'
-import { promisify } from 'util'
 import { getClient } from './mongo/client'
 import packageJson from './package.json'
-import { jsonToEnv } from './utils'
+import { jsonToEnv, writeFileAsync } from './utils'
 import { green, log, printSeparator, yellow } from './utils/log'
-const writeFile = promisify(fs.writeFile)
 
 export async function action(args) {
   log(
@@ -58,7 +55,7 @@ export async function action(args) {
       dirOnly: true,
     }
   ])
-  await writeFile(
+  await writeFileAsync(
     path.resolve(__dirname, '.env'),
     jsonToEnv(
       omit(

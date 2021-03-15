@@ -16,6 +16,7 @@ exports.action = void 0;
 require('dotenv').config();
 const child_process_1 = require("child_process");
 const package_json_1 = __importDefault(require("../../package.json"));
+const utils_1 = require("../../utils");
 const log_1 = require("../../utils/log");
 /**
  * Upgrade
@@ -31,13 +32,20 @@ function action({ branch }) {
             url += `#${branch}`;
         }
         log_1.printSeparator(`Upgrading did-cli from ${url}`);
+        const envArgs = yield utils_1.envToArgs();
         child_process_1.exec(`npm i -g "${url}"`, (error) => {
             if (error) {
                 log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
                 process.exit(0);
             }
-            child_process_1.exec(`did-cli --version`, (_error, version) => {
-                log_1.printSeparator(`Successfully upgraded did-cli to version ${version.trim()}`, true, log_1.green);
+            child_process_1.exec(`did-cli init ${envArgs}`, (error) => {
+                if (error) {
+                    log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
+                    process.exit(0);
+                }
+                child_process_1.exec(`did-cli --version`, (_error, version) => {
+                    log_1.printSeparator(`Successfully upgraded did-cli to version ${version.trim()}`, true, log_1.green);
+                });
             });
         });
     });
