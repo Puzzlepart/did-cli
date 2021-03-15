@@ -16,35 +16,53 @@ function createValidKey(key: string, maxLen = 12) {
   return key.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().substring(0, maxLen)
 }
 
-export async function action(args: Record<string, string>) {
+/**
+ * project add
+ * 
+ * @description Adds a new project to Did. You will be prompted for all neccessary information.
+ * 
+ * @param args - Args
+ */
+export async function action(args) {
   if (process.env['INIT'] !== '1') {
     log(yellow.underline('You need to run did init.'))
     process.exit(0)
   }
   try {
-    printSeparator('customer add', true, cyan)
-    const input: { [key: string]: string } = await inquirer.prompt(
-      questions(args)
-    )
+    printSeparator('project add', true, cyan)
     const { client, db } = await getClient()
-    const { key, name, description, icon } = { ...args, ...input } as any
+    const customers = await db.collection('customers').find({}).toArray()
+    const input: Record<string, string> = await inquirer.prompt(
+      questions(args, customers)
+    )
+    const {
+      customerKey,
+      key,
+      name,
+      description,
+      icon
+    } = { ...args, ...input } as any
+    const customerKey_ = createValidKey(customerKey)
     const key_ = createValidKey(key)
-    await db.collection('customers').insertOne({
-      _id: key_,
+    const _id = [customerKey_, key_].join(' ')
+    await db.collection('projects').insertOne({
+      _id,
       key: key_,
+      tag: _id,
+      customerKey: customerKey_,
+      name,
       description,
       icon,
-      name,
       webLink: null,
       externalSystemURL: null,
       inactive: false,
       createdAt: new Date(),
       updatedAt: new Date()
     })
-    printSeparator('Customer succesfully created', true, green)
+    printSeparator(`Project ${_id} succesfully created`, true, green)
     await client.close(true)
   } catch (error) {
-    printSeparator(`Failed to create customer: ${error.message}`, true, yellow)
+    printSeparator(`Failed to create project: ${error.message}`, true, yellow)
   } finally {
     process.exit(0)
   }

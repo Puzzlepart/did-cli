@@ -1,5 +1,7 @@
 ### customer add
 
+Adds a new customer to Did. You will be prompted for all neccessary information.
+
 ```shell
 did customer add
 ```

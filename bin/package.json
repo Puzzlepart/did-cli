@@ -1,6 +1,6 @@
 {
     "name": "did-cli",
-    "version": "0.0.82",
+    "version": "0.0.84",
     "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
     "main": "bin/index.js",
     "repository": {
@@ -22,7 +22,8 @@
             "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
             "subscription remove": "Removes a Did subscription. Deletes the database.",
             "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
-            "customer add": "Adds a new customer to Did. You will be prompted for all necessary information.",
+            "customer add": "Adds a new customer to Did. You will be prompted for all neccessary information.",
+            "project add": "Adds a new project to Did. You will be prompted for all neccessary information.",
             "spfx install": "Install SPFx solution.",
             "upgrade": "Upgrade did-cli to the latest version from GitHub main branch."
         }
