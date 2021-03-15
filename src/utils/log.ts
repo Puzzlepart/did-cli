@@ -17,9 +17,9 @@ const white = chalk['white']
  * @param color - Color
  */
 function printSeparator(text: string, includePrefix = false, color = white) {
-    const prefix = includePrefix ? `[${packageJson.name}]` : ''
+    const prefix = includePrefix ? `[${packageJson.name}] ` : ''
     log('----------------------------------------------------------------------------------------------')
-    log(color(`   ${prefix} ${text}                                                               `))
+    log(color(`   ${prefix}${text}                                                               `))
     log('----------------------------------------------------------------------------------------------')
 }
 

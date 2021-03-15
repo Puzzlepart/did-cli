@@ -27,9 +27,9 @@ const white = chalk_1.default['white'];
  * @param color - Color
  */
 function printSeparator(text, includePrefix = false, color = white) {
-    const prefix = includePrefix ? `[${package_json_1.default.name}]` : '';
+    const prefix = includePrefix ? `[${package_json_1.default.name}] ` : '';
     log('----------------------------------------------------------------------------------------------');
-    log(color(`   ${prefix} ${text}                                                               `));
+    log(color(`   ${prefix}${text}                                                               `));
     log('----------------------------------------------------------------------------------------------');
 }
 exports.printSeparator = printSeparator;
