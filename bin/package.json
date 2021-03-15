@@ -1,6 +1,6 @@
 {
     "name": "did-cli",
-    "version": "0.0.71",
+    "version": "0.0.74",
     "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
     "main": "bin/index.js",
     "scripts": {
@@ -19,7 +19,8 @@
             "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
             "subscription remove": "Removes a Did subscription. Deletes the database.",
             "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
-            "customer add": "Adds a new customer to Did. You will be prompted for all necessary information."
+            "customer add": "Adds a new customer to Did. You will be prompted for all necessary information.",
+            "spfx install": "Install SPFx solution."
         }
     },
     "contributors": [
@@ -38,6 +39,10 @@
         "did-cli": "bin/index.js"
     },
     "dependencies": {
+        "@pnp/nodejs": "^2.3.0",
+        "@pnp/nodejs-commonjs": "2.3.0",
+        "@pnp/sp": "^2.3.0",
+        "@pnp/sp-commonjs": "2.3.0",
         "@types/yargs": "^16.0.0",
         "boxen": "4.0.0",
         "chalk": "2.4.2",
