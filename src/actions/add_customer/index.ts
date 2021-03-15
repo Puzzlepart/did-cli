@@ -2,7 +2,7 @@ require('dotenv').config()
 import inquirer from 'inquirer'
 import { getClient } from '../../mongo/client'
 import { cyan, green, log, printSeparator, yellow } from '../../utils/log'
-import prompts from './_prompts'
+import questions from './questions'
 
 export async function action(args) {
   if (process.env['INIT'] !== '1') {
@@ -12,7 +12,7 @@ export async function action(args) {
   try {
     printSeparator('customer add', true, cyan)
     const input: { [key: string]: string } = await inquirer.prompt(
-      prompts(args)
+      questions(args)
     )
     const { key, name, description, icon } = { ...args, ...input } as any
     const { client, db } = await getClient()

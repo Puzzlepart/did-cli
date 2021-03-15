@@ -3,7 +3,7 @@ import inquirer from 'inquirer'
 import { find } from 'underscore'
 import { getClient } from '../../mongo/client'
 import { cyan, green, printSeparator, yellow } from '../../utils/log'
-import prompts from './_prompts'
+import questions from './questions'
 
 export async function action() {
   try {
@@ -11,7 +11,7 @@ export async function action() {
     const { client, db } = await getClient()
     const collection = db.collection('subscriptions')
     const subscriptions = await collection.find({}).toArray()
-    const input = await inquirer.prompt<any>(prompts(subscriptions))
+    const input = await inquirer.prompt<any>(questions(subscriptions))
     if (input.confirm) {
       const subscription = find(
         subscriptions,

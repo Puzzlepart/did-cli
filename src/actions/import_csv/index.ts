@@ -7,7 +7,7 @@ import { getClient } from '../../mongo/client'
 import { green, log, yellow, cyan, printSeparator } from '../../utils/log'
 import * as mapFunctions from './mapFunctions'
 import * as fieldMapPrompts from './fieldMapPrompts'
-import initialPrompts from './_prompts.json'
+import initialQs from './questions.json'
 
 export async function action(args: Record<string, string>) {
   let path = args.path
@@ -32,7 +32,7 @@ export async function action(args: Record<string, string>) {
     const json = await csv().fromFile(path)
     printSeparator(`${json.length} items found in CSV file`)
     const { collectionName, importCount } = await inquirer.prompt(
-      initialPrompts
+      initialQs
     )
     printSeparator('Property mappings')
     const count = importCount === 'all' ? json.length : parseInt(importCount)
