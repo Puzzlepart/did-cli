@@ -17,3 +17,10 @@ did-cli upgrade
 ```shell
 did upgrade --branch dev
 ```
+
+#### Reset environment
+To reset environment when upgrading, use argument `---reset`. The default behavior is to keep the environment that was set running `did init`.
+
+```shell
+did upgrade --reset
+```

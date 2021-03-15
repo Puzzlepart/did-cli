@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.90-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.91-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -31,6 +31,7 @@
 		* [With command line arguments](#with-command-line-arguments)
 	* [Upgrade](#upgrade)
 		* [Upgrade from `dev` branch](#upgrade-from-dev-branch)
+		* [Reset environment](#reset-environment)
 * [➤ Why is the `bin` folder commited?](#-why-is-the-bin-folder-commited)
 * [➤ Contributors](#-contributors)
 </details>
@@ -212,6 +213,13 @@ did-cli upgrade
 
 ```shell
 did upgrade --branch dev
+```
+
+#### Reset environment
+To reset environment when upgrading, use argument `---reset`. The default behavior is to keep the environment that was set running `did init`.
+
+```shell
+did upgrade --reset
 ```
 
 
