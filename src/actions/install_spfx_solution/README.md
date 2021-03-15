@@ -16,4 +16,13 @@ or
 did-cli spfx install
 ```
 
-![image-20210315153658957](assets/image-20210315153658957.png)
+_You'll be prompted for all neccessary inputs._
+
+#### With command line arguments
+
+```shell
+did spfx install --clientId {clientId} --clientSecret {clientSecret} --siteUrl {siteUrl} --githubToken {githubToken} --didApiKey {didApiKey}
+```
+
+![image-20210315153658957](assets/image-20210315153658957.png "Image can not be viewed from here.")
+
