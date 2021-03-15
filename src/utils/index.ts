@@ -1,10 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
-
+import { exec } from 'child_process'
 
 export const writeFileAsync = promisify(fs.writeFile)
 export const readFileAsync = promisify(fs.readFile)
+export const execAsync = promisify(exec)
 
 /**
  * Converts JSON to .env

@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
-const child_process_1 = require("child_process");
 const package_json_1 = __importDefault(require("../../package.json"));
 const utils_1 = require("../../utils");
 const log_1 = require("../../utils/log");
@@ -23,7 +22,7 @@ const log_1 = require("../../utils/log");
  *
  * @description Upgrade did-cli
  */
-function action({ branch }) {
+function action({ branch, reset }) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         log_1.printSeparator('Upgrading did-cli', true, log_1.cyan);
@@ -33,21 +32,19 @@ function action({ branch }) {
         }
         log_1.printSeparator(`Upgrading did-cli from ${url}`);
         const envArgs = yield utils_1.envToArgs();
-        child_process_1.exec(`npm i -g "${url}"`, (error) => {
-            if (error) {
-                log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
-                process.exit(0);
-            }
-            child_process_1.exec(`did-cli init ${envArgs}`, (error) => {
-                if (error) {
-                    log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
-                    process.exit(0);
-                }
-                child_process_1.exec(`did-cli --version`, (_error, version) => {
-                    log_1.printSeparator(`Successfully upgraded did-cli to version ${version.trim()}`, true, log_1.green);
-                });
-            });
-        });
+        try {
+            yield utils_1.execAsync(`npm i -g "${url}"`);
+            if (!reset)
+                yield utils_1.execAsync(`did-cli init ${envArgs}`);
+            const { stdout } = yield utils_1.execAsync(`did-cli --version`);
+            log_1.printSeparator(`Successfully upgraded did-cli to version ${stdout.trim()}`, true, log_1.green);
+        }
+        catch (error) {
+            log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
+        }
+        finally {
+            process.exit(0);
+        }
     });
 }
 exports.action = action;

@@ -1,7 +1,6 @@
 require('dotenv').config()
-import { exec } from 'child_process'
 import packageJson from '../../package.json'
-import { envToArgs } from '../../utils'
+import { envToArgs, execAsync } from '../../utils'
 import { cyan, green, printSeparator, yellow } from '../../utils/log'
 
 /**
@@ -9,7 +8,7 @@ import { cyan, green, printSeparator, yellow } from '../../utils/log'
  * 
  * @description Upgrade did-cli
  */
-export async function action({ branch }) {
+export async function action({ branch, reset }) {
   printSeparator('Upgrading did-cli', true, cyan)
   let url = packageJson?.repository?.url
   if (branch) {
@@ -19,21 +18,15 @@ export async function action({ branch }) {
   printSeparator(`Upgrading did-cli from ${url}`)
 
   const envArgs = await envToArgs()
-
-  exec(`npm i -g "${url}"`, (error) => {
-    if (error) {
-      printSeparator(`Failed to upgrade ${cyan('did-cli')}: ${error.message}`, true, yellow)
-      process.exit(0)
-    }
-
-    exec(`did-cli init ${envArgs}`, (error) => {
-      if (error) {
-        printSeparator(`Failed to upgrade ${cyan('did-cli')}: ${error.message}`, true, yellow)
-        process.exit(0)
-      }
-      exec(`did-cli --version`, (_error, version) => {
-        printSeparator(`Successfully upgraded did-cli to version ${version.trim()}`, true, green)
-      })
-    })
-  })
+  
+  try {
+    await execAsync(`npm i -g "${url}"`)
+    if (!reset) await execAsync(`did-cli init ${envArgs}`)
+    const { stdout } = await execAsync(`did-cli --version`)
+    printSeparator(`Successfully upgraded did-cli to version ${stdout.trim()}`, true, green)
+  } catch (error) {
+    printSeparator(`Failed to upgrade ${cyan('did-cli')}: ${error.message}`, true, yellow)
+  } finally {
+    process.exit(0)
+  }
 }

@@ -12,12 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.envToArgs = exports.envToJson = exports.jsonToEnv = exports.readFileAsync = exports.writeFileAsync = void 0;
+exports.envToArgs = exports.envToJson = exports.jsonToEnv = exports.execAsync = exports.readFileAsync = exports.writeFileAsync = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const util_1 = require("util");
+const child_process_1 = require("child_process");
 exports.writeFileAsync = util_1.promisify(fs_1.default.writeFile);
 exports.readFileAsync = util_1.promisify(fs_1.default.readFile);
+exports.execAsync = util_1.promisify(child_process_1.exec);
 /**
  * Converts JSON to .env
  *
