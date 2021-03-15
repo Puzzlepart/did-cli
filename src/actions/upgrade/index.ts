@@ -15,7 +15,7 @@ export async function action({ branch, reset }) {
     url += `#${branch}`
   }
 
-  printSeparator(`Upgrading did-cli from ${url}`)
+  printSeparator(`Upgrading ${cyan('did-cli')} from ${url}`)
 
   const envArgs = await envToArgs()
   
