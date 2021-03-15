@@ -1,11 +1,16 @@
 {
     "name": "did-cli",
-    "version": "0.0.89",
+    "version": "0.0.90",
     "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
     "main": "bin/index.js",
     "repository": {
         "url": "https://github.com/Puzzlepart/did-cli"
     },
+    "env": [
+        "MONGO_DB_CONNECTION_STRING",
+        "MONGO_DB_DB_NAME",
+        "DID_LOCAL_PATH"
+    ],
     "scripts": {
         "build:ts": "npm run copy:package && tsc -p .",
         "watch:ts": "npm run copy:package && tsc --watch -p .",

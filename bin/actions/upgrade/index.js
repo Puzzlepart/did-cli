@@ -31,7 +31,7 @@ function action({ branch, reset }) {
             url += `#${branch}`;
         }
         log_1.printSeparator(`Upgrading ${log_1.cyan('did-cli')} from ${url}`);
-        const envArgs = yield utils_1.envToArgs();
+        const envArgs = utils_1.envToArgs();
         try {
             yield utils_1.execAsync(`npm i -g "${url}"`);
             if (!reset)

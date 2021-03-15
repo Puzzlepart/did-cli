@@ -17,8 +17,8 @@ export async function action({ branch, reset }) {
 
   printSeparator(`Upgrading ${cyan('did-cli')} from ${url}`)
 
-  const envArgs = await envToArgs()
-  
+  const envArgs = envToArgs()
+
   try {
     await execAsync(`npm i -g "${url}"`)
     if (!reset) await execAsync(`did-cli init ${envArgs}`)

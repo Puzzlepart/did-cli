@@ -1,7 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-import { promisify } from 'util'
 import { exec } from 'child_process'
+import fs from 'fs'
+import { pick } from 'underscore'
+import { promisify } from 'util'
+import packageJson from '../package.json'
 
 export const writeFileAsync = promisify(fs.writeFile)
 export const readFileAsync = promisify(fs.readFile)
@@ -23,25 +24,17 @@ export function jsonToEnv(json: any) {
 /**
  * Converts .env to JSON
  */
-export async function envToJson() {
-  const content = (await readFileAsync(path.resolve(__dirname, '../.env'))).toString().split('\n')
-  return content.reduce((obj, str) => {
-    const [key, value] = str.split('=')
-    return {
-      ...obj,
-      [key]: value
-    }
-  }, {})
+export function envToJson(): Record<string, string> {
+  return pick({ ...process.env }, packageJson.env) as Record<string, string>
 }
 
 
 /**
  * Converts .env to arguments string
  */
-export async function envToArgs() {
-  const content = (await readFileAsync(path.resolve(__dirname, '../.env'))).toString().split('\n')
-  return content.reduce((str_, str) => {
-    const [key, value] = str.split('=')
-    return str_ + ` --${key}=${value}`
+export function envToArgs(): string {
+  return packageJson.env.reduce((str_, key) => {
+    const value = process.env[key]
+    return str_ + ` --${key}="${value}"`
   }, '')
 }
