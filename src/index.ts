@@ -5,7 +5,7 @@ import { omit } from 'underscore'
 import yargs from 'yargs'
 import actionsMap from './actions.map.json'
 import packageJson from './package.json'
-import { cyan, log, red, yellow } from './utils/log'
+import { cyan, printSeparator, yellow } from './utils/log'
 
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'))
 inquirer.registerPrompt(
@@ -36,5 +36,5 @@ const action = args._.join('.')
 if (actionsMap[action]) {
   require(actionsMap[action]).action(omit(args, '$0', '_'))
 } else {
-  log('[did-cli]', red.bold(`Unknown action ${args._.join(' ')}.`))
+  printSeparator(`Unknown action. Did you mean to run ${cyan('did init')}?`, true, yellow)
 }

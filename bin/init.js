@@ -25,7 +25,8 @@ const utils_1 = require("./utils");
 const log = console.log;
 const package_json_1 = __importDefault(require("./package.json"));
 const client_1 = require("./mongo/client");
-function action() {
+const log_1 = require("./utils/log");
+function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
             padding: 1,
@@ -36,7 +37,8 @@ function action() {
                 type: 'input',
                 name: 'MONGO_DB_CONNECTION_STRING',
                 message: 'Mongo DB connection string',
-                default: 'mongodb://'
+                default: 'mongodb://',
+                when: !args.MONGO_DB_CONNECTION_STRING
             },
             {
                 type: 'list',
@@ -44,26 +46,34 @@ function action() {
                 message: 'Mongo DB database',
                 default: 'main',
                 choices: ({ MONGO_DB_CONNECTION_STRING }) => __awaiter(this, void 0, void 0, function* () {
-                    const { client } = yield client_1.getClient(MONGO_DB_CONNECTION_STRING);
-                    const { databases } = yield client.db().executeDbAdminCommand({ listDatabases: 1 });
-                    yield client.close(true);
-                    return databases.map(db => db.name);
-                })
+                    try {
+                        const { client } = yield client_1.getClient(MONGO_DB_CONNECTION_STRING || args.MONGO_DB_CONNECTION_STRING);
+                        const { databases } = yield client.db().executeDbAdminCommand({ listDatabases: 1 });
+                        yield client.close(true);
+                        return databases.map(db => db.name);
+                    }
+                    catch (error) {
+                        log_1.printSeparator(error.message, false, log_1.yellow);
+                        process.exit(0);
+                    }
+                }),
+                when: !args.MONGO_DB_DB_NAME
             },
             {
                 type: 'confirm',
                 name: 'DID_INSTALLED_LOCALLY',
-                message: 'Do you have did installed locally?'
+                message: 'Do you have did installed locally?',
+                when: !args.DID_LOCAL_PATH
             },
             {
                 type: 'file-tree-selection',
                 name: 'DID_LOCAL_PATH',
-                message: '...where is it?',
-                when: ({ DID_INSTALLED_LOCALLY }) => DID_INSTALLED_LOCALLY,
-                dirOnly: true
+                message: '...where is did installed?',
+                when: ({ DID_INSTALLED_LOCALLY }) => DID_INSTALLED_LOCALLY && !args.DID_LOCAL_PATH,
+                dirOnly: true,
             }
         ]);
-        yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign({}, env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
+        yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
         process.exit(0);
     });
 }

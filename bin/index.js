@@ -33,5 +33,5 @@ if (actions_map_json_1.default[action]) {
     require(actions_map_json_1.default[action]).action(underscore_1.omit(args, '$0', '_'));
 }
 else {
-    log_1.log('[did-cli]', log_1.red.bold(`Unknown action ${args._.join(' ')}.`));
+    log_1.printSeparator(`Unknown action. Did you mean to run ${log_1.cyan('did init')}?`, true, log_1.yellow);
 }
