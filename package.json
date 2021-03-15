@@ -39,6 +39,10 @@
     "did-cli": "bin/index.js"
   },
   "dependencies": {
+    "@pnp/nodejs": "^2.3.0",
+    "@pnp/nodejs-commonjs": "2.3.0",
+    "@pnp/sp": "^2.3.0",
+    "@pnp/sp-commonjs": "2.3.0",
     "@types/yargs": "^16.0.0",
     "boxen": "4.0.0",
     "chalk": "2.4.2",
