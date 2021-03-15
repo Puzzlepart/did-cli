@@ -13,8 +13,13 @@ export async function action(args) {
   }
   try {
     printSeparator('subscription add', true, cyan)
-    const input = await inquirer.prompt(questions(args))
     const { client, db } = await getClient()
+    const [subscriptions] = await db.listCollections({ name: 'subscriptions' }).toArray()
+    if (!subscriptions) {
+      printSeparator(`Subscriptions collection not found. Are you connected to the correct database?`, true, yellow)
+      process.exit(0)
+    }
+    const input = await inquirer.prompt(questions(args))
     const { name, tenantId, forecasting, owner } = { ...args, ...input } as any
     const dbName = _.last(tenantId.split('-'))
     const sub = {

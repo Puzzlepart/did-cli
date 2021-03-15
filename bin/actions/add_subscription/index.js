@@ -28,8 +28,13 @@ function action(args) {
         }
         try {
             log_1.printSeparator('subscription add', true, log_1.cyan);
-            const input = yield inquirer_1.default.prompt(questions_1.default(args));
             const { client, db } = yield client_1.getClient();
+            const [subscriptions] = yield db.listCollections({ name: 'subscriptions' }).toArray();
+            if (!subscriptions) {
+                log_1.printSeparator(`Subscriptions collection not found. Are you connected to the correct database?`, true, log_1.yellow);
+                process.exit(0);
+            }
+            const input = yield inquirer_1.default.prompt(questions_1.default(args));
             const { name, tenantId, forecasting, owner } = Object.assign(Object.assign({}, args), input);
             const dbName = underscore_1.default.last(tenantId.split('-'));
             const sub = {
