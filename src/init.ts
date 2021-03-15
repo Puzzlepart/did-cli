@@ -1,16 +1,16 @@
 require('dotenv').config()
-import inquirer from 'inquirer'
+import boxen from 'boxen'
 import fs from 'fs'
+import inquirer from 'inquirer'
 import path from 'path'
 import { omit } from 'underscore'
 import { promisify } from 'util'
-const writeFile = promisify(fs.writeFile)
-import boxen from 'boxen'
-import { jsonToEnv } from './utils'
-const log = console.log
-import packageJson from './package.json'
 import { getClient } from './mongo/client'
-import { printSeparator, yellow } from './utils/log'
+import packageJson from './package.json'
+import { jsonToEnv } from './utils'
+import { green, printSeparator, yellow } from './utils/log'
+const writeFile = promisify(fs.writeFile)
+const log = console.log
 
 export async function action(args) {
   log(
@@ -72,5 +72,6 @@ export async function action(args) {
       )
     )
   )
+  printSeparator('did-cli sucessfully initialized.', true, green)
   process.exit(0)
 }
