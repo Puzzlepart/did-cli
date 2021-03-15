@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.82-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.83-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -26,6 +26,7 @@
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
 	* [customer add](#customer-add)
+	* [project add](#project-add)
 	* [spfx install](#spfx-install)
 		* [With command line arguments](#with-command-line-arguments)
 	* [Upgrade](#upgrade)
@@ -133,6 +134,8 @@ did-cli import csv
 
 ### customer add
 
+Adds a new customer to Did. You will be prompted for all neccessary information.
+
 ```shell
 did customer add
 ```
@@ -144,6 +147,21 @@ did-cli customer add
 ```
 
 ![image-20210311093034792](assets/image-20210311093034792.png)
+
+
+### project add
+
+Adds a new project to Did. You will be prompted for all neccessary information.
+
+```shell
+did project add
+```
+
+or
+
+```shell
+did-cli project add
+```
 
 
 ### spfx install
@@ -173,7 +191,6 @@ did spfx install --clientId {clientId} --clientSecret {clientSecret} --siteUrl {
 ```
 
 ![image-20210315153658957](assets/image-20210315153658957.png "Image can not be viewed from here.")
-
 
 
 
