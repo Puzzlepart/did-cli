@@ -74,7 +74,7 @@ function action(args) {
             }
         ]);
         yield writeFile(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
-        log_1.printSeparator(`did-cli sucessfully initialized.`, true, log_1.green);
+        log_1.printSeparator('did-cli sucessfully initialized.', true, log_1.green);
         process.exit(0);
     });
 }
