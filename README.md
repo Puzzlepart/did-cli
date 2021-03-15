@@ -144,6 +144,7 @@ did-cli customer add
 
 
 
+
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#why-is-the-bin-folder-commited)
 
 ## ➤ Why is the `bin` folder commited?

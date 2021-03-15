@@ -16,7 +16,7 @@ const setup = (clientId, clientSecret) =>
     }
   })
 
-const install_spfx_solution = async () => {
+export async function action() {
   log('--------------------------------------------------------')
   log('[did-cli] spfx install')
   log('--------------------------------------------------------')
