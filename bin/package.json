@@ -1,6 +1,6 @@
 {
     "name": "did-cli",
-    "version": "0.0.91",
+    "version": "0.0.94",
     "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
     "main": "bin/index.js",
     "repository": {
@@ -39,7 +39,14 @@
             "name": "Ole Martin Pettersen",
             "email": "olemp@puzzlepart.com",
             "info": [
-                "🔥"
+                "Main contributor and owner"
+            ]
+        },
+        {
+            "name": "Carl Joakim Damsleth",
+            "email": "carl.joakim.damsleth@puzzlepart.com",
+            "info": [
+                "⭐ Upcoming contribution star ⭐"
             ]
         }
     ],

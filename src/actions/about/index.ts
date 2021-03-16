@@ -1,5 +1,5 @@
 require('dotenv').config()
-import { printSeparator, print, whiteOnBlack,yellow } from '../../utils/log'
+import { print, whiteOnBlack, yellow } from '../../utils/log'
 
 /**
  * about

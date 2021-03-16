@@ -16,10 +16,6 @@ const log_1 = require("../../utils/log");
  * about
  *
  * @description About the did-cli
- *
- * @remarks A CLI action file must return a function named action
- *
- * @param args - Args
  */
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
