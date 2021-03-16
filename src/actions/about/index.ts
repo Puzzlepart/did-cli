@@ -5,10 +5,6 @@ import { printSeparator, print, whiteOnBlack,yellow } from '../../utils/log'
  * about
  * 
  * @description About the did-cli
- * 
- * @remarks A CLI action file must return a function named action
- * 
- * @param args - Args
  */
 export async function action() {
     print(`                                                               
