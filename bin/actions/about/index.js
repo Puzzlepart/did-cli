@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
-const log_1 = require("../../utils/log");
 const package_json_1 = __importDefault(require("../../package.json"));
+const log_1 = require("../../utils/log");
 /**
  * about
  *
@@ -37,10 +37,7 @@ function action() {
     d:::::d     d:::::d  i::::i d:::::d     d:::::d            
     d::::::ddddd::::::d  i::::i d::::::ddddd::::::d            
      d::::::::::::::::d  i::::i d:::::::::::::::::d            
-       dddddddddddddddd  iiiiii   ddddddddddddddddd            
-                                                               
-             The Calendar is Your Timesheet                    
-             adjustments to user admin                                               `, log_1.whiteOnBlack);
+       dddddddddddddddd  iiiiii   ddddddddddddddddd`, log_1.whiteOnBlack);
         const contributors = package_json_1.default.contributors.map(contributor => contributor.username).join(', ');
         log_1.print(`
 did-cli is a set of commands to simplify the process of getting started with did.
