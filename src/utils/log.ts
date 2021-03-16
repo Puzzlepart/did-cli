@@ -8,6 +8,7 @@ const blue = chalk['blue']
 const cyan = chalk['cyan']
 const red = chalk['red']
 const white = chalk['white']
+const whiteOnBlack = chalk.whiteBright.bgBlack
 
 /**
  * Print separator using console.log
@@ -23,4 +24,13 @@ function printSeparator(text: string, includePrefix = false, color = white) {
     log('----------------------------------------------------------------------------------------------')
 }
 
-export { log, yellow, green, blue, cyan, red, printSeparator }
+/**
+ * 
+ * @param text - Text
+ * @param color - Color
+ */
+ function print(text: string, color = white) {
+    log(color(`${text}`))
+}
+
+export { log, yellow, green, blue, cyan, red, whiteOnBlack, printSeparator, print }

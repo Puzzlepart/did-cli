@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.printSeparator = exports.red = exports.cyan = exports.blue = exports.green = exports.yellow = exports.log = void 0;
+exports.print = exports.printSeparator = exports.whiteOnBlack = exports.red = exports.cyan = exports.blue = exports.green = exports.yellow = exports.log = void 0;
 const chalk_1 = __importDefault(require("chalk"));
 const package_json_1 = __importDefault(require("../package.json"));
 const log = console.log;
@@ -19,6 +19,8 @@ exports.cyan = cyan;
 const red = chalk_1.default['red'];
 exports.red = red;
 const white = chalk_1.default['white'];
+const whiteOnBlack = chalk_1.default.whiteBright.bgBlack;
+exports.whiteOnBlack = whiteOnBlack;
 /**
  * Print separator using console.log
  *
@@ -33,3 +35,12 @@ function printSeparator(text, includePrefix = false, color = white) {
     log('----------------------------------------------------------------------------------------------');
 }
 exports.printSeparator = printSeparator;
+/**
+ *
+ * @param text - Text
+ * @param color - Color
+ */
+function print(text, color = white) {
+    log(color(`${text}`));
+}
+exports.print = print;
