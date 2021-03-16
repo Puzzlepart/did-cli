@@ -24,6 +24,10 @@ const usage = Object.keys(actions)
 
 const args = yargs
   .usage(`Usage: ${prefix} <action_name>\n\nAvailable actions:\n\n${usage}`)
+  .options('about', {
+    type: 'boolean',
+    description: 'Show about'
+  })
   .option('path', {
     alias: 'path',
     describe: 'Path to file',
@@ -33,7 +37,9 @@ const args = yargs
 
 const action = args._.join('.')
 
-if (actionsMap[action]) {
+if (args.about) {
+  require('./about').option()
+} else if (actionsMap[action]) {
   require(actionsMap[action]).action(omit(args, '$0', '_'))
 } else {
   printSeparator(`Unknown action. Did you mean to run ${cyan('did init')}?`, true, yellow)

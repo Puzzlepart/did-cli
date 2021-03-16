@@ -22,6 +22,10 @@ const usage = Object.keys(actions)
     .join('\n');
 const args = yargs_1.default
     .usage(`Usage: ${prefix} <action_name>\n\nAvailable actions:\n\n${usage}`)
+    .options('about', {
+    type: 'boolean',
+    description: 'Show about'
+})
     .option('path', {
     alias: 'path',
     describe: 'Path to file',
@@ -29,7 +33,10 @@ const args = yargs_1.default
     demandOption: false
 }).argv;
 const action = args._.join('.');
-if (actions_map_json_1.default[action]) {
+if (args.about) {
+    require('./about').option();
+}
+else if (actions_map_json_1.default[action]) {
     require(actions_map_json_1.default[action]).action(underscore_1.omit(args, '$0', '_'));
 }
 else {

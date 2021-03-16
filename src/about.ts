@@ -1,13 +1,11 @@
 require('dotenv').config()
-import packageJson from '../../package.json'
-import { print, whiteOnBlack, yellow } from '../../utils/log'
+import packageJson from './package.json'
+import { print, whiteOnBlack, yellow } from './utils/log'
 
 /**
  * about
- * 
- * @description About the did-cli
  */
-export async function action() {
+export async function option() {
   print(`                                                               
                 ddddddd                     ddddddd            
                 d:::::d   iiii              d:::::d            

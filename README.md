@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.98-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.99-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -19,7 +19,8 @@
 ## ➤ Table of Contents
 
 * [➤ Installation](#-installation)
-* [➤ Initialize the cli](#-initialize-the-cli)
+* [➤ Getting started](#-getting-started)
+	* [Help](#help)
 * [➤ Actions](#-actions)
 	* [open](#open)
 	* [subscription add](#subscription-add)
@@ -32,7 +33,6 @@
 	* [Upgrade](#upgrade)
 		* [Upgrade from `dev` branch](#upgrade-from-dev-branch)
 		* [Reset environment](#reset-environment)
-	* [about](#about)
 * [➤ Why is the `bin` folder commited?](#-why-is-the-bin-folder-commited)
 * [➤ Contributors](#-contributors)
 </details>
@@ -50,9 +50,9 @@ npm i -g "https://github.com/Puzzlepart/did-cli"
 ```
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#initialize-the-cli)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#getting-started)
 
-## ➤ Initialize the cli
+## ➤ Getting started
 To start using the `cli`, you need to set it up.
 
 Run
@@ -61,9 +61,14 @@ Run
 did init
 ```
 
+### Help
+For help and list of available actions.
 
+Run
 
-
+```shell
+did --help
+```
 
 
 
@@ -222,21 +227,6 @@ To reset environment when upgrading, use argument `---reset`. The default behavi
 ```shell
 did upgrade --reset
 ```
-
-### about
-
-About the did-cli
-
-```shell
-did about
-```
-
-or
-
-```shell
-did-cli about
-```
-
 
 
 
