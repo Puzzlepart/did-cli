@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.92-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.95-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -32,6 +32,7 @@
 	* [Upgrade](#upgrade)
 		* [Upgrade from `dev` branch](#upgrade-from-dev-branch)
 		* [Reset environment](#reset-environment)
+	* [about](#about)
 * [➤ Why is the `bin` folder commited?](#-why-is-the-bin-folder-commited)
 * [➤ Contributors](#-contributors)
 </details>
@@ -222,6 +223,21 @@ To reset environment when upgrading, use argument `---reset`. The default behavi
 did upgrade --reset
 ```
 
+### about
+
+About the did-cli
+
+```shell
+did about
+```
+
+or
+
+```shell
+did-cli about
+```
+
+
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#why-is-the-bin-folder-commited)
@@ -235,7 +251,7 @@ This is because we are installing the `cli` through GitHub.
 ## ➤ Contributors
 	
 
-| [Ole Martin Pettersen](undefined)                |
-|:--------------------------------------------------:|
-| [olemp@puzzlepart.com](mailto:olemp@puzzlepart.com) |
-| 🔥                                               |
+| [Ole Martin Pettersen](undefined)                | [Carl Joakim Damsleth](undefined)                |
+|:--------------------------------------------------:|:--------------------------------------------------:|
+| [olemp@puzzlepart.com](mailto:olemp@puzzlepart.com) | [carl.joakim.damsleth@puzzlepart.com](mailto:carl.joakim.damsleth@puzzlepart.com) |
+| Main contributor and owner                       | ⭐ Upcoming contribution star ⭐                   |

@@ -1,6 +1,6 @@
 {
   "name": "did-cli",
-  "version": "0.0.92",
+  "version": "0.0.95",
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "repository": {
@@ -30,7 +30,8 @@
       "customer add": "Adds a new customer to Did. You will be prompted for all neccessary information.",
       "project add": "Adds a new project to Did. You will be prompted for all neccessary information.",
       "spfx install": "Install SPFx solution.",
-      "upgrade": "Upgrade did-cli to the latest version from GitHub main branch."
+      "upgrade": "Upgrade did-cli to the latest version from GitHub main branch.",
+      "about": "About the did-cli"
     }
   },
   "contributors": [
@@ -38,7 +39,14 @@
       "name": "Ole Martin Pettersen",
       "email": "olemp@puzzlepart.com",
       "info": [
-        "🔥"
+        "Main contributor and owner"
+      ]
+    },
+    {
+      "name": "Carl Joakim Damsleth",
+      "email": "carl.joakim.damsleth@puzzlepart.com",
+      "info": [
+        "⭐ Upcoming contribution star ⭐"
       ]
     }
   ],

@@ -7,5 +7,6 @@
     "subscription.remove": "./actions/remove_subscription",
     "spfx.install": "./actions/install_spfx_solution",
     "upgrade": "./actions/upgrade",
-    "project.add": "./actions/add_project"
+    "project.add": "./actions/add_project",
+    "about": "./actions/about"
 }
