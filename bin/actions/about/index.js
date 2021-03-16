@@ -8,10 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
 const log_1 = require("../../utils/log");
+const package_json_1 = __importDefault(require("../../package.json"));
 /**
  * about
  *
@@ -36,11 +40,12 @@ function action() {
        dddddddddddddddd  iiiiii   ddddddddddddddddd            
                                                                
              The Calendar is Your Timesheet                    
-                                                               `, log_1.whiteOnBlack);
+             adjustments to user admin                                               `, log_1.whiteOnBlack);
+        const contributors = package_json_1.default.contributors.map(contributor => contributor.username).join(', ');
         log_1.print(`
 did-cli is a set of commands to simplify the process of getting started with did.
 Questions, comments or feedback? https://github.com/puzzlepart/did-cli
-@olemp is the main contributor`, log_1.yellow);
+${contributors} are the main contributors`, log_1.yellow);
     });
 }
 exports.action = action;

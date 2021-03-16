@@ -1,5 +1,6 @@
 require('dotenv').config()
 import { print, whiteOnBlack, yellow } from '../../utils/log'
+import packageJson from '../../package.json'
 
 /**
  * about
@@ -7,7 +8,7 @@ import { print, whiteOnBlack, yellow } from '../../utils/log'
  * @description About the did-cli
  */
 export async function action() {
-    print(`                                                               
+  print(`                                                               
                 ddddddd                     ddddddd            
                 d:::::d   iiii              d:::::d            
                 d:::::d  i::::i             d:::::d            
@@ -24,9 +25,10 @@ export async function action() {
        dddddddddddddddd  iiiiii   ddddddddddddddddd            
                                                                
              The Calendar is Your Timesheet                    
-                                                               `, whiteOnBlack)
-    print(`
+             adjustments to user admin                                               `, whiteOnBlack)
+  const contributors = packageJson.contributors.map(contributor => contributor.username).join(', ')
+  print(`
 did-cli is a set of commands to simplify the process of getting started with did.
 Questions, comments or feedback? https://github.com/puzzlepart/did-cli
-@olemp is the main contributor`, yellow)
+${contributors} are the main contributors`, yellow)
 }
