@@ -8,7 +8,7 @@
 <br />
 
 
-[![version](https://img.shields.io/badge/version-0.0.99-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.100-green.svg)](https://semver.org)
 
 <details>
 <summary>📖 Table of Contents</summary>
@@ -23,6 +23,7 @@
 	* [Help](#help)
 * [➤ Actions](#-actions)
 	* [open](#open)
+	* [Start PR](#start-pr)
 	* [subscription add](#subscription-add)
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
@@ -88,6 +89,21 @@ or
 
 ```shell
 did-cli open
+```
+
+
+### Start PR
+
+Starts a PR for the specified issue
+
+```shell
+did Start PR
+```
+
+or
+
+```shell
+did-cli Start PR
 ```
 
 
