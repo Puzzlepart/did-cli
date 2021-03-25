@@ -1,6 +1,6 @@
 {
   "name": "did-cli",
-  "version": "0.0.99",
+  "version": "0.0.100",
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "repository": {
