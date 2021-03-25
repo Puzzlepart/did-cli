@@ -36,7 +36,7 @@ function generateBranchName([id, name], branch_prefix) {
  *
  * @description Creates a branch for the specified issue
  *
- * @remarks A CLI action file must return a function named action
+ * @remarks Requires [gh](https://github.com/cli/cli) - The GitHub CLI
  *
  * @param args - Args
  */
@@ -50,9 +50,7 @@ function action() {
             });
             const input = yield inquirer_1.default.prompt(questions_1.default(issues));
             const branch_name = generateBranchName(input.issue, input.branch_prefix);
-            const { stdout } = yield utils_1.execAsync(`cd ${process.env.DID_LOCAL_PATH} && git checkout -b ${branch_name}`);
-            console.log(stdout);
-            console.log(branch_name);
+            yield utils_1.execAsync(`cd ${process.env.DID_LOCAL_PATH} && git checkout -b ${branch_name}`);
             log_1.printSeparator(`Succesfully created branch ${branch_name} for issue ${input.issue[0]}.`, true, log_1.green);
         }
         catch (error) {
