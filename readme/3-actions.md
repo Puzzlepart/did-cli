@@ -3,6 +3,8 @@
 
 [[ load:src/actions/open/README.md ]]
 
+[[ load:src/actions/create_branch/README.md ]]
+
 [[ load:src/actions/add_subscription/README.md ]]
 
 [[ load:src/actions/remove_subscription/README.md ]]
