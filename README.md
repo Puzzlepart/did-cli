@@ -23,7 +23,7 @@
 	* [Help](#help)
 * [➤ Actions](#-actions)
 	* [open](#open)
-	* [Start PR](#start-pr)
+	* [Create branch](#create-branch)
 	* [subscription add](#subscription-add)
 	* [subscription remove](#subscription-remove)
 	* [import csv](#import-csv)
@@ -92,19 +92,26 @@ did-cli open
 ```
 
 
-### Start PR
+### Create branch
 
-Starts a PR for the specified issue
+Creates a branch for the specified issue
 
 ```shell
-did Start PR
+did branch create
 ```
 
 or
 
 ```shell
-did-cli Start PR
+did-cli branch create
 ```
+
+![image-20210325154409065](assets/image-20210325154409065.png)
+
+![image-20210325154655478](assets/image-20210325154655478.png)
+
+![image-20210325154718230](assets/image-20210325154718230.png)
+
 
 
 ### subscription add
