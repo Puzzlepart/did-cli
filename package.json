@@ -1,6 +1,6 @@
 {
   "name": "did-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "repository": {
@@ -27,7 +27,6 @@
       "open": "Opens the local installation of did in vscode.",
       "branch create": "Creates a branch for the specified issue",
       "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
-      "subscription remove": "Removes a Did subscription. Deletes the database.",
       "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
       "customer add": "Adds a new customer to Did. You will be prompted for all neccessary information.",
       "project add": "Adds a new project to Did. You will be prompted for all neccessary information.",
