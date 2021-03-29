@@ -1,6 +1,6 @@
 {
     "name": "did-cli",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
     "main": "bin/index.js",
     "repository": {
@@ -12,6 +12,7 @@
         "DID_LOCAL_PATH"
     ],
     "scripts": {
+        "commit": "sexy-commits",
         "build:ts": "npm run copy:package && tsc -p .",
         "watch:ts": "npm run copy:package && tsc --watch -p .",
         "new-action": "node ./tasks/new-action.js",
@@ -26,7 +27,6 @@
             "open": "Opens the local installation of did in vscode.",
             "branch create": "Creates a branch for the specified issue",
             "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
-            "subscription remove": "Removes a Did subscription. Deletes the database.",
             "import csv": "Import data to Did from CSV file(s). Specify --path to CSV file to import.",
             "customer add": "Adds a new customer to Did. You will be prompted for all neccessary information.",
             "project add": "Adds a new project to Did. You will be prompted for all neccessary information.",
@@ -90,6 +90,7 @@
         "copyfiles": "2.4.1",
         "husky": "5.1.3",
         "prettier": "2.2.1",
+        "sexy-commits": "github:Puzzlepart/sexy-commits",
         "typescript": "4.2.3"
     },
     "commitlint": {
@@ -107,5 +108,87 @@
         "bracketSpacing": true,
         "jsxBracketSameLine": true,
         "jsxSingleQuote": true
+    },
+    "gitmoji": {
+        "build": [
+            "🏗️",
+            "Make architectural changes"
+        ],
+        "ci": [
+            "👷",
+            "Add or update CI build system"
+        ],
+        "chore": [
+            "💄",
+            "Boring chores"
+        ],
+        "docs": [
+            "📝",
+            "Added or updated documentation"
+        ],
+        "feat": [
+            "✨",
+            "Introduced new features"
+        ],
+        "fix": [
+            "🐛",
+            "Fixed a bug"
+        ],
+        "perf": [
+            "⚡",
+            "Improved performance"
+        ],
+        "refactor": [
+            "♻️",
+            "Refactored code"
+        ],
+        "revert": [
+            "⏪",
+            "Reverted changes"
+        ],
+        "style": [
+            "💄",
+            "Added or updated the UI and style files"
+        ],
+        "test": [
+            "✅",
+            "Added or updated tests"
+        ],
+        "dev": [
+            "🔨",
+            "Add or update development scripts"
+        ],
+        "i18n": [
+            "🌐",
+            "Internationalization and localization"
+        ],
+        "changelog": [
+            "📓",
+            "Updated changelog"
+        ],
+        "readme": [
+            "📝",
+            "Updated readme"
+        ],
+        "typo": [
+            "✏️",
+            "Fixed typos"
+        ],
+        "rename": [
+            "🚚",
+            "Moved or renamed resources (e.g.: files, paths, routes)"
+        ],
+        "merge": [
+            "🔀",
+            "Merged a branch into this one"
+        ],
+        "auth": [
+            "🛂",
+            "Worked on code related to authorization, roles and permissions"
+        ],
+        "syntax": [
+            "✏️",
+            "Adjusted code syntax"
+        ]
     }
 }
