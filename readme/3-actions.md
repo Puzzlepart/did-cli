@@ -16,3 +16,5 @@
 [[ load:src/actions/install_spfx_solution/README.md ]]
 
 [[ load:src/actions/upgrade/README.md ]]
+
+[[ load:src/actions/add_holidays/README.md ]]
