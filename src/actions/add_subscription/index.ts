@@ -7,7 +7,7 @@ import { cyan, green, log, printSeparator, yellow } from '../../utils/log'
 import questions from './questions'
 import subscription_setup_config from './subscription_setup_config.json'
 
-export async function action(args) {
+export async function action(args: any) {
   if (process.env['INIT'] !== '1') {
     log(yellow.underline('You need to run did init.'))
     process.exit(0)
@@ -73,7 +73,7 @@ export async function action(args) {
     }
     printSeparator(`Subscription succesfully created with db ${dbName}.`, true, green)
     await client.close(true)
-  } catch (error) {
+  } catch (error: any) {
     printSeparator(`Failed to create subscription.: ${error.message}`, true, yellow)
   }
   process.exit(0)
