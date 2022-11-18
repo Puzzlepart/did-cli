@@ -24,7 +24,7 @@ export async function action({ branch, reset }) {
     if (!reset) await execAsync(`did-cli init ${envArgs}`)
     const { stdout } = await execAsync(`did-cli --version`)
     printSeparator(`Successfully upgraded ${cyan('did-cli')} to version ${stdout.trim()}`, true, green)
-  } catch (error) {
+  } catch (error: any) {
     printSeparator(`Failed to upgrade ${cyan('did-cli')}: ${error.message}`, true, yellow)
   } finally {
     process.exit(0)
