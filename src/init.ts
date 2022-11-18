@@ -8,7 +8,7 @@ import packageJson from './package.json'
 import { jsonToEnv, writeFileAsync } from './utils'
 import { green, log, printSeparator, yellow } from './utils/log'
 
-export async function action(args) {
+export async function action(args: any) {
   log(
     boxen(`${packageJson.name} v${packageJson.version}`, {
       padding: 1,
@@ -34,7 +34,7 @@ export async function action(args) {
           const { databases } = await client.db().executeDbAdminCommand({ listDatabases: 1 })
           await client.close(true)
           return databases.map(db => db.name)
-        } catch (error) {
+        } catch (error: any) {
           printSeparator(error.message, false, yellow)
           process.exit(0)
         }

@@ -7,5 +7,6 @@
     "spfx.install": "./actions/install_spfx_solution",
     "upgrade": "./actions/upgrade",
     "project.add": "./actions/add_project",
-    "branch.create": "./actions/create_branch"
+    "branch.create": "./actions/create_branch",
+    "holidays.add": "./actions/add_holidays"
 }
