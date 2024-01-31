@@ -44,7 +44,7 @@ export async function action(args) {
     } = { ...args, ...input } as any
     const customerKey_ = createValidKey(customerKey)
     const key_ = createValidKey(key)
-    const _id = [customerKey_, key_].join(' ')
+    const _id = [customerKey_, key_].join(' ') as any
     await db.collection('projects').insertOne({
       _id,
       key: key_,
@@ -62,7 +62,7 @@ export async function action(args) {
     printSeparator(`Project ${_id} succesfully created`, true, green)
     await client.close(true)
   } catch (error) {
-    printSeparator(`Failed to create project: ${error.message}`, true, yellow)
+    printSeparator(`Failed to create project: ${(error as any).message}`, true, yellow)
   } finally {
     process.exit(0)
   }

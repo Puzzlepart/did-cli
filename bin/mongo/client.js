@@ -13,10 +13,7 @@ exports.getClient = void 0;
 require('dotenv').config();
 const mongodb_1 = require("mongodb");
 const getClient = (connectionString = process.env['MONGO_DB_CONNECTION_STRING']) => __awaiter(void 0, void 0, void 0, function* () {
-    const client = yield mongodb_1.MongoClient.connect(connectionString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
+    const client = yield mongodb_1.MongoClient.connect(connectionString);
     return {
         client,
         db: client.db(process.env['MONGO_DB_DB_NAME'])
