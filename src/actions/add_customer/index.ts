@@ -12,7 +12,7 @@ import questions from './questions'
  * 
  * @returns Valid key
  */
-function createValidKey(key: string, maxLen = 12) {
+function createValidKey(key: string, maxLen = 12): any {
   return key.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().substring(0, maxLen)
 }
 
@@ -44,7 +44,7 @@ export async function action(args: Record<string, string>) {
     printSeparator('Customer succesfully created', true, green)
     await client.close(true)
   } catch (error) {
-    printSeparator(`Failed to create customer: ${error.message}`, true, yellow)
+    printSeparator(`Failed to create customer: ${(error as any).message}`, true, yellow)
   } finally {
     process.exit(0)
   }

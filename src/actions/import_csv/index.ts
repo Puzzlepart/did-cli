@@ -8,6 +8,7 @@ import { green, log, yellow, cyan, printSeparator } from '../../utils/log'
 import * as mapFunctions from './mapFunctions'
 import * as fieldMapPrompts from './fieldMapPrompts'
 import initialQs from './questions.json'
+import { OptionalId } from 'mongodb'
 
 export async function action(args: Record<string, string>) {
   let path = args.path
@@ -50,13 +51,13 @@ export async function action(args: Record<string, string>) {
     }
     const documents = json
       .splice(0, count)
-      .map(mapFunctions[collectionName](fieldMap, data))
+      .map<OptionalId<Document>>(mapFunctions[collectionName](fieldMap, data))
     printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`)
     await db.collection(collectionName).insertMany(documents)
     printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, green)
     await client.close(true)
   } catch (error) {
-    printSeparator(`Failed to import from CSV: ${error.message}`, true, yellow)
+    printSeparator(`Failed to import from CSV: ${(error as any).message}`, true, yellow)
   } finally {
     process.exit(0)
   }

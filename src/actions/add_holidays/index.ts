@@ -5,6 +5,7 @@ import { getClient } from '../../mongo/client'
 import { printSeparator, cyan, log, yellow, green } from '../../utils/log'
 import questions from './questions'
 import { WebAPIHolidaysData } from './types'
+import { OptionalId } from 'mongodb'
 
 /**
  * Returns the week number for this date.  dowOffset is the day of week the week
@@ -74,7 +75,7 @@ export async function action(args: any) {
   const input = await inquirer.prompt(questions(args))
   let { year } = { ...args, ...input } as any
   const { body } = await got(`https://webapi.no/api/v1/holidays/${year}`)
-  const docs = (JSON.parse(body).data as WebAPIHolidaysData).map((item) => {
+  const docs = (JSON.parse(body).data as WebAPIHolidaysData).map<OptionalId<Document>>((item) => {
     const date = parseDateString(item.date)
     return {
       _id: item.date.replace(/[\W]/gm, ''),
@@ -83,7 +84,7 @@ export async function action(args: any) {
       year: date.getFullYear(),
       periodId: getPeriodId(date, 1),
       date
-    }
+    } as any
   })
   await db.collection('holidays').insertMany(docs)
   printSeparator(`${docs.length} holidays for year ${year} succesfully created in db holidays.`, true, green)
