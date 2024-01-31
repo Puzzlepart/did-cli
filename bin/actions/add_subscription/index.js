@@ -43,6 +43,11 @@ function action(args) {
                 db: dbName,
                 owner,
                 settings: {
+                    vacation: {
+                        totalDays: 25,
+                        calculationType: "planned",
+                        eventCategory: "-"
+                    },
                     forecast: {
                         enabled: forecasting,
                         notifications: 4
