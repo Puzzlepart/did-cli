@@ -1,3 +1,5 @@
+import _ from 'underscore'
+
 export default (args) => [
   {
     type: "input",
@@ -8,16 +10,15 @@ export default (args) => [
   },
   {
     type: "input",
-    name: 'domain',
-    message: "What's the domain of the tenant?",
-    when: !args.domain
-  },
-  {
-    type: "input",
     name: "tenantId",
     message: "What's the tenant id?",
     default: "00000000-0000-0000-0000-000000000000",
-    when: ({ domain }) => !args.domain && !domain
+  },
+  {
+    type: "input",
+    name: "dbName",
+    message: "What should the database name be?",
+    default: ({ tenantId }) => _.last(tenantId.split('-')),
   },
   {
     type: "confirm",

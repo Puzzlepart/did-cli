@@ -27,7 +27,9 @@
             "15e40e99",
             "cd52a735",
             "f5a82c37",
-            "67ba6efc"
+            "67ba6efc",
+            "1a1db774",
+            "8de5215e"
           ],
           "readOnly": true
         },
@@ -46,7 +48,8 @@
             "8b39db3d",
             "15e40e99",
             "cd52a735",
-            "f5a82c37"
+            "f5a82c37",
+            "1a1db774"
           ],
           "readOnly": true
         },
@@ -59,7 +62,9 @@
             "289a64ab",
             "ef4032fb",
             "09909241",
-            "f5a82c37"
+            "f5a82c37",
+            "a031c42f",
+            "1a1db774"
           ],
           "readOnly": true
         }
@@ -88,6 +93,10 @@
     {
       "name": "forecasted_periods",
       "indexes": ["week", "month", "year", "userId"]
+    },
+    {
+      "name": "report_links",
+      "indexes": []
     }
   ]
 }

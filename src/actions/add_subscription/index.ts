@@ -1,5 +1,4 @@
 require('dotenv').config()
-import got from 'got/dist/source'
 import inquirer from 'inquirer'
 import _ from 'underscore'
 import { getClient } from '../../mongo/client'
@@ -23,22 +22,23 @@ export async function action(args: any) {
     const input = await inquirer.prompt(questions(args))
     let {
       name,
-      domain,
       tenantId,
       forecasting,
-      owner
+      owner,
+      dbName
     } = { ...args, ...input } as any
-    if (domain) {
-      const { body } = await got(`https://overcast.sharegate.com/api/tenant-finder/47069a32-33f8-4b8d-96fe-3866eeb19580?query=${domain}`)
-      tenantId = JSON.parse(body).id
-    }
-    const dbName = _.last(tenantId.split('-'))
+    dbName = dbName ?? _.last(tenantId.split('-'))
     const sub = {
       _id: tenantId,
       name,
       db: dbName,
       owner,
       settings: {
+        vacation: {
+          totalDays: 25,
+          calculationType : "planned",
+          eventCategory: "-"
+        },
         forecast: {
           enabled: forecasting,
           notifications: 4

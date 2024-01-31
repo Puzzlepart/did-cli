@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 require('dotenv').config();
-const source_1 = __importDefault(require("got/dist/source"));
 const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_1 = __importDefault(require("underscore"));
 const client_1 = require("../../mongo/client");
@@ -36,12 +35,8 @@ function action(args) {
                 process.exit(0);
             }
             const input = yield inquirer_1.default.prompt(questions_1.default(args));
-            let { name, domain, tenantId, forecasting, owner } = Object.assign(Object.assign({}, args), input);
-            if (domain) {
-                const { body } = yield source_1.default(`https://overcast.sharegate.com/api/tenant-finder/47069a32-33f8-4b8d-96fe-3866eeb19580?query=${domain}`);
-                tenantId = JSON.parse(body).id;
-            }
-            const dbName = underscore_1.default.last(tenantId.split('-'));
+            let { name, tenantId, forecasting, owner, dbName } = Object.assign(Object.assign({}, args), input);
+            dbName = dbName !== null && dbName !== void 0 ? dbName : underscore_1.default.last(tenantId.split('-'));
             const sub = {
                 _id: tenantId,
                 name,
