@@ -1,6 +1,6 @@
 {
   "name": "did-cli",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Add subscriptions, customers, projects and import data from different sources.... well, just CSV for now.",
   "main": "bin/index.js",
   "repository": {
@@ -24,6 +24,7 @@
   },
   "config": {
     "actions": {
+      "context": "Show the current context",
       "open": "Opens the local installation of did in vscode.",
       "branch create": "Creates a branch for the specified issue",
       "subscription add": "Register a new Did subscription. You will be prompted for all necessary information.",
