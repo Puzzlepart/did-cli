@@ -7,10 +7,7 @@ import { getClient } from './mongo/client'
 import packageJson from './package.json'
 import { jsonToEnv, writeFileAsync } from './utils'
 import { green, log, printSeparator, yellow } from './utils/log'
-
-function getDbNameFromConnectionString(connectionString: string) {
-  return connectionString.split('@')[0].split('mongodb://')[1].split(':')[0]
-}
+import { getDbNameFromConnectionString } from './utils/getDbNameFromConnectionString'
 
 export async function action(args: any) {
   log(

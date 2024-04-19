@@ -1,5 +1,6 @@
 {
     "init": "./init",
+    "context": "./context",
     "open": "./actions/open",
     "subscription.add": "./actions/add_subscription",
     "customer.add": "./actions/add_customer",
