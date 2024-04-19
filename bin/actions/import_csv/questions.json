@@ -7,7 +7,8 @@
             { "value": "projects", "name": "Projects" },
             { "value": "customers", "name": "Customers" },
             { "value": "time_entries", "name": "Time entries" },
-            { "value": "confirmed_periods", "name": "Confirmed periods" }
+            { "value": "confirmed_periods", "name": "Confirmed periods" },
+            { "value": "labels", "name": "Labels" }
         ]
     },
     {

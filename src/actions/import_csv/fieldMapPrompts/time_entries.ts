@@ -1,12 +1,6 @@
-const { findBestMatch } = require('string-similarity')
+import { sortByBestMatch } from '../../../utils/sortByBestMatch'
 
-const sortByBestMatch = (field, fields) => {
-  return findBestMatch(field, fields)
-    .ratings.sort((a, b) => b.rating - a.rating)
-    .map((a) => a.target)
-}
-
-export default (fields, args) => {
+export default (fields: string[], args: any) => {
   return [
     {
       name: '_id',

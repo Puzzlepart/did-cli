@@ -1,28 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const { findBestMatch } = require('string-similarity');
-const sortByBestMatch = (field, fields) => {
-    return findBestMatch(field, fields)
-        .ratings.sort((a, b) => b.rating - a.rating)
-        .map((a) => a.target);
-};
-exports.default = (fields) => {
-    return [
-        {
-            name: 'createdAt',
-            message: 'Created at property'
-        },
+const sortByBestMatch_1 = require("../../../utils/sortByBestMatch");
+function shouldSkip(property, skip) {
+    return skip.includes(property.name);
+}
+exports.default = (fields, args) => {
+    const skip = (args === null || args === void 0 ? void 0 : args.skip) ? args.skip.split(',') : [];
+    const properties = [
         {
             name: 'customerKey',
             message: 'Customer key property'
         },
         {
             name: 'key',
-            message: 'Key property'
+            message: 'Project key property'
         },
         {
             name: 'name',
             message: 'Name property'
+        },
+        args.applyLabels && {
+            name: "primaryLabel",
+            message: "Primary label property"
+        },
+        args.applyLabels && {
+            name: "secondaryLabel",
+            message: "Secondary label property"
         },
         {
             name: 'description',
@@ -36,5 +39,16 @@ exports.default = (fields) => {
             name: 'webLink',
             message: 'Web link property'
         }
-    ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: sortByBestMatch(p.name, fields) })));
+    ];
+    return properties.filter(p => !!p && !shouldSkip(p, skip))
+        .map((p) => {
+        const isKey = ['customerKey', 'key'].includes(p.name);
+        return Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: [
+                !isKey && {
+                    name: 'No mapping',
+                    value: null
+                },
+                ...sortByBestMatch_1.sortByBestMatch(p.name, fields)
+            ].filter(Boolean) });
+    });
 };

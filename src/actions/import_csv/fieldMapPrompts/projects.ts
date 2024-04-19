@@ -1,28 +1,32 @@
-const { findBestMatch } = require('string-similarity')
+import { sortByBestMatch } from '../../../utils/sortByBestMatch'
+import { Property } from './types'
 
-const sortByBestMatch = (field, fields) => {
-  return findBestMatch(field, fields)
-    .ratings.sort((a, b) => b.rating - a.rating)
-    .map((a) => a.target)
+function shouldSkip(property: Property, skip: string[]) {
+  return skip.includes(property.name)
 }
 
-export default (fields) => {
-  return [
-    {
-      name: 'createdAt',
-      message: 'Created at property'
-    },
+export default (fields: string[], args: Record<string, any>) => {
+  const skip = args?.skip ? args.skip.split(',') : []
+  const properties: Property[] = [
     {
       name: 'customerKey',
       message: 'Customer key property'
     },
     {
       name: 'key',
-      message: 'Key property'
+      message: 'Project key property'
     },
     {
       name: 'name',
       message: 'Name property'
+    },
+    args.applyLabels && {
+      name: "primaryLabel",
+      message: "Primary label property"
+    },
+    args.applyLabels && {
+      name: "secondaryLabel",
+      message: "Secondary label property"
     },
     {
       name: 'description',
@@ -36,10 +40,21 @@ export default (fields) => {
       name: 'webLink',
       message: 'Web link property'
     }
-  ].map((p) => ({
-    ...p,
-    type: 'list',
-    default: p.name,
-    choices: sortByBestMatch(p.name, fields)
-  }))
+  ]
+  return properties.filter(p => !!p && !shouldSkip(p, skip))
+    .map((p) => {
+      const isKey = ['customerKey', 'key'].includes(p.name)
+      return {
+        ...p,
+        type: 'list',
+        default: p.name,
+        choices: [
+          !isKey && {
+            name: 'No mapping',
+            value: null
+          },
+          ...sortByBestMatch(p.name, fields)
+        ].filter(Boolean)
+      }
+    })
 }

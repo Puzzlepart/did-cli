@@ -18,3 +18,5 @@
 [[ load:src/actions/upgrade/README.md ]]
 
 [[ load:src/actions/add_holidays/README.md ]]
+
+[[ load:src/actions/import_customers/README.md ]]

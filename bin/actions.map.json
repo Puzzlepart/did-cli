@@ -3,6 +3,7 @@
     "open": "./actions/open",
     "subscription.add": "./actions/add_subscription",
     "customer.add": "./actions/add_customer",
+    "customers.import": "./actions/import_customers",
     "import.csv": "./actions/import_csv",
     "spfx.install": "./actions/install_spfx_solution",
     "upgrade": "./actions/upgrade",

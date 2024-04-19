@@ -38,3 +38,5 @@ export function envToArgs(): string {
     return str_ + ` --${key}="${value}"`
   }, '')
 }
+
+export * from './t9r'

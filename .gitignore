@@ -4,3 +4,4 @@ bin/.env
 src/.env
 .DS_Store
 src/package.json
+*.csv

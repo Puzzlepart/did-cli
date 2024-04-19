@@ -1,15 +1,8 @@
 import { sortByBestMatch } from '../../../utils/sortByBestMatch'
 import { Property } from './types'
 
-/**
- * Get field map prompts for customers
- */
 export default (fields: string[]) => {
   const properties: Property[] = [
-    {
-      name: 'key',
-      message: 'Key property'
-    },
     {
       name: 'name',
       message: 'Name property'
@@ -19,26 +12,36 @@ export default (fields: string[]) => {
       message: 'Description property'
     },
     {
-      name: 'icon',
-      message: 'Icon property'
+      name: 'createdAt',
+      message: 'Created at property'
     },
     {
-      name: 'webLink',
-      message: 'Web link property'
+      name: 'color',
+      message: 'Color property'
+    },
+    {
+      name: 'icon',
+      message: 'Icon property'
     }
   ]
-  return properties.map((p) => {
-    return {
+  return [
+    {
+      type: 'input',
+      name: 'descriptionFormat',
+      message: 'Description format',
+      default: '{{name}}'
+    },
+    ...properties.map((p) => ({
       ...p,
       type: 'list',
       default: p.name,
       choices: [
-        !['_id', 'key'].includes(p.name) && {
+        p.name !== 'name' && {
           name: 'No mapping',
           value: null
         },
         ...sortByBestMatch(p.name, fields)
       ].filter(Boolean)
-    }
-  })
+    })),
+  ]
 }

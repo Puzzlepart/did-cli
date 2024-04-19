@@ -1,11 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const { findBestMatch } = require('string-similarity');
-const sortByBestMatch = (field, fields) => {
-    return findBestMatch(field, fields)
-        .ratings.sort((a, b) => b.rating - a.rating)
-        .map((a) => a.target);
-};
+const sortByBestMatch_1 = require("../../../utils/sortByBestMatch");
 exports.default = (fields, args) => {
     return [
         {
@@ -64,5 +59,5 @@ exports.default = (fields, args) => {
             name: 'userId',
             message: 'User ID property'
         }
-    ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch(p.name, fields)], when: !args[p.name] })));
+    ].map((p) => (Object.assign(Object.assign({}, p), { type: 'list', default: p.name, choices: [...(p.choices || []), ...sortByBestMatch_1.sortByBestMatch(p.name, fields)], when: !args[p.name] })));
 };

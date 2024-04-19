@@ -1,9 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Sanitize key, removing special characters and spaces.
+ *
+ * @param key Key to sanitize
+ */
+function sanitizeKey(key) {
+    return key.replace(/[^a-zA-Z0-9]/g, '');
+}
 exports.default = (fieldMap) => (item) => {
     const mappedProperties = Object.keys(fieldMap).reduce((obj, key) => {
-        return Object.assign(Object.assign({}, obj), { [key]: item[fieldMap[key]] });
+        if (!item[fieldMap[key]])
+            return obj;
+        let value = item[fieldMap[key]];
+        if (['key'].includes(key)) {
+            value = sanitizeKey(value);
+        }
+        return Object.assign(Object.assign({}, obj), { [key]: value });
     }, {});
-    const { createdAt, inactive } = mappedProperties;
-    return Object.assign(Object.assign({}, mappedProperties), { inactive: inactive === true, createdAt: new Date(createdAt) || new Date(), updatedAt: new Date(createdAt) || new Date() });
+    const { key, name, createdAt, inactive } = mappedProperties;
+    return Object.assign(Object.assign({ _id: key }, mappedProperties), { name: name !== null && name !== void 0 ? name : key, icon: 'Page', inactive: inactive === true, createdAt: createdAt ? new Date(createdAt) : new Date(), updatedAt: createdAt ? new Date(createdAt) : new Date() });
 };

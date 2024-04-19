@@ -1,13 +1,8 @@
-const { findBestMatch } = require('string-similarity')
+import { sortByBestMatch } from '../../../utils/sortByBestMatch'
+import { Property } from './types'
 
-const sortByBestMatch = (field, fields) => {
-  return findBestMatch(field, fields)
-    .ratings.sort((a, b) => b.rating - a.rating)
-    .map((a) => a.target)
-}
-
-export default (fields) => {
-  return [
+export default (fields: string[]) => {
+  const properties: Property[] = [
     {
       name: 'periodId',
       message: 'Period ID property'
@@ -24,7 +19,8 @@ export default (fields) => {
       name: 'hours',
       message: 'Hours property'
     }
-  ].map((p) => ({
+  ]
+  return properties.map((p) => ({
     ...p,
     type: 'list',
     default: p.name,
