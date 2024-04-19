@@ -9,7 +9,7 @@ import { jsonToEnv, writeFileAsync } from './utils'
 import { green, log, printSeparator, yellow } from './utils/log'
 
 function getDbNameFromConnectionString(connectionString: string) {
-  return connectionString.split('/').pop()
+  return connectionString.split('@')[0].split('mongodb://')[1]
 }
 
 export async function action(args: any) {
