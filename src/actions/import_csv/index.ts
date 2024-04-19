@@ -77,6 +77,12 @@ export async function action(args: Record<string, string>) {
         printSeparator(`${data.customers.length} customers retrieved from [customers]`)
       }
         break
+        case 'projects': {
+          printSeparator(`Retrieving projects from collection [projects]`)
+          data[collectionName] = await db.collection(collectionName).find({}).toArray()
+          printSeparator(`${data[collectionName].length} projects retrieved from [projects]`)
+        }
+          break
     }
     const documents = lodash.uniqBy(json
       .splice(0, count)

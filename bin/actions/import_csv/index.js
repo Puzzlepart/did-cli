@@ -111,6 +111,13 @@ function action(args) {
                         log_1.printSeparator(`${data.customers.length} customers retrieved from [customers]`);
                     }
                     break;
+                case 'projects':
+                    {
+                        log_1.printSeparator(`Retrieving projects from collection [projects]`);
+                        data[collectionName] = yield db.collection(collectionName).find({}).toArray();
+                        log_1.printSeparator(`${data[collectionName].length} projects retrieved from [projects]`);
+                    }
+                    break;
             }
             const documents = lodash.uniqBy(json
                 .splice(0, count)
