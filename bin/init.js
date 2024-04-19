@@ -23,7 +23,7 @@ const package_json_1 = __importDefault(require("./package.json"));
 const utils_1 = require("./utils");
 const log_1 = require("./utils/log");
 function getDbNameFromConnectionString(connectionString) {
-    return connectionString.split('@')[0].split('mongodb://')[1];
+    return connectionString.split('@')[0].split('mongodb://')[1].split(':')[0];
 }
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
