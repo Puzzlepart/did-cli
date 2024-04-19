@@ -22,6 +22,9 @@ const client_1 = require("./mongo/client");
 const package_json_1 = __importDefault(require("./package.json"));
 const utils_1 = require("./utils");
 const log_1 = require("./utils/log");
+function getDbNameFromConnectionString(connectionString) {
+    return connectionString.split('/').pop();
+}
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         log_1.log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
@@ -70,7 +73,8 @@ function action(args) {
             }
         ]);
         yield utils_1.writeFileAsync(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
-        log_1.printSeparator('did-cli sucessfully initialized.', true, log_1.green);
+        const instanceName = getDbNameFromConnectionString(env.MONGO_DB_CONNECTION_STRING);
+        log_1.printSeparator(`did-cli sucessfully initialized with database ${instanceName}:${env.MONGO_DB_DB_NAME}`, true, log_1.green);
         process.exit(0);
     });
 }

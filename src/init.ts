@@ -8,6 +8,10 @@ import packageJson from './package.json'
 import { jsonToEnv, writeFileAsync } from './utils'
 import { green, log, printSeparator, yellow } from './utils/log'
 
+function getDbNameFromConnectionString(connectionString: string) {
+  return connectionString.split('/').pop()
+}
+
 export async function action(args: any) {
   log(
     boxen(`${packageJson.name} v${packageJson.version}`, {
@@ -68,6 +72,7 @@ export async function action(args: any) {
       )
     )
   )
-  printSeparator('did-cli sucessfully initialized.', true, green)
+  const instanceName = getDbNameFromConnectionString(env.MONGO_DB_CONNECTION_STRING)
+  printSeparator(`did-cli sucessfully initialized with database ${instanceName}:${env.MONGO_DB_DB_NAME}`, true, green)
   process.exit(0)
 }
