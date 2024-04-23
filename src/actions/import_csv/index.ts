@@ -77,35 +77,55 @@ export async function action(args: Record<string, string>) {
         printSeparator(`${data.customers.length} customers retrieved from [customers]`)
       }
         break
-        case 'projects': {
-          printSeparator(`Retrieving projects from collection [projects]`)
-          data[collectionName] = await db.collection(collectionName).find({}).toArray()
-          printSeparator(`${data[collectionName].length} projects retrieved from [projects]`)
-        }
-          break
+      case 'projects': {
+        printSeparator(`Retrieving projects from collection [projects]`)
+        data[collectionName] = await db.collection(collectionName).find({}).toArray()
+        printSeparator(`${data[collectionName].length} projects retrieved from [projects]`)
+      }
+        break
     }
     const documents = lodash.uniqBy(json
       .splice(0, count)
       .map<OptionalId<Document>>(mapFunctions[collectionName](fieldMap, data)), '_id')
       .filter(Boolean)
-      .filter((d) => !lodash.some(data[collectionName], { _id: d._id }))
+      .filter((d) => !lodash.some(data[collectionName], { _id: d._id }) || !!args.update)
     if (args.output) {
       const fileName = args.includeTimestamp ? `${collectionName}-${new Date().getTime().toString()}.json` : `${collectionName}.json`
       await writeFileAsync(fileName, JSON.stringify(documents, null, 2))
       printSeparator(`Succesfully saved ${documents.length} documents to ${fileName}. Have a look at the file before importing.`, true, cyan)
     }
-    const { confirm } = await inquirer.prompt({
-      type: 'confirm',
-      name: 'confirm',
-      message: `Do you want to import ${documents.length} items to collection [${collectionName}]?`
-    })
-    if (!confirm) {
-      await client.close(true)
-      process.exit(0)
+
+    if (args.update) {
+      const documentsUpdate = documents
+        .filter((d) => !!d[args.update] && (lodash.isArray(d[args.update]) ? !lodash.isEmpty(d[args.update]) : true))
+      printSeparator(`Updating ${documentsUpdate.length} items in collection [${collectionName}]`)
+      for (const document of documentsUpdate) {
+        const set = { ...lodash.pick(document, args.update), icon: 'MiniContract' } as Record<string, any>
+        const { confirm } = await inquirer.prompt({
+          type: 'confirm',
+          name: 'confirm',
+          message: `Do you want to update the document with _id [${document._id}] with values ${JSON.stringify(set)}?`,
+          default: true,
+          when: () => !args.force
+        })
+        if (!confirm) continue
+        await db.collection(collectionName).updateOne({ _id: document._id }, { $set: set })
+      }
+      printSeparator(`Succesfully updated ${documentsUpdate.length} documents in collection [${collectionName}].`, true, green)
+    } else {
+      const { confirm } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'confirm',
+        message: `Do you want to import ${documents.length} items to collection [${collectionName}]?`
+      })
+      if (!confirm) {
+        await client.close(true)
+        process.exit(0)
+      }
+      printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`)
+      await db.collection(collectionName).insertMany(documents)
+      printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, green)
     }
-    printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`)
-    await db.collection(collectionName).insertMany(documents)
-    printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, green)
     await client.close(true)
   } catch (error) {
     printSeparator(`Failed to import from CSV: ${(error as any).message}`, true, red)

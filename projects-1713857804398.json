@@ -1,0 +1,670 @@
+[
+  {
+    "customerKey": "FLTE",
+    "key": "TP1OMFANG",
+    "_id": "FLTE TP1OMFANG",
+    "name": "FLTE TP1OMFANG",
+    "tag": "FLTE TP1OMFANG",
+    "labels": [
+      "160001",
+      "7536069"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "TP1TILLEGG24",
+    "_id": "FLTE TP1TILLEGG24",
+    "name": "FLTE TP1TILLEGG24",
+    "tag": "FLTE TP1TILLEGG24",
+    "labels": [
+      "160010",
+      "7536089"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "FELLES24",
+    "_id": "FLTE FELLES24",
+    "name": "FLTE FELLES24",
+    "tag": "FLTE FELLES24",
+    "labels": [
+      "160010",
+      "7573564"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "OMFANG",
+    "_id": "PP OMFANG",
+    "name": "PP OMFANG",
+    "tag": "PP OMFANG",
+    "labels": [
+      "112260",
+      "7501505"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "SALG",
+    "_id": "PP SALG",
+    "name": "PP SALG",
+    "tag": "PP SALG",
+    "labels": [
+      "112260",
+      "7503480"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "INNKJP",
+    "_id": "PP INNKJP",
+    "name": "PP INNKJP",
+    "tag": "PP INNKJP",
+    "labels": [
+      "112260",
+      "7503484"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "OVERFLATE",
+    "_id": "PP OVERFLATE",
+    "name": "PP OVERFLATE",
+    "tag": "PP OVERFLATE",
+    "labels": [
+      "112260",
+      "7501412"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "NJM",
+    "key": "VPKONGEVOGN24",
+    "_id": "NJM VPKONGEVOGN24",
+    "name": "NJM VPKONGEVOGN24",
+    "tag": "NJM VPKONGEVOGN24",
+    "labels": [
+      "251010",
+      "7548044"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "NJM",
+    "key": "SOLSKJKV24",
+    "_id": "NJM SOLSKJKV24",
+    "name": "NJM SOLSKJKV24",
+    "tag": "NJM SOLSKJKV24",
+    "labels": [
+      "251010",
+      "7548056"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "NJM",
+    "key": "STJERNEHKV24",
+    "_id": "NJM STJERNEHKV24",
+    "name": "NJM STJERNEHKV24",
+    "tag": "NJM STJERNEHKV24",
+    "labels": [
+      "251010",
+      "7548059"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "SKAP",
+    "_id": "FLTE SKAP",
+    "name": "FLTE SKAP",
+    "tag": "FLTE SKAP",
+    "labels": [
+      "160001",
+      "7550058"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "STYMLNGTP73",
+    "_id": "FLTE STYMLNGTP73",
+    "name": "FLTE STYMLNGTP73",
+    "tag": "FLTE STYMLNGTP73",
+    "labels": [
+      "160001",
+      "7550133"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "ENDRINGTRKE",
+    "_id": "FLTE ENDRINGTRKE",
+    "name": "FLTE ENDRINGTRKE",
+    "tag": "FLTE ENDRINGTRKE",
+    "labels": [
+      "160001",
+      "7550158"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "JORDINGSKABEL",
+    "_id": "FLTE JORDINGSKABEL",
+    "name": "FLTE JORDINGSKABEL",
+    "tag": "FLTE JORDINGSKABEL",
+    "labels": [
+      "160001",
+      "7556096"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "VDLIKEHDATA",
+    "_id": "TECHNOLOGY VDLIKEHDATA",
+    "name": "TECHNOLOGY VDLIKEHDATA",
+    "tag": "TECHNOLOGY VDLIKEHDATA",
+    "labels": [
+      "160001",
+      "7607422"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "ERTMS",
+    "_id": "PP ERTMS",
+    "name": "PP ERTMS",
+    "tag": "PP ERTMS",
+    "labels": [
+      "161004",
+      "3515661"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "TEMPLOGGING",
+    "_id": "TECHNOLOGY TEMPLOGGING",
+    "name": "TECHNOLOGY TEMPLOGGING",
+    "tag": "TECHNOLOGY TEMPLOGGING",
+    "labels": [
+      "100000",
+      "7550268"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "3DTOGSKANN",
+    "_id": "TECHNOLOGY 3DTOGSKANN",
+    "name": "TECHNOLOGY 3DTOGSKANN",
+    "tag": "TECHNOLOGY 3DTOGSKANN",
+    "labels": [
+      "100000",
+      "7550277"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "TILB400VTAVL",
+    "_id": "TECHNOLOGY TILB400VTAVL",
+    "name": "TECHNOLOGY TILB400VTAVL",
+    "tag": "TECHNOLOGY TILB400VTAVL",
+    "labels": [
+      "100000",
+      "7550280"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "ENDRINGSDOK",
+    "_id": "TECHNOLOGY ENDRINGSDOK",
+    "name": "TECHNOLOGY ENDRINGSDOK",
+    "tag": "TECHNOLOGY ENDRINGSDOK",
+    "labels": [
+      "100000",
+      "7594081"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "OPPVEDPLANER",
+    "_id": "TECHNOLOGY OPPVEDPLANER",
+    "name": "TECHNOLOGY OPPVEDPLANER",
+    "tag": "TECHNOLOGY OPPVEDPLANER",
+    "labels": [
+      "160105",
+      "7611088"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "DATAPLATFORM",
+    "_id": "TECHNOLOGY DATAPLATFORM",
+    "name": "TECHNOLOGY DATAPLATFORM",
+    "tag": "TECHNOLOGY DATAPLATFORM",
+    "labels": [
+      "100000",
+      "7630951"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "TJENESTER24",
+    "_id": "TECHNOLOGY TJENESTER24",
+    "name": "TECHNOLOGY TJENESTER24",
+    "tag": "TECHNOLOGY TJENESTER24",
+    "labels": [
+      "100000",
+      "7550337"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "VARMEBATTERI",
+    "_id": "PP VARMEBATTERI",
+    "name": "PP VARMEBATTERI",
+    "tag": "PP VARMEBATTERI",
+    "labels": [
+      "11010",
+      "6667919"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "KONTROLLENHET",
+    "_id": "TECHNOLOGY KONTROLLENHET",
+    "name": "TECHNOLOGY KONTROLLENHET",
+    "tag": "TECHNOLOGY KONTROLLENHET",
+    "labels": [
+      "6465867"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "DIDIMPL",
+    "_id": "TECHNOLOGY DIDIMPL",
+    "name": "TECHNOLOGY DIDIMPL",
+    "tag": "TECHNOLOGY DIDIMPL",
+    "labels": [
+      "\r\n"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "DOKSENTER",
+    "_id": "TECHNOLOGY DOKSENTER",
+    "name": "TECHNOLOGY DOKSENTER",
+    "tag": "TECHNOLOGY DOKSENTER",
+    "labels": [
+      "160104",
+      "\r\n"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.396Z",
+    "updatedAt": "2024-04-23T07:36:44.396Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "VENTVERKTY",
+    "_id": "PP VENTVERKTY",
+    "name": "PP VENTVERKTY",
+    "tag": "PP VENTVERKTY",
+    "labels": [
+      "112260",
+      "7501321"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "BOGGIVERKTY",
+    "_id": "PP BOGGIVERKTY",
+    "name": "PP BOGGIVERKTY",
+    "tag": "PP BOGGIVERKTY",
+    "labels": [
+      "112260",
+      "7501335"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "ELKOMPVERKT",
+    "_id": "PP ELKOMPVERKT",
+    "name": "PP ELKOMPVERKT",
+    "tag": "PP ELKOMPVERKT",
+    "labels": [
+      "112260",
+      "7501368"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "HJULVERKTY",
+    "_id": "PP HJULVERKTY",
+    "name": "PP HJULVERKTY",
+    "tag": "PP HJULVERKTY",
+    "labels": [
+      "112260",
+      "7501378"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "ERTMSVERKTY",
+    "_id": "PP ERTMSVERKTY",
+    "name": "PP ERTMSVERKTY",
+    "tag": "PP ERTMSVERKTY",
+    "labels": [
+      "112260",
+      "7501386"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "UTBEDVERKTY",
+    "_id": "PP UTBEDVERKTY",
+    "name": "PP UTBEDVERKTY",
+    "tag": "PP UTBEDVERKTY",
+    "labels": [
+      "112260",
+      "7501472"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "GULTVERKTY",
+    "_id": "PP GULTVERKTY",
+    "name": "PP GULTVERKTY",
+    "tag": "PP GULTVERKTY",
+    "labels": [
+      "112260",
+      "7501496"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "TEGNPLTFORM",
+    "_id": "FLTE TEGNPLTFORM",
+    "name": "FLTE TEGNPLTFORM",
+    "tag": "FLTE TEGNPLTFORM",
+    "labels": [
+      "260000",
+      "7676292"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "GENERELTSNA",
+    "_id": "FLTE GENERELTSNA",
+    "name": "FLTE GENERELTSNA",
+    "tag": "FLTE GENERELTSNA",
+    "labels": [
+      "160010",
+      "7536433"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "GENERELTTP2",
+    "_id": "FLTE GENERELTTP2",
+    "name": "FLTE GENERELTTP2",
+    "tag": "FLTE GENERELTTP2",
+    "labels": [
+      "160010",
+      "7536386"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "BRANNMLD73",
+    "_id": "FLTE BRANNMLD73",
+    "name": "FLTE BRANNMLD73",
+    "tag": "FLTE BRANNMLD73",
+    "labels": [
+      "160001",
+      "7679316"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "TAKTRALLEERTMS",
+    "_id": "PP TAKTRALLEERTMS",
+    "name": "PP TAKTRALLEERTMS",
+    "tag": "PP TAKTRALLEERTMS",
+    "labels": [
+      "218256",
+      "7577073"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "FLTE",
+    "key": "TRYKKLUFTSLT72",
+    "_id": "FLTE TRYKKLUFTSLT72",
+    "name": "FLTE TRYKKLUFTSLT72",
+    "tag": "FLTE TRYKKLUFTSLT72",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "TECHNOLOGY",
+    "key": "CALIPRI",
+    "_id": "TECHNOLOGY CALIPRI",
+    "name": "TECHNOLOGY CALIPRI",
+    "tag": "TECHNOLOGY CALIPRI",
+    "labels": [
+      "160010",
+      "7695390"
+    ],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "FLTEPP",
+    "key": "MIMSTILPVERK",
+    "_id": "FLTEPP MIMSTILPVERK",
+    "name": "FLTEPP MIMSTILPVERK",
+    "tag": "FLTEPP MIMSTILPVERK",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "PP",
+    "key": "MX3000RAPPRT",
+    "name": "Aktiviteter som ikke direkte kan tilskrives produksjon, tjeneste eller prosjekt",
+    "_id": "PP MX3000RAPPRT",
+    "tag": "PP MX3000RAPPRT",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "OVERHEAD",
+    "name": "Planlagt ferie",
+    "_id": "INTERNT OVERHEAD",
+    "tag": "INTERNT OVERHEAD",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "FERIE",
+    "name": "Borte fra jobb på grunn av sykdom",
+    "_id": "INTERNT FERIE",
+    "tag": "INTERNT FERIE",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "SYK",
+    "name": "Lønnet permisjon (feks foreldrepermisjon eller kurs)",
+    "_id": "INTERNT SYK",
+    "tag": "INTERNT SYK",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "PERML",
+    "name": "Ulønnet permisjon, ikke ferie.",
+    "_id": "INTERNT PERML",
+    "tag": "INTERNT PERML",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "PERMU",
+    "name": "Avspasering",
+    "_id": "INTERNT PERMU",
+    "tag": "INTERNT PERMU",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "AVSP",
+    "name": "Reise I arbeidstiden",
+    "_id": "INTERNT AVSP",
+    "tag": "INTERNT AVSP",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  },
+  {
+    "customerKey": "INTERNT",
+    "key": "REISE",
+    "_id": "INTERNT REISE",
+    "name": "INTERNT REISE",
+    "tag": "INTERNT REISE",
+    "labels": [],
+    "inactive": false,
+    "createdAt": "2024-04-23T07:36:44.397Z",
+    "updatedAt": "2024-04-23T07:36:44.397Z"
+  }
+]

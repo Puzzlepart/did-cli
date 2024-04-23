@@ -123,24 +123,45 @@ function action(args) {
                 .splice(0, count)
                 .map(mapFunctions[collectionName](fieldMap, data)), '_id')
                 .filter(Boolean)
-                .filter((d) => !lodash.some(data[collectionName], { _id: d._id }));
+                .filter((d) => !lodash.some(data[collectionName], { _id: d._id }) || !!args.update);
             if (args.output) {
                 const fileName = args.includeTimestamp ? `${collectionName}-${new Date().getTime().toString()}.json` : `${collectionName}.json`;
                 yield writeFileAsync(fileName, JSON.stringify(documents, null, 2));
                 log_1.printSeparator(`Succesfully saved ${documents.length} documents to ${fileName}. Have a look at the file before importing.`, true, log_1.cyan);
             }
-            const { confirm } = yield inquirer_1.default.prompt({
-                type: 'confirm',
-                name: 'confirm',
-                message: `Do you want to import ${documents.length} items to collection [${collectionName}]?`
-            });
-            if (!confirm) {
-                yield client.close(true);
-                process.exit(0);
+            if (args.update) {
+                const documentsUpdate = documents
+                    .filter((d) => !!d[args.update] && (lodash.isArray(d[args.update]) ? !lodash.isEmpty(d[args.update]) : true));
+                log_1.printSeparator(`Updating ${documentsUpdate.length} items in collection [${collectionName}]`);
+                for (const document of documentsUpdate) {
+                    const set = Object.assign(Object.assign({}, lodash.pick(document, args.update)), { icon: 'MiniContract' });
+                    const { confirm } = yield inquirer_1.default.prompt({
+                        type: 'confirm',
+                        name: 'confirm',
+                        message: `Do you want to update the document with _id [${document._id}] with values ${JSON.stringify(set)}?`,
+                        default: true,
+                        when: () => !args.force
+                    });
+                    if (!confirm)
+                        continue;
+                    yield db.collection(collectionName).updateOne({ _id: document._id }, { $set: set });
+                }
+                log_1.printSeparator(`Succesfully updated ${documentsUpdate.length} documents in collection [${collectionName}].`, true, log_1.green);
             }
-            log_1.printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`);
-            yield db.collection(collectionName).insertMany(documents);
-            log_1.printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, log_1.green);
+            else {
+                const { confirm } = yield inquirer_1.default.prompt({
+                    type: 'confirm',
+                    name: 'confirm',
+                    message: `Do you want to import ${documents.length} items to collection [${collectionName}]?`
+                });
+                if (!confirm) {
+                    yield client.close(true);
+                    process.exit(0);
+                }
+                log_1.printSeparator(`Importing ${documents.length} items to collection [${collectionName}]`);
+                yield db.collection(collectionName).insertMany(documents);
+                log_1.printSeparator(`Succesfully imported ${documents.length} documents to collection [${collectionName}].`, true, log_1.green);
+            }
             yield client.close(true);
         }
         catch (error) {
