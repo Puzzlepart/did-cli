@@ -36,7 +36,7 @@ export async function action(args: any) {
       settings: {
         vacation: {
           totalDays: 25,
-          calculationType : "planned",
+          calculationType: "planned",
           eventCategory: "-"
         },
         forecast: {
@@ -52,7 +52,15 @@ export async function action(args: any) {
             "surname",
             "givenName"
           ]
-        }
+        },
+        timesheet: {
+          dayFormat: "dddd DD",
+          timeFormat: "HH:mm",
+          timebankEnabled: false
+        },
+        budgetTracking: {
+          enabled: true
+        },
       },
     }
     await db.collection('subscriptions').insertOne(sub)
