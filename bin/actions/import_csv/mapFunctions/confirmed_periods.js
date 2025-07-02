@@ -18,7 +18,7 @@ exports.default = (fieldMap, { time_entries = [] }) => (item) => {
         .map((str_) => parseInt(str_, 10));
     const _id = generatePeriodId(periodId, userId);
     const events = time_entries.filter(entry => entry.periodId === _id).map(event => {
-        return underscore_1.omit(event, 'week', 'month', 'year', 'userId', 'periodId');
+        return (0, underscore_1.omit)(event, 'week', 'month', 'year', 'userId', 'periodId');
     });
     return Object.assign(Object.assign({}, mappedProperties), { duration: parseFloat(hours), createdAt: new Date(createdAt), updatedAt: new Date(createdAt), week,
         month,

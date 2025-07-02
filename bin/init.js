@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const boxen_1 = __importDefault(require("boxen"));
 const inquirer_1 = __importDefault(require("inquirer"));
@@ -24,7 +24,7 @@ const utils_1 = require("./utils");
 const log_1 = require("./utils/log");
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
-        log_1.log(boxen_1.default(`${package_json_1.default.name} v${package_json_1.default.version}`, {
+        (0, log_1.log)((0, boxen_1.default)(`${package_json_1.default.name} v${package_json_1.default.version}`, {
             padding: 1,
             borderStyle: 'double'
         }));
@@ -41,15 +41,15 @@ function action(args) {
                 name: 'MONGO_DB_DB_NAME',
                 message: 'Mongo DB database',
                 default: 'main',
-                choices: ({ MONGO_DB_CONNECTION_STRING }) => __awaiter(this, void 0, void 0, function* () {
+                choices: (_a) => __awaiter(this, [_a], void 0, function* ({ MONGO_DB_CONNECTION_STRING }) {
                     try {
-                        const { client } = yield client_1.getClient(MONGO_DB_CONNECTION_STRING || args.MONGO_DB_CONNECTION_STRING);
+                        const { client } = yield (0, client_1.getClient)(MONGO_DB_CONNECTION_STRING || args.MONGO_DB_CONNECTION_STRING);
                         const { databases } = yield client.db().admin().listDatabases();
                         yield client.close(true);
                         return databases.map(db => db.name);
                     }
                     catch (error) {
-                        log_1.printSeparator(error.message, false, log_1.yellow);
+                        (0, log_1.printSeparator)(error.message, false, log_1.yellow);
                         process.exit(0);
                     }
                 }),
@@ -69,9 +69,8 @@ function action(args) {
                 dirOnly: true,
             }
         ]);
-        yield utils_1.writeFileAsync(path_1.default.resolve(__dirname, '.env'), utils_1.jsonToEnv(underscore_1.omit(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
-        log_1.printSeparator('did-cli sucessfully initialized.', true, log_1.green);
+        yield (0, utils_1.writeFileAsync)(path_1.default.resolve(__dirname, '.env'), (0, utils_1.jsonToEnv)((0, underscore_1.omit)(Object.assign(Object.assign(Object.assign({}, args), env), { INIT: '1' }), 'DID_INSTALLED_LOCALLY')));
+        (0, log_1.printSeparator)('did-cli sucessfully initialized.', true, log_1.green);
         process.exit(0);
     });
 }
-exports.action = action;

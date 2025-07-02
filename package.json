@@ -86,7 +86,7 @@
     "husky": "5.1.3",
     "prettier": "2.2.1",
     "sexy-commits": "github:Puzzlepart/sexy-commits",
-    "typescript": "4.2.3"
+    "typescript": "^5.0.0"
   },
   "commitlint": {
     "extends": [

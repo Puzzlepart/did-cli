@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
 const client_1 = require("../../mongo/client");
@@ -32,13 +32,13 @@ function createValidKey(key, maxLen = 12) {
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env['INIT'] !== '1') {
-            log_1.log(log_1.yellow.underline('You need to run did init.'));
+            (0, log_1.log)(log_1.yellow.underline('You need to run did init.'));
             process.exit(0);
         }
         try {
-            log_1.printSeparator('customer add', true, log_1.cyan);
-            const input = yield inquirer_1.default.prompt(questions_1.default(args));
-            const { client, db } = yield client_1.getClient();
+            (0, log_1.printSeparator)('customer add', true, log_1.cyan);
+            const input = yield inquirer_1.default.prompt((0, questions_1.default)(args));
+            const { client, db } = yield (0, client_1.getClient)();
             const { key, name, description, icon } = Object.assign(Object.assign({}, args), input);
             const key_ = createValidKey(key);
             yield db.collection('customers').insertOne({
@@ -53,15 +53,14 @@ function action(args) {
                 createdAt: new Date(),
                 updatedAt: new Date()
             });
-            log_1.printSeparator('Customer succesfully created', true, log_1.green);
+            (0, log_1.printSeparator)('Customer succesfully created', true, log_1.green);
             yield client.close(true);
         }
         catch (error) {
-            log_1.printSeparator(`Failed to create customer: ${error.message}`, true, log_1.yellow);
+            (0, log_1.printSeparator)(`Failed to create customer: ${error.message}`, true, log_1.yellow);
         }
         finally {
             process.exit(0);
         }
     });
 }
-exports.action = action;

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
 const utils_1 = require("../../utils");
@@ -42,23 +42,23 @@ function generateBranchName([id, name], branch_prefix) {
  */
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
-        log_1.printSeparator('Create branch', true, log_1.cyan);
+        (0, log_1.printSeparator)('Create branch', true, log_1.cyan);
         try {
-            let { stdout: issues_ } = yield utils_1.execAsync(`cd ${process.env.DID_LOCAL_PATH} && gh issue list`);
+            let { stdout: issues_ } = yield (0, utils_1.execAsync)(`cd ${process.env.DID_LOCAL_PATH} && gh issue list`);
             const issues = issues_.split('\n').map(str => {
                 return str.split(`\t`);
             });
-            const input = yield inquirer_1.default.prompt(questions_1.default(issues));
+            const input = yield inquirer_1.default.prompt((0, questions_1.default)(issues));
             const branch_name = generateBranchName(input.issue, input.branch_prefix);
-            yield utils_1.execAsync(`cd ${process.env.DID_LOCAL_PATH} && git checkout -b ${branch_name}`);
-            log_1.printSeparator(`Succesfully created branch ${branch_name} for issue ${input.issue[0]}.`, true, log_1.green);
+            yield (0, utils_1.execAsync)(`cd ${process.env.DID_LOCAL_PATH} && git checkout -b ${branch_name}`);
+            (0, log_1.printSeparator)(`Succesfully created branch ${branch_name} for issue ${input.issue[0]}.`, true, log_1.green);
         }
         catch (error) {
-            log_1.printSeparator(`Failed to create branch: ${error.message}`, true, log_1.yellow);
+            const msg = error instanceof Error ? error.message : String(error);
+            (0, log_1.printSeparator)(`Failed to create branch: ${msg}`, true, log_1.yellow);
         }
         finally {
             process.exit(0);
         }
     });
 }
-exports.action = action;

@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getClient = void 0;
 require('dotenv').config();
 const mongodb_1 = require("mongodb");
-const getClient = (connectionString = process.env['MONGO_DB_CONNECTION_STRING']) => __awaiter(void 0, void 0, void 0, function* () {
+const getClient = (...args_1) => __awaiter(void 0, [...args_1], void 0, function* (connectionString = process.env['MONGO_DB_CONNECTION_STRING']) {
     const client = yield mongodb_1.MongoClient.connect(connectionString);
     return {
         client,

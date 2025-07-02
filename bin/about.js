@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.option = void 0;
+exports.option = option;
 require('dotenv').config();
 const package_json_1 = __importDefault(require("./package.json"));
 const log_1 = require("./utils/log");
@@ -21,7 +21,7 @@ const log_1 = require("./utils/log");
  */
 function option() {
     return __awaiter(this, void 0, void 0, function* () {
-        log_1.print(`                                                               
+        (0, log_1.print)(`                                                               
                 ddddddd                     ddddddd            
                 d:::::d   iiii              d:::::d            
                 d:::::d  i::::i             d:::::d            
@@ -37,10 +37,9 @@ function option() {
      d::::::::::::::::d  i::::i d:::::::::::::::::d            
        dddddddddddddddd  iiiiii   ddddddddddddddddd`, log_1.whiteOnBlack);
         const contributors = package_json_1.default.contributors.map(contributor => contributor.username).join(', ');
-        log_1.print(`
+        (0, log_1.print)(`
 did-cli is a set of commands to simplify the process of getting started with did.
 Questions, comments or feedback? https://github.com/puzzlepart/did-cli
 ${contributors} are the main contributors`, log_1.yellow);
     });
 }
-exports.option = option;

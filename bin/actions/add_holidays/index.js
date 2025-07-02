@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const source_1 = __importDefault(require("got/dist/source"));
 const inquirer_1 = __importDefault(require("inquirer"));
@@ -72,19 +72,19 @@ function parseDateString(dateStr) {
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env['INIT'] !== '1') {
-            log_1.log(log_1.yellow.underline('You need to run did init.'));
+            (0, log_1.log)(log_1.yellow.underline('You need to run did init.'));
             process.exit(0);
         }
-        log_1.printSeparator('holidays add', true, log_1.cyan);
-        const { client, db } = yield client_1.getClient();
+        (0, log_1.printSeparator)('holidays add', true, log_1.cyan);
+        const { client, db } = yield (0, client_1.getClient)();
         const [holidaysCollection] = yield db.listCollections({ name: 'holidays' }).toArray();
         if (!holidaysCollection) {
-            log_1.printSeparator(`Holidays collection not found. Are you connected to the correct database?`, true, log_1.yellow);
+            (0, log_1.printSeparator)(`Holidays collection not found. Are you connected to the correct database?`, true, log_1.yellow);
             process.exit(0);
         }
-        const input = yield inquirer_1.default.prompt(questions_1.default(args));
+        const input = yield inquirer_1.default.prompt((0, questions_1.default)(args));
         let { year } = Object.assign(Object.assign({}, args), input);
-        const { body } = yield source_1.default(`https://webapi.no/api/v1/holidays/${year}`);
+        const { body } = yield (0, source_1.default)(`https://webapi.no/api/v1/holidays/${year}`);
         const docs = JSON.parse(body).data.map((item) => {
             const date = parseDateString(item.date);
             return {
@@ -97,8 +97,7 @@ function action(args) {
             };
         });
         yield db.collection('holidays').insertMany(docs);
-        log_1.printSeparator(`${docs.length} holidays for year ${year} succesfully created in db holidays.`, true, log_1.green);
+        (0, log_1.printSeparator)(`${docs.length} holidays for year ${year} succesfully created in db holidays.`, true, log_1.green);
         yield client.close(true);
     });
 }
-exports.action = action;

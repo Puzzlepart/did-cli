@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const nodejs_commonjs_1 = require("@pnp/nodejs-commonjs");
 const sp_commonjs_1 = require("@pnp/sp-commonjs");
@@ -39,15 +39,17 @@ const setup = (input) => sp_commonjs_1.sp.setup({
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            log_1.printSeparator('spfx install', true, log_1.cyan);
-            const input = Object.assign(Object.assign({}, args), (yield inquirer_1.default.prompt(questions_1.default(args))));
+            (0, log_1.printSeparator)('spfx install', true, log_1.cyan);
+            const input = Object.assign(Object.assign({}, args), (yield inquirer_1.default.prompt((0, questions_1.default)(args))));
             setup(input);
-            const response = yield got_1.default(SPPKG_GITHUB_URL(input), {
+            const response = yield (0, got_1.default)(SPPKG_GITHUB_URL(input), {
                 headers: { 'Accept': '*/*' }
             });
             const buffer = Buffer.from(response.rawBody);
+            // Convert Node.js Buffer to ArrayBuffer for compatibility
+            const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
             const appCatalogWeb = yield sp_commonjs_1.sp.getTenantAppCatalogWeb();
-            log_1.printSeparator(`Ensuring list ${CONFIG_LIST_NAME}`);
+            (0, log_1.printSeparator)(`Ensuring list ${CONFIG_LIST_NAME}`);
             const { list, created } = yield appCatalogWeb.lists.ensure(CONFIG_LIST_NAME, '', 100, false, {
                 Hidden: true
             });
@@ -60,22 +62,22 @@ function action(args) {
                     Title: 'API_KEY',
                     Value: input.didApiKey
                 });
-                log_1.printSeparator(`List ${CONFIG_LIST_NAME} created`);
+                (0, log_1.printSeparator)(`List ${CONFIG_LIST_NAME} created`);
             }
             else {
-                log_1.printSeparator(`List ${CONFIG_LIST_NAME} already created`);
+                (0, log_1.printSeparator)(`List ${CONFIG_LIST_NAME} already created`);
             }
-            const { data } = yield appCatalogWeb.getAppCatalog(appCatalogWeb).add('did-spfx.sppkg', buffer, true);
+            const { data } = yield appCatalogWeb.getAppCatalog(appCatalogWeb).add('did-spfx.sppkg', arrayBuffer, true);
             const [app] = yield appCatalogWeb.getAppCatalog(appCatalogWeb).filter(`Title eq '${data.Title}'`).select('ID', 'AppCatalogVersion').get();
             yield appCatalogWeb.getAppCatalog(appCatalogWeb).getAppById(app.ID).deploy(true);
-            log_1.printSeparator(`Successfully deployed version ${app.AppCatalogVersion}.`, true, log_1.green);
+            (0, log_1.printSeparator)(`Successfully deployed version ${app.AppCatalogVersion}.`, true, log_1.green);
         }
         catch (error) {
-            log_1.printSeparator(`Failed to install SPFx: ${error.message}`, true, log_1.yellow);
+            const msg = error instanceof Error ? error.message : String(error);
+            (0, log_1.printSeparator)(`Failed to install SPFx: ${msg}`, true, log_1.yellow);
         }
         finally {
             process.exit(0);
         }
     });
 }
-exports.action = action;

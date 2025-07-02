@@ -40,7 +40,8 @@ export async function action() {
     await execAsync(`cd ${process.env.DID_LOCAL_PATH} && git checkout -b ${branch_name}`)
     printSeparator(`Succesfully created branch ${branch_name} for issue ${input.issue[0]}.`, true, green)
   } catch (error) {
-    printSeparator(`Failed to create branch: ${error.message}`, true, yellow)
+    const msg = error instanceof Error ? error.message : String(error)
+    printSeparator(`Failed to create branch: ${msg}`, true, yellow)
   } finally {
     process.exit(0)
   }

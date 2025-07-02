@@ -1,5 +1,5 @@
 require('dotenv').config()
-import packageJson from '../../package.json'
+import packageJson from '../../../package.json'
 import { envToArgs, execAsync } from '../../utils'
 import { cyan, green, printSeparator, yellow } from '../../utils/log'
 

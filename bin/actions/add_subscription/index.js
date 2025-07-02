@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const inquirer_1 = __importDefault(require("inquirer"));
 const underscore_1 = __importDefault(require("underscore"));
@@ -23,18 +23,18 @@ const subscription_setup_config_json_1 = __importDefault(require("./subscription
 function action(args) {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env['INIT'] !== '1') {
-            log_1.log(log_1.yellow.underline('You need to run did init.'));
+            (0, log_1.log)(log_1.yellow.underline('You need to run did init.'));
             process.exit(0);
         }
         try {
-            log_1.printSeparator('subscription add', true, log_1.cyan);
-            const { client, db } = yield client_1.getClient();
+            (0, log_1.printSeparator)('subscription add', true, log_1.cyan);
+            const { client, db } = yield (0, client_1.getClient)();
             const [subscriptions] = yield db.listCollections({ name: 'subscriptions' }).toArray();
             if (!subscriptions) {
-                log_1.printSeparator(`Subscriptions collection not found. Are you connected to the correct database?`, true, log_1.yellow);
+                (0, log_1.printSeparator)(`Subscriptions collection not found. Are you connected to the correct database?`, true, log_1.yellow);
                 process.exit(0);
             }
-            const input = yield inquirer_1.default.prompt(questions_1.default(args));
+            const input = yield inquirer_1.default.prompt((0, questions_1.default)(args));
             let { name, tenantId, forecasting, owner, dbName } = Object.assign(Object.assign({}, args), input);
             dbName = dbName !== null && dbName !== void 0 ? dbName : underscore_1.default.last(tenantId.split('-'));
             const sub = {
@@ -61,7 +61,15 @@ function action(args) {
                             "surname",
                             "givenName"
                         ]
-                    }
+                    },
+                    timesheet: {
+                        dayFormat: "dddd DD",
+                        timeFormat: "HH:mm",
+                        timebankEnabled: false
+                    },
+                    budgetTracking: {
+                        enabled: true
+                    },
                 },
             };
             yield db.collection('subscriptions').insertOne(sub);
@@ -80,13 +88,12 @@ function action(args) {
                     yield client.db(dbName).collection(coll.name).insertMany(coll.documents);
                 }
             }
-            log_1.printSeparator(`Subscription succesfully created with db ${dbName}.`, true, log_1.green);
+            (0, log_1.printSeparator)(`Subscription succesfully created with db ${dbName}.`, true, log_1.green);
             yield client.close(true);
         }
         catch (error) {
-            log_1.printSeparator(`Failed to create subscription.: ${error.message}`, true, log_1.yellow);
+            (0, log_1.printSeparator)(`Failed to create subscription.: ${error.message}`, true, log_1.yellow);
         }
         process.exit(0);
     });
 }
-exports.action = action;

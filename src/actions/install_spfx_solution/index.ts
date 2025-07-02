@@ -42,6 +42,8 @@ export async function action(args) {
       headers: { 'Accept': '*/*' }
     })
     const buffer = Buffer.from(response.rawBody)
+    // Convert Node.js Buffer to ArrayBuffer for compatibility
+    const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength)
     const appCatalogWeb = await sp.getTenantAppCatalogWeb()
     printSeparator(`Ensuring list ${CONFIG_LIST_NAME}`)
     const { list, created } = await appCatalogWeb.lists.ensure(
@@ -64,12 +66,13 @@ export async function action(args) {
     } else {
       printSeparator(`List ${CONFIG_LIST_NAME} already created`)
     }
-    const { data } = await appCatalogWeb.getAppCatalog(appCatalogWeb).add('did-spfx.sppkg', buffer, true)
+    const { data } = await appCatalogWeb.getAppCatalog(appCatalogWeb).add('did-spfx.sppkg', arrayBuffer, true)
     const [app] = await appCatalogWeb.getAppCatalog(appCatalogWeb).filter(`Title eq '${data.Title}'`).select('ID', 'AppCatalogVersion').get()
     await appCatalogWeb.getAppCatalog(appCatalogWeb).getAppById(app.ID).deploy(true)
     printSeparator(`Successfully deployed version ${app.AppCatalogVersion}.`, true, green)
   } catch (error) {
-    printSeparator(`Failed to install SPFx: ${error.message}`, true, yellow)
+    const msg = error instanceof Error ? error.message : String(error)
+    printSeparator(`Failed to install SPFx: ${msg}`, true, yellow)
   } finally {
     process.exit(0)
   }

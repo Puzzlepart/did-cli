@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
-const package_json_1 = __importDefault(require("../../package.json"));
+const package_json_1 = __importDefault(require("../../../package.json"));
 const utils_1 = require("../../utils");
 const log_1 = require("../../utils/log");
 /**
@@ -22,29 +22,28 @@ const log_1 = require("../../utils/log");
  *
  * @description Upgrade did-cli
  */
-function action({ branch, reset }) {
-    var _a;
-    return __awaiter(this, void 0, void 0, function* () {
-        log_1.printSeparator('Upgrading did-cli', true, log_1.cyan);
-        let url = (_a = package_json_1.default === null || package_json_1.default === void 0 ? void 0 : package_json_1.default.repository) === null || _a === void 0 ? void 0 : _a.url;
+function action(_a) {
+    return __awaiter(this, arguments, void 0, function* ({ branch, reset }) {
+        var _b;
+        (0, log_1.printSeparator)('Upgrading did-cli', true, log_1.cyan);
+        let url = (_b = package_json_1.default === null || package_json_1.default === void 0 ? void 0 : package_json_1.default.repository) === null || _b === void 0 ? void 0 : _b.url;
         if (branch) {
             url += `#${branch}`;
         }
-        log_1.printSeparator(`Upgrading ${log_1.cyan('did-cli')} from ${url}`);
-        const envArgs = utils_1.envToArgs();
+        (0, log_1.printSeparator)(`Upgrading ${(0, log_1.cyan)('did-cli')} from ${url}`);
+        const envArgs = (0, utils_1.envToArgs)();
         try {
-            yield utils_1.execAsync(`npm i -g "${url}"`);
+            yield (0, utils_1.execAsync)(`npm i -g "${url}"`);
             if (!reset)
-                yield utils_1.execAsync(`did-cli init ${envArgs}`);
-            const { stdout } = yield utils_1.execAsync(`did-cli --version`);
-            log_1.printSeparator(`Successfully upgraded ${log_1.cyan('did-cli')} to version ${stdout.trim()}`, true, log_1.green);
+                yield (0, utils_1.execAsync)(`did-cli init ${envArgs}`);
+            const { stdout } = yield (0, utils_1.execAsync)(`did-cli --version`);
+            (0, log_1.printSeparator)(`Successfully upgraded ${(0, log_1.cyan)('did-cli')} to version ${stdout.trim()}`, true, log_1.green);
         }
         catch (error) {
-            log_1.printSeparator(`Failed to upgrade ${log_1.cyan('did-cli')}: ${error.message}`, true, log_1.yellow);
+            (0, log_1.printSeparator)(`Failed to upgrade ${(0, log_1.cyan)('did-cli')}: ${error.message}`, true, log_1.yellow);
         }
         finally {
             process.exit(0);
         }
     });
 }
-exports.action = action;

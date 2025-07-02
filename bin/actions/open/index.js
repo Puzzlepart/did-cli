@@ -9,18 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.action = void 0;
+exports.action = action;
 require('dotenv').config();
 const utils_1 = require("../../utils");
 const log_1 = require("../../utils/log");
 function action() {
     return __awaiter(this, void 0, void 0, function* () {
         if (!process.env.DID_LOCAL_PATH) {
-            log_1.log('[did-cli]', log_1.yellow.underline("You don't have did installed locally."));
+            (0, log_1.log)('[did-cli]', log_1.yellow.underline("You don't have did installed locally."));
             process.exit(0);
         }
-        yield utils_1.execAsync(`code ${process.env.DID_LOCAL_PATH}`);
+        yield (0, utils_1.execAsync)(`code ${process.env.DID_LOCAL_PATH}`);
         process.exit(0);
     });
 }
-exports.action = action;

@@ -53,7 +53,7 @@ exports.default = (args, customers) => [
         name: 'icon',
         message: 'Select an icon from Office UI Fabric',
         source: (_a, input) => __awaiter(void 0, void 0, void 0, function* () {
-            const response = yield got_1.default('https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-core/master/src/data/icons.json', {
+            const response = yield (0, got_1.default)('https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-core/master/src/data/icons.json', {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'

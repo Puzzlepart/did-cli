@@ -13,11 +13,11 @@ const package_json_1 = __importDefault(require("./package.json"));
 const log_1 = require("./utils/log");
 inquirer_1.default.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
 inquirer_1.default.registerPrompt('file-tree-selection', require('inquirer-file-tree-selection-prompt'));
-const prefix = `${log_1.cyan('did')}`;
+const prefix = `${(0, log_1.cyan)('did')}`;
 const actions = package_json_1.default.config.actions || {};
 const usage = Object.keys(actions)
     .map((k) => {
-    return `${prefix} ${log_1.yellow(k)}\n\t${actions[k]}`;
+    return `${prefix} ${(0, log_1.yellow)(k)}\n\t${actions[k]}`;
 })
     .join('\n');
 const args = yargs_1.default
@@ -37,8 +37,8 @@ if (args.about) {
     require('./about').option();
 }
 else if (actions_map_json_1.default[action]) {
-    require(actions_map_json_1.default[action]).action(underscore_1.omit(args, '$0', '_'));
+    require(actions_map_json_1.default[action]).action((0, underscore_1.omit)(args, '$0', '_'));
 }
 else {
-    log_1.printSeparator(`Unknown action. Did you mean to run ${log_1.cyan('did init')}?`, true, log_1.yellow);
+    (0, log_1.printSeparator)(`Unknown action. Did you mean to run ${(0, log_1.cyan)('did init')}?`, true, log_1.yellow);
 }
